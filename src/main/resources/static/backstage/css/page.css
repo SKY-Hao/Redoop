@@ -1,0 +1,12 @@
+/*pages*/
+.pages {  height: 28px;  line-height: 28px; padding: 25px 0px;  padding-bottom: 14px; text-align: right;color: #787878;}
+.disBlock {    display: inline-block;}
+.pages a { display: inline-block; width: 26px; height: 26px;line-height:22px;  text-align: center;  color: #000000;  margin: 0px 8px;}
+.pages a.page { background-color: #fcfcfc; border: #d4d4d4 1px solid;  color: #808081;}
+.page span{   margin: 0; padding: 0; border: 0;  outline: 0; font-weight: inherit;  font-style: inherit;  font-size: 100%;  font-family: inherit;}
+.pages a.on,.pages a.page:hover {    background-color: #cd2027;    border: #cd2027 1px solid;    color: #ffffff;}
+.pages span.morePage {    display: inline-block;    width: 28px;    height: 28px;    text-align: center;}
+.pages span.pageInput {    display: inline-block;    width: 45px;    height: 28px;    text-align: center;    margin: 0px 5px 0px 5px;}
+.pages span.pageInput input {    width: 43px;    border: #d4d4d4 1px solid;    text-align: center;    height: 26px;    line-height: 26px;}
+.pages a.go,.pages a.go:hover { margin-right:0;    width: 50px;    height: 28px;    background-color: #cd2027; border:0 none;    line-height: 26px;    text-align: center;    color: #ffffff;}
+.pages a.go:hover{ background:#b31f23;}

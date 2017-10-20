@@ -1,0 +1,9 @@
+*{ margin:0; padding:0;}
+html{ height:100%;}
+body{ height:100%; background:#f0f3f4 url(../img/greatWall.png) no-repeat right bottom;}
+.container{ width:90%; margin:0 auto 0; font-family:tahoma,'微软雅黑'; text-align:center;}
+.container h3{ font-size:26px; color:#333; text-align:center; font-weight:normal; padding-top:200px;}
+.container a{ margin-top:25px; display:inline-block; margin-left:5px; margin-right:5px; width:175px; height:55px;  color:#fff; line-height:55px; font-size:24px; border-radius:5px; background:#458edb; text-decoration:none;}
+.container a:hover{ background:#377dc7;}
+.container a.green{ background:#72a529;}
+.container a.green:hover{ background:#60901c;}

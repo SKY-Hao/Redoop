@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.banner2 {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	background:#000;
+}
+
+.banner2 ul {
+	position: absolute;
+}
+
+.banner2 ul li {
+	width: 100%;
+	height: 520px;
+	float: left;
+	background: no-repeat center center;
+}
+
+.banner2 ol {
+	height: 20px;
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	left: 50%;
+	bottom: 20px;
+	padding: 0 5px;
+	border-radius: 5px;
+}
+
+.banner2 ol li {
+	width: 6px;
+	height: 6px;
+	float: left;
+	margin: 7px 5px 4px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.banner2 ol .current {
+	background: rgba(255, 255, 255, 1);
+}
+
+.banner2 i {
+	width:40px;
+	height: 46px;
+	position: absolute;
+	top: 50%;
+	margin-top: -23px;
+	cursor: pointer;
+	display: none;
+	background:none;
+}
+
+.banner2 .left {
+	left: 60px;
+	background: url('img/arrow.png') no-repeat 0 0px;
+}
+
+.banner2 .right {
+	right: 60px;
+	background: url('img/arrow.png') no-repeat 0px -49px;
+}
+
+

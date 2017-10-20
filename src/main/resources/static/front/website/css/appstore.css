@@ -1,0 +1,94 @@
+/* CSS Document */
+
+/*e-appstore*/
+.e-appstoreBannner{ height:206px; background:url(img/appstoreBanner.jpg) no-repeat center;margin-top: 70px;}
+.e-appstoreNav{ height:57px; background:#f5f5f5; border-bottom:1px solid #e9eaec;}
+.searchCon{ float:right; margin-top:13px; margin-right:15px; width:420px;}
+.inputApp{ width:335px; height:30px; line-height:30px; border:1px solid #cd2027; background:#fff;}
+.searchBtn{ width:80px; height:30px; background:#cd2027;  color:#fff;}
+.e-appstoreNav span{ display:inline-block; float:right; margin-right:15px; line-height:57px;}
+.e-appstoreNav a{ margin-left:15px; display:inline-block; padding:0 15px; height:57px; line-height:57px; color:#333;}
+.e-appstoreNav a:hover{ background:#333; color:#fff;}
+.e-appstoreNav a.on{ border-bottom:2px solid #333;}
+.appImg{ position:relative; height:145px;}
+.appImg img{ width:270px; height:145px;}
+/*.appImg p{  position:absolute; left:0; bottom:0; width:270px; height:25px; line-height:25px; font-size:12px; color:#fff; background:#000; opacity:.8; text-align:right; padding-right:5px;}*/
+.appImg p{  position:absolute; left:0; bottom:0; width:270px; height:25px; line-height:25px; font-size:12px; color:#fff; background:#000; opacity:.8; text-align:right; padding-right:5px;
+margin-bottom: 0;}
+/*.appTxt{ width:270px; height:173px; border:1px solid #e9e9e9; border-top:0 none;}*/
+.appTxt{ width:270px; height:173px; border:1px solid #e9e9e9; border-top:0 none;}
+/*.appTxt h2{ text-align:center; line-height:1.8em;}*/
+.appTxt h2{ text-align:center; line-height:1.5em; margin-top: 0; font-size: 21px;}
+.appTxt h2 a{ font-size:16px; text-align:center;}
+.appTxt h2 a:hover{ color:#cd2027;}
+.appTxt p{ height:85px;  margin:0 15px; border-bottom:1px solid #e9e9e9; overflow:hidden; font-size:14px;}
+.status{ height:48px; line-height:48px; margin:0 15px;}
+.status span,.status a{ display:inline-block;}
+.status span.loadNum,.status span.size{ width:60px; height:20px; margin-top:11px; line-height:20px; background:url(img/appStatus.png) no-repeat 0 0; padding-left:20px; color:#858585;}
+.status span.size{ background-position:0 -22px;}
+.status a{ float:right; margin-top:11px; width:76px; height:26px; line-height:26px; text-align:center; color:#fff; background:#cd2027;}
+.status a:hover{ background:#bf3123;}
+#eAppStore .col-4{ margin-bottom:15px;}
+.userInfo{ float:right; width:150px; text-align:right; margin-bottom:20px; margin-right:15px; clear:both;}
+.searchResult{ float:left; width:500px; margin-left:15px;}
+.searchResult span{ color:#cd2027;}
+
+.tips{ position:absolute; left:50%; top:50%; margin:-150px 0 0 -300px; width:600px; height:300px; padding:20px; border:1px solid #afafaf; background:#fff; box-shadow:2px 2px 3px #aaaaaa; z-index:9999;}
+a.closeBtn{ position:absolute; display:block; width:19px; height:19px; background:url(img/num.png) no-repeat 0 -154px; z-index:99999999; right:10px; top:10px;}
+a.closeBtn:hover{ background-position:0 -173px;}
+.partImg{margin-right: 15px; float:left;    width: 175px;    position: relative;    z-index: 99;    padding-bottom:2px;}
+.partTxt p{ margin-bottom:20px; font-size:14px; line-height:25px; font-family:tahoma,'微软雅黑';}
+.partTxt h3{ line-height:1.6em; font-size:18px; text-align:left; font-family:tahoma,'微软雅黑';}
+
+.step{ margin-top:20px;}
+.step h4{ border-left:4px solid #CD2027; line-height:25px; padding-left:6px;}
+.step ul{ margin-top:10px; list-style:none;}
+.step li{ height:30px;  padding-left:15px; line-height:1.8em;}
+.step li.step1{ background-position:0 0;}
+.step li.step2{ background-position:0 -30px;}
+.step li.step3{ background-position:0 -60px;}
+.step li.step4{ background-position:0 -90px;}
+.step li.step5{ background-position:0 -120px;}
+.step li a{ color:#281BD8; text-decoration:underline;}
+
+.findPW{ position:absolute; left:50%; top:50%; margin:-142px 0 0 -210px; width:420px; height:285px; border-radius:5px;box-shadow:2px 2px 3px #aaaaaa;}
+/*.findPW h2,.login h2,.registe h2{ height:80px; line-height:80px; text-align:center; font-size:25px; background:#252527; font-weight:normal; color:#fff;}*/
+.findPW h2,.login h2,.registe h2{ height:80px; line-height:80px; text-align:center; font-size:25px; background:#252527; font-weight:normal; color:#fff; margin-top: 0;}
+/*.formCon{ margin:40px 35px;}*/
+.formCon{ margin:30px 35px;}
+/*.input{ padding:0 10px; border:1px solid #ddd; background:#f4f4f4; border-radius:5px;height:40px; line-height:40px;}*/
+.input{ padding:0 10px; border:1px solid #ddd; background:#f4f4f4; border-radius:5px;height:40px; line-height:40px; margin-top: 20px;}
+.findUSER{  width:318px; }
+.formBtn{ width:340px; background:#cd2027; border:0 none; height:40px; line-height:40px; text-align:center; color:#fff;border-radius:5px; font-size:14px; cursor:pointer;}
+.formBtn:hover{ background:#bf3123;}
+p.errorTxt{ height:27px; line-height:27px; color:#cd2027; font-size:12px;}
+p.forgetTxt{ height:27px; line-height:27px; color:#333; font-size:12px; text-align:right;}
+p.forgetTxt span{display:inline; float:left; color:#cd2027;}
+
+/*
+.login{ position:absolute; left:50%; top:50%; margin:-175px 0 0 -210px; width:420px; height:350px; border-radius:5px;box-shadow:2px 2px 3px #aaaaaa;}
+*/
+.login{ position:absolute; left:50%; top:50%; margin:-175px 0 0 -210px; width:420px; height:357px; border-radius:5px;box-shadow:2px 2px 3px #aaaaaa;}
+
+.loginTxt{ width:350px;}
+.loginBtn{ width:350px;}
+a.redLink{ color:#cd2027;}
+
+/*.registe{ position:absolute; left:50%; top:50%; margin:-315px 0 0 -250px; width:500px; height:630px; border-radius:5px;box-shadow:2px 2px 3px #aaaaaa;}*/
+.registe{ position:absolute; left:50%; top:50%; margin:-315px 0 0 -250px; width:500px; height:550px; border-radius:5px;box-shadow:2px 2px 3px #aaaaaa; margin-top: -255px;}
+.registeTxt{ width:430px;}
+.registeBtn{ width:430px;}
+
+#mask{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:998; background:#000; opacity:.4;}
+
+/*appStore申请2017年9月19日15:28:21*/
+.SQ{float: right;margin-top: 11px;width: 76px;height: 26px;line-height: 6px;text-align: center;}
+.SQ button{width: 76px;height: 26px;line-height: 6px;}
+.formCon #addRegiste input{margin-top: 15px;}
+.formCon #addRegiste button{margin-top: 15px;}
+.partImg #picurl{margin-right: 15px;float: left;width: 175px;position: relative;z-index: 99;padding-bottom: 2px;}
+.formCon .col-8 .redLink{background-color: #dfdfdf; color: #d43f3a;float: right;}
+.block .userInfo #okname{color: #d43f3a;font-family: 'Courier New';font-size: large}
+
+
+.e-appstoreNav .container a{text-decoration: none;}
