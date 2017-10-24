@@ -8,4 +8,9 @@
     使用的技术有：SpringBoot,Mysql,SpringJPA,JSP,SpringSecurity等技术
 
 # 效果图
+![redoop1.png](images/login.png)
+![redoop2.png](images/admin.png)
+![redoop3.png](images/front.png)
+    
+    
     
