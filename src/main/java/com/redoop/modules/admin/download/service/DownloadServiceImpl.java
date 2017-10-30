@@ -108,10 +108,8 @@ public class DownloadServiceImpl implements DownloadService{
                     throw new SystemException("<script>toastr.error(\"图片Logo上传失败\")</script>");
                 }
             }else{
-
                 download.setSystempic(download.getSystempic());
                 download.setChippic(download.getChippic());
-
             }
         }else{
 
@@ -120,13 +118,11 @@ public class DownloadServiceImpl implements DownloadService{
                 throw new SystemException("<script>toastr.error(\"图片Logo不能为空\")</script>");
 
             }else{
-
                 try {
                     download = uploadPic(download,attachs,logoPath);
                 } catch (IOException e) {
                     throw new SystemException("<script>toastr.error(\"图片Logo上传失败\")</script>");
                 }
-
             }
             User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             download.setDocumentauthor(user.getUsername());
@@ -208,7 +204,7 @@ public class DownloadServiceImpl implements DownloadService{
 
 
     /**
-     * 修改下载次数
+     * 前端下载次数增加
      * @param id
      * @return
      * @throws SystemException
@@ -256,14 +252,6 @@ public class DownloadServiceImpl implements DownloadService{
     @Override
     public void save(Download download) throws Exception {
         downloadRepository.save(download);
-        Mess mess = new Mess();
-        mess.setAuthortime(new Date());
-        mess.setTablename(Download.class.getSimpleName());
-        mess.setTableid(download.getId());
-        mess.setTitle(download.getDocumentname());
-        mess.setAuthor(download.getDocumentauthor());
-        mess.setOutline(download.getOutline());
-        messRepository.save(mess);
     }
 
     /**

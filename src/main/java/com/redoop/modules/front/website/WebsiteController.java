@@ -172,7 +172,7 @@ public class WebsiteController {
         model.addAttribute("url","/front/download?producttype=" + producttype + "&");
 
         setStyle(model,"download");
-        return "front/website/download";
+        return "front/website/productinformation";
     }
 
     /**
@@ -506,8 +506,6 @@ public class WebsiteController {
     @GetMapping(value = "/redoopCRH")
     public String redoopCRH(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
 
-
-
         List<Download> list= downloadService.listByDocumenttype(platformtype);
         model.addAttribute("list", list);
         model.addAttribute("platformtype",platformtype);
@@ -517,7 +515,7 @@ public class WebsiteController {
 
 
     /**
-     * 修改查看次数
+     * 前端下载次数增加
      * @param id
      * @return
      * @throws SystemException
@@ -528,8 +526,9 @@ public class WebsiteController {
         int i=downloadService.addDocumenCount(id);
         if (i>0){
             return true;
+        }else {
+            return false;
         }
-        return false;
     }
 
     /**

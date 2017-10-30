@@ -116,7 +116,7 @@ public class DownloadController {
                         @RequestParam(value = "logo", required = false) MultipartFile[] attachs) {
         try {
             if (download.getId()!=null){
-                String i=downloadService.findByCout(download.getId());
+                String i=downloadService.findByCout(download.getId());//获取下载次数不做修改
                 download.setDocudowncount(Integer.parseInt(i));
             }
             request.setCharacterEncoding( "utf-8" );

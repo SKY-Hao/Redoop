@@ -94,7 +94,6 @@ public class ComponentServiceImpl implements ComponentService{
 
         if(component.getId() != null){
             Component data_c = componentRepository.findOne(component.getId());
-            //component.setAdddate(data_c.getAdddate());
             component.setEditdate(new Date());
             component.setAdditive(data_c.getAdditive());
             component.setDownloads(data_c.getDownloads());

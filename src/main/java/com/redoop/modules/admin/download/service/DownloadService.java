@@ -65,7 +65,7 @@ public interface DownloadService {
 
 
     /**
-     * 修改下载次数
+     * 前端下载次数增加
      * @param id
      * @return
      * @throws SystemException

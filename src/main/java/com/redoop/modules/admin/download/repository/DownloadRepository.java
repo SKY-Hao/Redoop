@@ -44,7 +44,6 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
      * 前台AI列表显示
      * @return
      */
-
     @Query(value = "FROM Download WHERE  platformtype = :platformtype and documenttype = 0 and producttype = 1  ORDER BY producttime DESC")
     List<Download> byAIDocumenttype(@Param("platformtype") String platformtype);
 
@@ -56,7 +55,7 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
      */
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Download SET docudowncount = docudowncount+1  WHERE id = :id")
+    @Query(value = "update download set docudowncount = docudowncount+1  WHERE id = :id",nativeQuery = true)
     public int addDocumenCount(@Param("id") String id);
 
 

@@ -15,22 +15,7 @@
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
     <script type="text/javascript" src="<%=basePath%>/backstage/My97DatePicker/WdatePicker.js"></script>
 </head>
-<script type="text/javascript">
-$(function () {
-    //全选反选
-      $("#qx").click(function () {
-          var ids = document.getElementsByName("ids");
-          for(var i=0;i<ids.length;i++){
-              if(ids[i].checked) {
-                  ids[i].checked = false;
-              }
-              else{
-                  ids[i].checked=true ;
-              }
-          }
-      });
-})
-</script>
+
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
     <div class="row">
@@ -61,9 +46,9 @@ $(function () {
                         </th>
                         <th>类目</th>
                         <th>标题</th>
-                        <th>更新概要</th>
-                        <th>发布者</th>
-                        <th>更新时间</th>
+                        <th>更新概/th>
+                        <th>更新时间要</th>
+                        <th>发布者<</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -82,8 +67,8 @@ $(function () {
                                 <td>
                                    <%-- <a href="<%=basePath%>/front/onenew/${mess.id}" target="_blank" class="tablelink">预览</a>--%>
                                    <%-- <a href="<%=basePath%>/admin/mess/form/${mess.id}" class="tablelink">修改</a>--%>
-                                    <%-- <c:if test="${mess.state eq 1}"><a href="<%=basePath%>/admin/mess/cancelRelease/${mess.id}" class="tablelink">取消发布</a></c:if>
-                                    <c:if test="${mess.state eq 0}"><a href="<%=basePath%>/admin/mess/release/${mess.id}" class="tablelink">发布</a></c:if>--%>
+                                     <c:if test="${mess.state eq 1}"><a href="<%=basePath%>/admin/mess/cancelRelease/${mess.id}" class="tablelink">取消发布</a></c:if>
+                                    <c:if test="${mess.state eq 0}"><a href="<%=basePath%>/admin/mess/release/${mess.id}" class="tablelink">发布</a></c:if>
                                     <a href="<%=basePath%>/admin/mess/delete/${mess.id}" class="tablelink" onclick="return del()">删除</a>
 
                                 </td>
@@ -100,5 +85,21 @@ $(function () {
 </div>
 
 </body>
+<script type="text/javascript">
+    $(function () {
+        //全选反选
+        $("#qx").click(function () {
+            var ids = document.getElementsByName("ids");
+            for(var i=0;i<ids.length;i++){
+                if(ids[i].checked) {
+                    ids[i].checked = false;
+                }
+                else{
+                    ids[i].checked=true ;
+                }
+            }
+        });
 
+    })
+</script>
 </html>

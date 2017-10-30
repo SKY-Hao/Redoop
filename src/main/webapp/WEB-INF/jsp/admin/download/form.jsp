@@ -133,7 +133,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-2">
                             <button class="btn btn-primary" type="submit">保存内容</button>
-                            <a href="<%=basePath%>/admin/solution/findAll">
+                            <a href="<%=basePath%>/admin/download/findAll">
                                 <button class="btn btn-white" type="button">取消</button>
                             </a>
                         </div>
