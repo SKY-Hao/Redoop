@@ -49,7 +49,6 @@
                     <th>下载量</th>
                     <th>存储大小</th>
                     <th>添加时间</th>
-                    <th>是否显示</th>
                     <th>添加者</th>
                     <th>操作</th>
                 </tr>
@@ -76,23 +75,17 @@
                         <c:if test="${one.open=='1'}">
                             <td>开源</td>
                         </c:if>
-
                         <td>${one.version}</td>
-
                         <td>${one.downloads}</td>
                         <td>${one.memorysize}</td>
-                        <td>${one.adddate}</td>
-                        <c:if test="${one.showstate==0}">
-                            <td>不显示</td>
-                        </c:if>
-                        <c:if test="${one.showstate==1}">
-                            <td>显示</td>
-                        </c:if>
+                        <td>${one.editdate}</td>
                         <td>${one.additive}</td>
 
                         <td>
-                            <a href="<%=basePath%>/admin/component/form/${one.id}">修改</a>
-                            <a href="<%=basePath%>/admin/component/delete/${one.id}" onclick="return del()">删除</a>
+                            <a href="<%=basePath%>/admin/component/form/${one.id}">修改/</a>
+                            <a href="<%=basePath%>/admin/component/delete/${one.id}" onclick="return del()">删除/</a>
+                            <c:if test="${one.showstate eq 1}"><a href="<%=basePath%>/admin/component/cancelRelease/${one.id}" class="tablelink">取消发布</a></c:if>
+                            <c:if test="${one.showstate eq 0}"><a href="<%=basePath%>/admin/component/release/${one.id}" class="tablelink">确认发布</a></c:if>
                         </td>
                     </tr>
                 </c:forEach>

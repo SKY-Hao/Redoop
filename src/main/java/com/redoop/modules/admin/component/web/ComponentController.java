@@ -4,6 +4,7 @@ import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.component.service.ComponentService;
+import com.redoop.modules.admin.partner.entity.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -123,5 +124,41 @@ public class ComponentController {
         mode.addAttribute("name",name);
         return "admin/component/list";
     }
+
+    /**
+     * 发布
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
+    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+        Component component = componentService.findById(id);
+        component.setShowstate(1);
+        try {
+            componentService.save(component);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/component/findAll";
+    }
+    /**
+     * 取消发布
+     * @return
+     */
+    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
+    public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
+        try {
+            componentService.updatedescription(id);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"取消发布成功\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/component/findAll";
+    }
+
+
+
 
 }

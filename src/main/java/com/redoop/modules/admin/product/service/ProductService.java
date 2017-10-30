@@ -39,7 +39,7 @@ public interface ProductService {
      * @param product
      * @throws SystemException
      */
-    public void save(Product product) throws Exception;
+    public void save(Product product) throws SystemException;
 
 
     /**
@@ -66,6 +66,9 @@ public interface ProductService {
      */
     public int addProductCount(String id) throws SystemException;
 
-
-
+    /**
+     * 取消发布
+     * @param id
+     */
+    void updateProtype(String id)throws SystemException;
 }

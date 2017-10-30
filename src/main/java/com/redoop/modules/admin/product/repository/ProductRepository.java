@@ -47,4 +47,12 @@ public interface ProductRepository extends JpaRepository<Product,String> {
     @Query(value = "UPDATE Product SET productcount = productcount+1  WHERE id = :id")
     public int addProductCount(@Param("id") String id);
 
+    /**
+     * 取消发布
+     * @param id
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "update  Product set  protype='1' where  id = :id")
+    void updateProtype(@Param("id") String id);
 }

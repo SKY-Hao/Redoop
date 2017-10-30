@@ -47,8 +47,8 @@
                     <th>文档类型</th>
                     <th>文档名称</th>
                     <th>文档发布时间</th>
-                    <th>文档发布状态</th>
                     <th>文档下载次数</th>
+                    <th>文档发布状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -72,23 +72,22 @@
                         <td>${one.productname}</td>
                         <td>${one.producttime}</td>
 
+                        <td>${one.productcount}</td>
                         <td>
-                            <c:if test="${one.protype==0}">
-                                发布(显示)
+                            <c:if test="${one.protype=='0'}">
+                                已发布(显示)
                             </c:if>
-
-                            <c:if test="${one.protype==1}">
-                                不发布(不显示)
+                            <c:if test="${one.protype=='1'}">
+                                已取消发布(不显示)
                             </c:if>
                         </td>
-                        <td>${one.productcount}</td>
-
-
 
                         <td>
                             <a href="<%=basePath%>/admin/product/form/${one.id}">修改/</a>
                             <a href="<%=basePath%>/admin/product/delete/${one.id}" onclick="return del()">删除/</a>
-                            <a href="<%=basePath%>/admin/product/detailed/${one.id}">查看详细信息</a>
+                            <a href="<%=basePath%>/admin/product/detailed/${one.id}">查看详细信息/</a>
+                            <c:if test="${one.protype eq '0'}"><a href="<%=basePath%>/admin/product/release/${one.id}" class="tablelink">取消发布</a></c:if>
+                            <c:if test="${one.protype eq '1'}"><a href="<%=basePath%>/admin/product/cancelRelease/${one.id}" class="tablelink">确认发布</a></c:if>
                         </td>
                     </tr>
                 </c:forEach>

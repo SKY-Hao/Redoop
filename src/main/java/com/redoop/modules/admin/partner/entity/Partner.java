@@ -55,6 +55,50 @@ public class Partner implements Serializable {
 
     private String authentication;  //认证信息(0:认证 1:未认证)
 
+    private String outline;         //概要（和简报更新概要同步）
+
+    @Override
+    public String toString() {
+        return "Partner{" +
+                "id='" + id + '\'' +
+                ", companyname='" + companyname + '\'' +
+                ", companypic='" + companypic + '\'' +
+                ", companypicname='" + companypicname + '\'' +
+                ", address='" + address + '\'' +
+                ", companytel='" + companytel + '\'' +
+                ", companyprofile='" + companyprofile + '\'' +
+                ", companytype='" + companytype + '\'' +
+                ", industry='" + industry + '\'' +
+                ", partnertype='" + partnertype + '\'' +
+                ", partnerproduct='" + partnerproduct + '\'' +
+                ", partnerversion='" + partnerversion + '\'' +
+                ", intention='" + intention + '\'' +
+                ", applicationtime=" + applicationtime +
+                ", contactsname='" + contactsname + '\'' +
+                ", contactstel='" + contactstel + '\'' +
+                ", contactsemail='" + contactsemail + '\'' +
+                ", auditor='" + auditor + '\'' +
+                ", auditortime=" + auditortime +
+                ", auditoresult=" + auditoresult +
+                ", testnumber='" + testnumber + '\'' +
+                ", testversion='" + testversion + '\'' +
+                ", testtime='" + testtime + '\'' +
+                ", testcontent='" + testcontent + '\'' +
+                ", testresult='" + testresult + '\'' +
+                ", authentication='" + authentication + '\'' +
+                ", outline='" + outline + '\'' +
+                '}';
+    }
+
+    public String getOutline() {
+
+        return outline;
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
+    }
+
     public String getId() {
         return id;
     }
@@ -263,35 +307,4 @@ public class Partner implements Serializable {
         this.authentication = authentication;
     }
 
-    @Override
-    public String toString() {
-        return "Partner{" +
-                "id='" + id + '\'' +
-                ", companyname='" + companyname + '\'' +
-                ", companypic='" + companypic + '\'' +
-                ", companypicname='" + companypicname + '\'' +
-                ", address='" + address + '\'' +
-                ", companytel='" + companytel + '\'' +
-                ", companyprofile='" + companyprofile + '\'' +
-                ", companytype='" + companytype + '\'' +
-                ", industry='" + industry + '\'' +
-                ", partnertype='" + partnertype + '\'' +
-                ", partnerproduct='" + partnerproduct + '\'' +
-                ", partnerversion='" + partnerversion + '\'' +
-                ", intention='" + intention + '\'' +
-                ", applicationtime=" + applicationtime +
-                ", contactsname='" + contactsname + '\'' +
-                ", contactstel='" + contactstel + '\'' +
-                ", contactsemail='" + contactsemail + '\'' +
-                ", auditor='" + auditor + '\'' +
-                ", auditortime=" + auditortime +
-                ", auditoresult=" + auditoresult +
-                ", testnumber='" + testnumber + '\'' +
-                ", testversion='" + testversion + '\'' +
-                ", testtime='" + testtime + '\'' +
-                ", testcontent='" + testcontent + '\'' +
-                ", testresult='" + testresult + '\'' +
-                ", authentication='" + authentication + '\'' +
-                '}';
-    }
 }

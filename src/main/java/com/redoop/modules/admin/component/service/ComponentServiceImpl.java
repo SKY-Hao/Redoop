@@ -7,9 +7,12 @@ import com.redoop.common.utils.DeleteUtils;
 import com.redoop.common.utils.Uuid;
 import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.component.repository.ComponentRepository;
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.repository.MessRepository;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
@@ -35,7 +38,10 @@ public class ComponentServiceImpl implements ComponentService{
     private ComponentRepository componentRepository;
     @Autowired
     private ConfigProperties configProperties;
+    @Autowired
+    private MessRepository messRepository;
 
+    private Sort sort = new Sort(Sort.Direction.DESC,"editdate");
 
     /**
      * 查询服务软件名称列表
@@ -46,9 +52,14 @@ public class ComponentServiceImpl implements ComponentService{
         return componentRepository.findComponentNameList();
     }
 
+    /**
+     * 服务软件信息列表
+     * @param page
+     * @return
+     */
     @Override
     public Page<Component> findAll(Integer page) {
-        return  componentRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize()));
+        return  componentRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
     }
 
     /**
@@ -83,7 +94,7 @@ public class ComponentServiceImpl implements ComponentService{
 
         if(component.getId() != null){
             Component data_c = componentRepository.findOne(component.getId());
-            component.setAdddate(data_c.getAdddate());
+            //component.setAdddate(data_c.getAdddate());
             component.setEditdate(new Date());
             component.setAdditive(data_c.getAdditive());
             component.setDownloads(data_c.getDownloads());
@@ -113,20 +124,22 @@ public class ComponentServiceImpl implements ComponentService{
             }
             User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             component.setAdditive(user.getUsername());
-            component.setAdddate(new Date());
+            //component.setAdddate(new Date());
             component.setEditdate(new Date());
         }
 
         componentRepository.save(component);
     }
 
+
+
     /**
-     * 服务组件信息按照类型查询列表
+     * 服务组件信息按照类型查询列表（前端显示）列表
      * @param type
      * @return
      */
     public Page<Component> listByType(String type,Integer page) {
-        return componentRepository.listByType(type,BasePageBuilder.create(page,configProperties.getPageSize()));
+        return componentRepository.listByType(type,BasePageBuilder.create(page,configProperties.getPageSize(),sort));
     }
 
     /**
@@ -193,4 +206,32 @@ public class ComponentServiceImpl implements ComponentService{
         return component;
     }
 
+
+    /**
+     * 发布
+     * @param component
+     * @throws SystemException
+     */
+    @Override
+    public void save(Component component) throws SystemException {
+        componentRepository.save(component);
+        Mess mess = new Mess();
+        mess.setAuthortime(new Date());
+        mess.setTablename(Component.class.getSimpleName());
+        mess.setTableid(component.getId());
+        mess.setOutline(component.getDescription());
+        mess.setTitle(component.getName());
+        mess.setAuthor(component.getAdditive());
+        messRepository.save(mess);
+    }
+
+    /**
+     * 取消发布
+     * @param id
+     * @throws SystemException
+     */
+    @Override
+    public void updatedescription(String id) throws SystemException {
+        componentRepository.updatedescription(id);
+    }
 }

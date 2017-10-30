@@ -40,7 +40,7 @@ K.extend(KSWFUpload, {
 
 		function showError(itemDiv, msg) {
 			K('.ke-status > div', itemDiv).hide();
-			K('.ke-message', itemDiv).addClass('ke-error').show().html(K.escape(msg));
+			K('.ke-mess', itemDiv).addClass('ke-error').show().html(K.escape(msg));
 		}
 
 		var settings = {
@@ -172,8 +172,8 @@ K.extend(KSWFUpload, {
 		K(['<div class="ke-progressbar">',
 			'<div class="ke-progressbar-bar"><div class="ke-progressbar-bar-inner"></div></div>',
 			'<div class="ke-progressbar-percent">0%</div></div>'].join('')).hide().appendTo(statusDiv);
-		// message
-		K('<div class="ke-message">' + self.options.pendingMessage + '</div>').appendTo(statusDiv);
+		// mess
+		K('<div class="ke-mess">' + self.options.pendingMessage + '</div>').appendTo(statusDiv);
 
 		itemDiv.append('<div class="ke-name">' + file.name + '</div>');
 
@@ -1215,7 +1215,7 @@ SWFUpload.prototype.debug = function (message) {
 /* **********************************
 	Debug Console
 	The debug console is a self contained, in page location
-	for debug message to be sent.  The Debug Console adds
+	for debug mess to be sent.  The Debug Console adds
 	itself to the body if necessary.
 
 	The console is automatically scrolled as messages appear.

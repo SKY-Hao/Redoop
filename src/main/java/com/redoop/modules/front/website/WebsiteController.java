@@ -1,5 +1,6 @@
 package com.redoop.modules.front.website;
 import com.redoop.common.exception.SystemException;
+import com.redoop.common.utils.HtmlUtil;
 import com.redoop.common.utils.Uuid;
 import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.component.service.ComponentService;
@@ -7,6 +8,8 @@ import com.redoop.modules.admin.customer.entity.Customer;
 import com.redoop.modules.admin.customer.service.CustomerService;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.New;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.news.service.NewService;
@@ -49,6 +52,8 @@ public class WebsiteController {
     private ProductService productService;
     @Autowired
     private SolutionService solutionService;
+    @Autowired
+    private MessService  messService;
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -70,8 +75,10 @@ public class WebsiteController {
      * @return
      */
     @GetMapping(value = "")
-    public String home() {
-        return "front/website/index";
+    public String home(Model model) {
+
+        setStyle(model,"");
+        return "front/website/";
     }
 
     /**
@@ -126,13 +133,12 @@ public class WebsiteController {
     @RequestMapping(value = "/news",method = RequestMethod.GET)
     public String news(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
 
-        List<New> newList = newService.listNew();
-        model.addAttribute("newList",newList);
-       /* Page<New> newList = newService.listNew(page);
-        model.addAttribute("newList",newList);
-        model.addAttribute("url","front/news?");*/
-        setStyle(model,"news");
+        Page<News> pageList = newService.listByState(page);
 
+        model.addAttribute("pageList",pageList);
+        model.addAttribute("url","front/news?");
+
+        setStyle(model,"news");
         return "front/website/news";
     }
 
@@ -217,12 +223,10 @@ public class WebsiteController {
             String logoPath = request.getSession().getServletContext().getRealPath("/");
             partnerService.applySave(partner,attach,logoPath);
             return true;
-            /*return "redirect:/front/partners";*/
         } catch (Exception e) {
             mode.addAttribute("message", e.getMessage());
             mode.addAttribute("form", partner);
             return false;
-            /*return "redirect:/front/partners";*/
         }
     }
     /**
@@ -235,11 +239,7 @@ public class WebsiteController {
     public Partner findByPicId(Model model, Partner partner,@RequestParam(value = "id") String id)throws Exception{
 
         partner =partnerService.findById(id);
-
         model.addAttribute("partner",partner.getAuthentication());
-        //System.out.println("根据图片ID查询"+partner);
-        //System.out.println("model"+model);
-        //System.out.println("认证结果"+partner.getAuthentication());
         return partner;
     }
 
@@ -256,18 +256,13 @@ public class WebsiteController {
 
         Page<Partner> pageList = partnerService.findByPartnertype(page, partnertype);
 
-        //System.out.println("搜索条件值"+partnertype);
         String[] arrs = partnertype.split(",");
         List<String> partnertypeList = new ArrayList<>();
         for(int i = 0;i<arrs.length;i++){
             partnertypeList.add(arrs[i]);
         }
-     /*   for (int i =0;i<partnertypeList.size();i++){
-            System.out.println(partnertypeList.get(i)+"**");
-        }*/
         model.addAttribute("pageList",pageList);
         model.addAttribute("url","front/partners/findByPartnertype?partnertype="+ partnertype + "&");
-        //System.out.println(partnertype+"aaaaaaaaaaaaa");
         model.addAttribute("partnertype",partnertype);
         model.addAttribute("partnertypeList",partnertypeList);
 
@@ -511,37 +506,18 @@ public class WebsiteController {
     @GetMapping(value = "/redoopCRH")
     public String redoopCRH(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
 
-        //根据5.0版本展示列表
+
+
         List<Download> list= downloadService.listByDocumenttype(platformtype);
         model.addAttribute("list", list);
-
-        //根据4.9版本展示列表
-        List<Download> pvList2= downloadService.listByProductversion2(platformtype);
-        model.addAttribute("pvList2",pvList2);
-
         model.addAttribute("platformtype",platformtype);
         setStyle(model,"redoopCRH");
         return "front/website/redoopCRH";
     }
 
-   /* @GetMapping(value = "/redoopCRH")//分页
-    public String redoopCRH(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model,
-                            @RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
-
-        Page<Download> pageList= downloadService.listByDocumenttype(platformtype,page);
-        model.addAttribute("pageList", pageList);
-
-        model.addAttribute("platformtype",platformtype);
-        model.addAttribute("url","/front/redoopCRH?");
-
-        setStyle(model,"redoopCRH");
-
-        return "front/website/redoopCRH";
-    }*/
-
 
     /**
-     * 修改下载次数
+     * 修改查看次数
      * @param id
      * @return
      * @throws SystemException
@@ -562,7 +538,7 @@ public class WebsiteController {
      * @return
      */
     @GetMapping(value = "/redoopAI")
-    public String redoopAI(Model model,@RequestParam(value ="platformtype",defaultValue = "5") String platformtype) {
+    public String redoopAI(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
         List<Download> list= downloadService.byAIDocumenttype(platformtype);
         model.addAttribute("list",list);
 
@@ -595,15 +571,11 @@ public class WebsiteController {
         return "front/website/caseSpace";
     }
 
-   @GetMapping(value = "/caseLenovo")
-   public String caseLenovo(Model model) {
+    @GetMapping(value = "/caseLenovo")
+    public String caseLenovo(Model model) {
        setStyle(model,"solution");
        return "front/website/caseLenovo";
-   }
-
-
-
-
+    }
 
     @GetMapping(value = "/caseTraffic")
     public String caseTraffic(Model model) {
@@ -662,6 +634,20 @@ public class WebsiteController {
         setStyle(model,"solution");
         return "front/website/solutionVideo";
     }
+
+
+    /**
+     * 简报前端列表-暂时没用
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/message")
+    public String message(Model model) {
+        List<Mess> messList=messService.list();
+        model.addAttribute("messList",messList);
+        return "front/website/message";
+    }
+
 
 
 

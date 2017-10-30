@@ -7,9 +7,9 @@ import com.redoop.common.utils.BasePageBuilder;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.common.utils.HtmlUtil;
 import com.redoop.common.utils.Uuid;
-import com.redoop.modules.admin.news.entity.New;
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.news.entity.News;
-import com.redoop.modules.admin.news.entity.PageUtil;
 import com.redoop.modules.admin.news.repository.NewRepository;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 说明：新闻Service实现类
@@ -41,6 +39,8 @@ public class NewServiceImpl  implements NewService{
     @Autowired
     private ConfigProperties configProperties;
 
+    @Autowired
+    private MessRepository messRepository;
     private Sort sort = new Sort(Sort.Direction.DESC,"date");
 
     /**
@@ -60,7 +60,7 @@ public class NewServiceImpl  implements NewService{
         if(news.getId() != null){
             News date_news = newRepository.findOne(news.getId());
             news.setPublisher(date_news.getPublisher());
-            news.setDate(date_news.getDate());
+            //news.setDate(date_news.getDate());
             news.setState(date_news.getState());
 
             if(attach.isEmpty()){
@@ -85,7 +85,7 @@ public class NewServiceImpl  implements NewService{
             }
             User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             news.setPublisher(user.getUsername());
-            news.setDate(new Date());
+
             news.setState(0);
         }
 
@@ -100,6 +100,14 @@ public class NewServiceImpl  implements NewService{
     @Override
     public void save(News news) throws SystemException {
         newRepository.save(news);
+        Mess mess = new Mess();
+        mess.setAuthortime(new Date());
+        mess.setTablename(News.class.getSimpleName());
+        mess.setTableid(news.getId());
+        mess.setAuthor(news.getPublisher());
+        mess.setTitle(news.getTitle());
+        mess.setOutline(news.getOutline());
+        messRepository.save(mess);
     }
 
     /**
@@ -145,7 +153,7 @@ public class NewServiceImpl  implements NewService{
      * 新闻列表(网站前端)
      * @return
      */
-    @Override
+   /* @Override
     public List<New> listNew() {
         List<New> newList = new ArrayList<New>();
         List<News> newsList =  newRepository.findByStatusList();
@@ -158,24 +166,14 @@ public class NewServiceImpl  implements NewService{
 
             String date = news.getDate().toString();
 
-            String year = null;
-            String month = null;
-            String day = null;
+            String time=null;
+            if(date.length() > 10){
 
-            if(date.length() < 10){
-                date = new Date().toString().substring(0,10);
-                year = date.substring(0,4);
-                month = date.substring(5,7);
-                day = date.substring(8,10);
-            }else{
                 date = date.substring(0,10);
-                year = date.substring(0,4);
-                month = date.substring(5,7);
-                day = date.substring(8,10);
+                time = date.substring(0,10);
             }
-            oneNew.setYear(year);
-            oneNew.setMonth(month);
-            oneNew.setDay(day);
+
+            oneNew.setTime(time);
 
             oneNew.setPicPath(news.getPicpath());
             String content = news.getContent();
@@ -189,60 +187,35 @@ public class NewServiceImpl  implements NewService{
         }
         return newList;
     }
-/*
-    public Page<New> listNew(Integer page) {
-
-        List<New> newList = new ArrayList<New>();   //前端new
-
-       // List<String> n = new ArrayList<String>();
-
-        Page<News> newsList = null;                 //新闻实体类news
-        //PageUtil pu = new PageUtil();
-        //pu.setPagesize(5);
-       // pu.setPageData(newsList.getContent());
-
-        newsList= newRepository.findByStatusList(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
-
+*/
+    /**
+     * 新闻列表(网站前端)
+     * @return
+     */
+    @Override
+    public Page<News> listByState(Integer page) {
+        Page<News> newsList =  newRepository.listByState(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
         for(News news : newsList){
-            New oneNew = new New();
-
-            oneNew.setId(news.getId());
-            oneNew.setTitle(news.getTitle());
-
             String date = news.getDate().toString();
 
-            String year = null;
-            String month = null;
-            String day = null;
+            String time=null;
+            if(date.length() > 10){
 
-            if(date.length() < 10){
-                date = new Date().toString().substring(0,10);
-                year = date.substring(0,4);
-                month = date.substring(5,7);
-                day = date.substring(8,10);
-            }else{
                 date = date.substring(0,10);
-                year = date.substring(0,4);
-                month = date.substring(5,7);
-                day = date.substring(8,10);
+                time = date.substring(0,10);
             }
-            oneNew.setYear(year);
-            oneNew.setMonth(month);
-            oneNew.setDay(day);
+            news.setDate(time);
 
-            oneNew.setPicPath(news.getPicpath());
             String content = news.getContent();
             content = HtmlUtil.delHTMLTag(content);
             if(content.length() > 200){
-                oneNew.setContent(content.substring(0,200));
+                news.setContent(content.substring(0,200));
             }else{
-                oneNew.setContent(content);
+                news.setContent(content);
             }
-            newList.add(oneNew);
         }
-        return  newList;
+        return newsList;
     }
-*/
 
     /**
      * 新闻删除
@@ -271,5 +244,10 @@ public class NewServiceImpl  implements NewService{
     @Override
     public Page<News> findAll(Integer page) {
         return newRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
+    }
+
+    @Override
+    public void updateState(String id) throws SystemException {
+         newRepository.updateState(id);
     }
 }

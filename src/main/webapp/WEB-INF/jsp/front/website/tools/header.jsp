@@ -180,14 +180,14 @@
                 <li>
                         <div id="down">
                             <a style="text-decoration: none;">下载</a>
-                            <div id="aa" class="nav-nav" style="display: none;">
+                            <%--<div id="aa" class="nav-nav" style="display: none;">
                                 <a class="CRH" href="http://archive.redoop.com" style="border-bottom:1px dashed #4D4D4D" target="_blank">Redoop CRH</a>
                                 <a class="AI"  href="http://archive.redoop.com/redoopAI" style="border-bottom:0px dashed #4D4D4D" target="_blank">Redoop AI</a>
-                            </div>
-                            <%--<div id="aa" class="nav-nav" style="display: none;">
+                            </div>--%>
+                            <div id="aa" class="nav-nav" style="display: none;">
                                 <a class="CRH" href="<%=basePath%>/front/redoopCRH" style="border-bottom:1px dashed #4D4D4D">Redoop CRH</a>
                                 <a class="AI"  href="<%=basePath%>/front/redoopAI" style="border-bottom:0px dashed #4D4D4D">Redoop AI</a>
-                            </div>--%>
+                            </div>
                         </div>
                 </li>
 

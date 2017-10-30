@@ -45,11 +45,9 @@
                 <tr>
                     <th>产品类型</th>
                     <th>平台类型</th>
-                    <th>产品版本</th>
                     <th>产品发布时间</th>
                     <th>文档名称(操作系统名称)</th>
                     <th>操作系统编号</th>
-                    <th>文档发布状态</th>
                     <th>文档下载次数</th>
                     <th>操作</th>
                 </tr>
@@ -70,7 +68,7 @@
 
                         <td>
                             <c:if test="${one.platformtype==0}">
-                                X86
+                                X64
                             </c:if>
                             <c:if test="${one.platformtype==1}">
                                 OpenPower
@@ -84,22 +82,8 @@
                             <c:if test="${one.platformtype==4}">
                                 龙芯<em>(敬请期待)</em>
                             </c:if>
-                            <c:if test="${one.platformtype==5}">
-                                X64
-                            </c:if>
                         </td>
 
-                        <td>
-                            <c:if test="${one.productversion==0}">
-                                CRH5.0
-                            </c:if>
-                            <c:if test="${one.productversion==1}">
-                                CRH4.9
-                            </c:if>
-                            <c:if test="${one.productversion==2}">
-                                TensorFlow
-                            </c:if>
-                        </td>
 
                         <td>${one.producttime}</td>
 
@@ -107,21 +91,15 @@
 
                         <td>${one.sysversion}</td>
 
-                        <td>
-                            <c:if test="${one.documenttype==0}">
-                                发布(显示)
-                            </c:if>
-
-                            <c:if test="${one.documenttype==1}">
-                                不发布(不显示)
-                            </c:if>
-                        </td>
                         <td>${one.docudowncount}</td>
 
                         <td>
                             <a href="<%=basePath%>/admin/download/form/${one.id}">修改/</a>
                             <a href="<%=basePath%>/admin/download/delete/${one.id}" onclick="return del()">删除/</a>
-                            <a href="<%=basePath%>/admin/download/detailed/${one.id}">查看详细信息</a>
+                            <a href="<%=basePath%>/admin/download/detailed/${one.id}">查看详细信息/</a>
+                            <c:if test="${one.documenttype eq 0}"><a href="<%=basePath%>/admin/download/cancelRelease/${one.id}" class="tablelink">取消发布</a></c:if>
+                            <c:if test="${one.documenttype eq 1}"><a href="<%=basePath%>/admin/download/release/${one.id}" class="tablelink">发布</a></c:if>
+
                         </td>
                     </tr>
                 </c:forEach>

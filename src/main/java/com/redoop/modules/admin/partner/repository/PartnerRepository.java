@@ -79,5 +79,8 @@ public interface PartnerRepository  extends JpaRepository<Partner,String>{
     @Query(value = " FROM Partner a WHERE a.partnertype in( :partnertype) and a.intention = 0")
     Page<Partner> findByPartnertype(@Param("partnertype")List<String> partnertype, Pageable pageable);
 
-
+    @Modifying
+    @Transactional
+    @Query(value = "update Partner set intention=1 where  id=:id")
+    void updateIntention(@Param("id") String id);
 }

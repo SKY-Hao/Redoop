@@ -5,6 +5,7 @@ import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.modules.admin.customer.entity.Customer;
 import com.redoop.modules.admin.customer.service.CustomerService;
+import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.PicUploadResult;
 import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.solution.service.SolutionService;
@@ -37,6 +38,8 @@ public class SolutionController {
     @Autowired
     private SolutionService solutionService;
 
+    @Autowired
+    private MessService messService;
 
     /**
      * 方案及案例列表
@@ -46,8 +49,6 @@ public class SolutionController {
      */
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public String findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
-       /* Solution solution = new Solution();
-        System.out.println("用户信息:"+solution.getCustomerSet());*/
         Page<Solution> pageList = solutionService.findAll(page);
 
         model.addAttribute("pageList", pageList);
@@ -139,7 +140,7 @@ public class SolutionController {
     }
 
     /**
-     * 官网是否展示 (0:展示 1:不展示)
+     * 发布 (0:展示 1:不展示)
      * @param id
      * @param mode
      * @param redirectAttributes
@@ -151,19 +152,26 @@ public class SolutionController {
         solution.setState(0);
         try {
             solutionService.save(solution);
-            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"官网展示成功\")</script>");
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
         } catch (SystemException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/solution/findAll";
     }
+
+    /**
+     * 取消发布
+     * @param id
+     * @param mode
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/abolish/{id}", method = RequestMethod.GET)
     public String abolish(@PathVariable String id, Model mode, RedirectAttributes redirectAttributes) {
-        Solution solution = solutionService.findById(id);
-        solution.setState(1);
+
         try {
-            solutionService.save(solution);
-            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"已取消展示\")</script>");
+            solutionService.updateState(id);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"已取消发布\")</script>");
         } catch (SystemException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }

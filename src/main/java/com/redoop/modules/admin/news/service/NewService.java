@@ -60,8 +60,8 @@ public interface NewService {
      * 新闻列表(网站前端)
      * @return
      */
-    List<New> listNew();
-    //Page<New> listNew(Integer page);
+    //List<New> listNew();
+    Page<News> listByState(Integer page);
 
     /**
      * 新闻列表分页
@@ -70,4 +70,9 @@ public interface NewService {
      */
     Page<News> findAll(Integer page);
 
+    /**
+     * 取消发布
+     * @param id
+     */
+    void updateState(String id)throws SystemException;;
 }

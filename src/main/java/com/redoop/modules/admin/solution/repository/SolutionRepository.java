@@ -1,10 +1,12 @@
 package com.redoop.modules.admin.solution.repository;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.solution.entity.Solution;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -36,4 +38,12 @@ public interface SolutionRepository extends JpaRepository<Solution,String> {
     @Query(value = "FROM Solution WHERE name = 1 and state = 0 ORDER BY authortime DESC")
     List<Solution> listByName2();
 
+    /**
+     * 取消发布
+     * @param id
+    */
+     @Modifying
+     @Transactional
+     @Query(value = "update Solution set state=1 where  id=:id")
+    void updateState(@Param("id") String id);
 }

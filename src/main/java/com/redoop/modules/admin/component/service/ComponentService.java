@@ -63,5 +63,16 @@ public interface ComponentService {
      */
      Page<Component> selectByName(Integer page,String name);
 
+    /**
+     * 发布
+     * @param component
+     * @throws SystemException
+     */
+    void save(Component component) throws SystemException;
 
+    /**
+     * 取消发布
+     * @param id
+     */
+    void updatedescription(String id) throws SystemException;
 }

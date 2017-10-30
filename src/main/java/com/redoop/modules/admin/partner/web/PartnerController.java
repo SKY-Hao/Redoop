@@ -199,5 +199,42 @@ public class PartnerController {
         return "redirect:/admin/partner/findAll";
     }
 
+    /**
+     * 取消发布
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
+    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+       /* Partner partner = partnerService.findById(id);
+        partner.setIntention("1");*/
+        try {
+            partnerService.updateIntention(id);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"取消发布成功\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/partner/findAll";
+    }
+
+    /**
+     * 发布
+     * @return
+     */
+    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
+    public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
+        Partner partner = partnerService.findById(id);
+        partner.setIntention("0");
+        try {
+            partnerService.save(partner);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/partner/findAll";
+    }
+
+
 
 }

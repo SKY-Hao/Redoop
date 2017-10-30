@@ -56,10 +56,10 @@
                         <th>文档发布状态</th>
                         <th>
                             <c:if test="${form.protype==0}">
-                                发布(显示)
+                                已发布(显示)
                             </c:if>
                             <c:if test="${form.protype==1}">
-                                不发布(不显示)
+                                已取消发布(不显示)
                             </c:if>
                         </th>
                     </tr>
@@ -85,7 +85,7 @@
 
                 </thead>
             </table>
-            <a href="<%=basePath%>/admin/download/findAll">
+            <a href="<%=basePath%>/admin/product/findAll">
                 <button class="btn btn-danger" type="button">返回</button>
             </a>
         </div>

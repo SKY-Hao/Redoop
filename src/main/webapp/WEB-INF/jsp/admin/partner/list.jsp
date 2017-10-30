@@ -47,7 +47,7 @@
                         <th>联系名字</th>
                         <th>联系电话</th>
                         <th>联系邮箱</th>
-                        <th>官网是否展示</th>
+                        <th>时间</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -86,12 +86,7 @@
                         <td>${one.contactsname}</td>
                         <td>${one.contactstel}</td>
                         <td>${one.contactsemail}</td>
-                        <c:if test="${one.intention==0}">
-                            <td>展示</td>
-                        </c:if>
-                        <c:if test="${one.intention==1}">
-                            <td>不展示</td>
-                        </c:if>
+                        <td>${one.applicationtime}</td>
 
                     <td>
                             <a href="<%=basePath%>/admin/partner/form/${one.id}">修改/</a>
@@ -99,12 +94,14 @@
                             <a href="<%=basePath%>/admin/partner/detailed/${one.id}">查看/</a>
                             <c:if test="${one.authentication==0}"><a
                                     href="<%=basePath%>/admin/partner/authenticationYRZ/${one.id}"
-                                    onclick="return startYRZ()">已认证</a>
+                                    onclick="return startYRZ()">已认证/</a>
                             </c:if>
                             <c:if test="${one.authentication==1}"><a
                                     href="<%=basePath%>/admin/partner/authenticationWRZ/${one.id}"
-                                    onclick="return startWRZ()">未认证</a>
+                                    onclick="return startWRZ()">未认证/</a>
                             </c:if>
+                        <c:if test="${one.intention eq 0}"><a href="<%=basePath%>/admin/partner/release/${one.id}" class="tablelink">取消发布</a></c:if>
+                        <c:if test="${one.intention eq 1}"><a href="<%=basePath%>/admin/partner/cancelRelease/${one.id}" class="tablelink">确认发布</a></c:if>
                         </td>
                     </tr>
                 </c:forEach>

@@ -66,6 +66,9 @@ public interface SolutionService {
     List<Solution> listByName();
     List<Solution> listByName2();
 
-
-
+    /**
+     * 取消发布
+     * @param id
+     */
+    void updateState(String id)throws SystemException;;
 }

@@ -27,9 +27,43 @@ public class News {
     private String picpath;         //缩略图
 
     private String publisher;       //作者（发布人）
-    private Date date;              //时间
+    private String date;            //时间
+    private String time;
 
     private int state;
+    private String outline;         //概要（和简报概要一样）
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", picpath='" + picpath + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", state=" + state +
+                ", outline='" + outline + '\'' +
+                '}';
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getOutline() {
+
+        return outline;
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
+    }
 
     public int getState() {
         return state;
@@ -79,24 +113,11 @@ public class News {
         this.publisher = publisher;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "News{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", picpath='" + picpath + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", date=" + date +
-                ", state=" + state +
-                '}';
     }
 }

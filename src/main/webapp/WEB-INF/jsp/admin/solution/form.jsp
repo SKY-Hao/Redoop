@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <title>${form.id==null?"方案&案例添加":"方案&案例修改"}</title>
+    <title>${form.id==null?"行业版本&案例添加":"行业版本&案例修改"}</title>
     <jsp:include page="../../tools/style/common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
     <link href="<%=basePath%>/backstage/kindeditor/themes/default/default.css">
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>${form.id==null?"方案&案例添加":"方案&案例修改"}</h5>
+                <h5>${form.id==null?"行业版本&案例添加":"行业版本&案例修改"}</h5>
             </div>
             <div class="ibox-content">
                 <div style="text-align: center;color: red;margin-bottom: 10px;">
@@ -34,7 +34,7 @@
                     </c:if>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">方案及案例</label>
+                        <label class="col-sm-2 control-label">行业版本及案例</label>
                         <div class="col-sm-4">
                             <select class="form-control m-b" name="name">
                                 <option value="0" ${form.name=='0'?'selected':''} >行业版本</option>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="form-group" >
-                        <label class="col-sm-2 control-label">方案及案例图片</label>
+                        <label class="col-sm-2 control-label">行业版本及案例图片</label>
                         <div class="col-sm-4">
                             <input type="file" class="form-control" style="height: 38px;" id="logo" name="logo">
                         </div>
@@ -67,21 +67,14 @@
                         <span style="color: #d43f3a;font-size: 16px;">*成功案例右侧简介（成功案例必填）</span>
                     </div>
 
-                  <%--  <div class="form-group">
-                        <label class="col-sm-2 control-label">发布时间</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="authortime" value="${form.authortime}" onclick="WdatePicker()">
-                        </div>
-                    </div>--%>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">官网是否展示</label>
+                        <label class="col-sm-2 control-label">行业版本|案例概要(大概内容:简单,明了)</label>
                         <div class="col-sm-4">
-                            <label><input name="state" type="radio" value="0" ${form.state=='0' || form.state==null?'checked':''} />展示</label>
-                            <label><input name="state" type="radio" value="1" ${form.state=='1'?'checked':''} />不展示</label>
+                            <textarea class="form-control" name="outline">${form.outline}</textarea>
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
                     </div>
-
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">详细内容</label>

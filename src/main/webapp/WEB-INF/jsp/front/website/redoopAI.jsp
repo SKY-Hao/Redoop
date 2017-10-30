@@ -9,7 +9,6 @@
 <head>
     <jsp:include page="tools/head.jsp"></jsp:include>
     <link href="<%=basePath%>/front/website/css/ai.css" type="text/css" rel="stylesheet" />
-
 </head>
 
 <body>
@@ -25,100 +24,86 @@
             </p>
         </div>
     </div>
-</div><a id="x64" name="x64"></a>
+</div>
+<!--平台类型-->
 <div class="verNav">
     <div class="container">
-        <a href="#x64" class="on">X64</a>
-        <a href="#OpenPower">OpenPower</a>
-    </div>
-</div>
-<div class="section clearfix">
-    <h2>Redoop AI for X64</h2>
-    <p>2017 年 08 月 16 日最新发布</p>
-    <dl>
-        <dt>TensorFlow</dt>
-        <dd>centos7/redhat7<span>V1.1.0</span></dd>
-        <dd>
-            下载目录：
-            <a href="http://archive.redoop.com/redoopAI/readme/tensorflow_1.1.0_x86_64_centos7.html" class="checkBtn" target="_blank" >
-                安装简介
-            </a>
-            <a href="http://archive.redoop.com/redoopAI/rpm/tensorflow/1.1.0/x86_64/centos7/">
-                http://archive.redoop.com/redoopAI/rpm/tensorflow/1.1.0/x86_64/centos7/
-            </a>
-        </dd>
-    </dl>
-    <!--<dl>
-    	<dt>CRH5.0</dt>
-        <dd>centos6/redhat6<span>V4.92</span></dd>
-        <dd><a href="#" class="checkBtn">查看</a><a href="#">http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/</a>    </dd>
-        <dd class="other">centos6/redhat6<span>V4.92</span></dd>
-        <dd><a href="#" class="checkBtn">查看</a><a href="#">http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/</a>    </dd>
-        <dd class="other">centos6/redhat6<span>V4.92</span></dd>
-        <dd><a href="#" class="checkBtn">查看</a><a href="#">http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/</a>    </dd>
-    </dl>-->
-    <div class="zhichi">
-    	<span>此版本支持的系统 :
-            <img src="<%=basePath%>/front/website/css/img/aiImages/redhat.png" >
-            <!--<img src="images/redflag.png" />-->
-        </span>
-    </div>
-    <div class="zhichi">
-    	<span>此版本支持的芯片 :
-            <img src="<%=basePath%>/front/website/css/img/aiImages/intel.png" />
-            <!--<img src="images/zhaoxin.png" />-->
-        </span>
-    </div>
-</div>
-<div class="section clearfix"><a id="OpenPower" name="OpenPower"></a>
-    <h2>Redoop AI for OpenPower</h2>
-    <p>2017 年 08 月 16 日最新发布</p>
-    <dl>
-        <dt>TensorFlow</dt>
-        <dd>axs7<span>V1.1.0</span></dd>
-        <dd>
-            下载目录：
-            <a href="http://archive.redoop.com/redoopAI/readme/tensorflow_1.1.0_ppc64le_axs7.html" class="checkBtn" target="_blank" >
-                安装简介
-            </a>
-            <a href="http://archive.redoop.com/redoopAI/rpm/tensorflow/1.1.0/ppc64le/axs7/">
-                http://archive.redoop.com/redoopAI/rpm/tensorflow/1.1.0/ppc64le/axs7/
-            </a>
-        </dd>
-    </dl>
-    <!-- <dl>
-         <dt>CRH5.0</dt>
-         <dd>centos6/redhat6<span>V4.92</span></dd>
-         <dd><a href="#" class="checkBtn">查看</a><a href="#">http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/</a>    </dd>
-         <dd class="other">centos6/redhat6<span>V4.92</span></dd>
-         <dd><a href="#" class="checkBtn">查看</a><a href="#">http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/</a>    </dd>
-         <dd class="other">centos6/redhat6<span>V4.92</span></dd>
-         <dd><a href="#" class="checkBtn">查看</a><a href="#">http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/</a>    </dd>
-     </dl>
-     -->
-    <div class="zhichi">
-        <span>此版本支持的系统 :
-            <img src="<%=basePath%>/front/website/css/img/aiImages/redflag.png" />
-        </span>
-    </div>
-    <div class="zhichi">
-        <span>此版本支持的芯片 :
-            <img src="<%=basePath%>/front/website/css/img/aiImages/ibm.png" />
-        </span>
+
+        <a href="<%=basePath%>/front/redoopAI?platformtype=0"  <c:if test="${platformtype==0}"> class="on"</c:if>>X64</a>
+        <a href="<%=basePath%>/front/redoopAI?platformtype=1"  <c:if test="${platformtype==1}"> class="on"</c:if>>OpenPower</a>
+
     </div>
 </div>
 
+<section class="block">
+    <div class="container clearfix" style="padding-bottom: 30px;width: 976px;">
+        <!--平台类型-->
+        <h2 class="downloadH2" style="margin:auto;">
+            Redoop AI for
+            <c:if test="${platformtype==0}">X64</c:if>
+            <c:if test="${platformtype==1}">OpenPower</c:if>
+        </h2>
+        <a id="x64" name="x64"></a>
+        <c:if test="${empty list}">
+            <div style="margin-left: 15px; margin-top: 15px;">
+                <h3 style="color: brown;"> 版本更新中...</h3>
+                <h3 style="color: brown;"> 请您耐心等待发布，谢谢...</h3>
+            </div>
+        </c:if>
+        <c:if test="${not empty list}">
+            <c:forEach  items="${list}" var="one">
+                <ul class="downList-crh" style="margin-top: 20px;">
+                    <li>
+                    <span class="fr">
+                        <a href="${one.see}" class="checkBtn" name="see" id="${one.id}">查看</a>
+                    </span>
 
+                        <span class="img">
+                        <img src="<%=basePath%>/${one.systempic}" />
+                    </span>
+                        <span style="width:87px;">Redoop CRH</span>
+                        <span class="img">${one.sysversion}</span>
+                        <span>${one.documentname}</span>
+                        <span class="img">
+                        <img src="<%=basePath%>/${one.chippic}" />
+                    </span>
+                        <span class="downLink">
+                        <a href="${one.documenturl}">${one.documenturl}</a>
+                    </span>
+                        <span class="downNum">点击次数：${one.docudowncount}</span>
+                        <span class="downNum1">${one.producttime}更新</span>
+                    </li>
+                </ul>
+            </c:forEach>
+        </c:if>
 
-
-
-
-
+    </div>
+</section>
 
 <jsp:include page="tools/footer.jsp"></jsp:include>
 
 
 
 </body>
-</html>
+<script>
+    $(function () {
+        $("[name='see']").click(function () {
+            var id = $(this).attr("id");
+            var url=$(this).val();
+            $.post(
+                "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
+                "",
+                function (obj) {
+                    if (obj) {
+                        location.href=url;
+                    } else {
+                        alert("查看失败");
+                    }
+                },
+                "json"
+            )
+        });
 
+    })
+</script>
+</html>

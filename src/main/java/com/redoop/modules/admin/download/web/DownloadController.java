@@ -1,7 +1,9 @@
 package com.redoop.modules.admin.download.web;
 
+import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
+import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.system.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Null;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,11 +26,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 说明：合作伙伴Web层
+ * 说明：RdoopCRH||AI controller
  * 包名：cn.itweet.modules.admin.download.web
  * 项目名：License-Admin
  * 创建人：黄天浩
- * 创建时间：2017年9月22日10:28:37
+ * 创建时间：2017年10月25日10:28:37
  */
 @Controller
 @RequestMapping(value = "/admin/download")
@@ -97,11 +101,8 @@ public class DownloadController {
            /* List<Tag> tagList= tagService.list();
             model.addAttribute("tagList",tagList);*/
         }
-
-
         return "admin/download/form";
     }
-
 
     /**
      *CRH&AI下载添加(修改)
@@ -111,17 +112,18 @@ public class DownloadController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String save(Model mode, Download download,RedirectAttributes redirectAttributes) {
+    public String save(Model mode, Download download,RedirectAttributes redirectAttributes,HttpServletRequest request,
+                        @RequestParam(value = "logo", required = false) MultipartFile[] attachs) {
         try {
-        /*for (int i = 0; i < attach1.length; i++) {
-                if (attach1 != null && attach1.length > 0) {
-                    MultipartFile attach = attach1[i];
-                    // 保存文件
-                    downloadService.save(download,attach,logoPath);
-                    System.out.println("图片个数"+attach1.length);
-                }
-            }*/
-            downloadService.save(download);
+            if (download.getId()!=null){
+                String i=downloadService.findByCout(download.getId());
+                download.setDocudowncount(Integer.parseInt(i));
+            }
+            request.setCharacterEncoding( "utf-8" );
+            String logoPath = request.getSession().getServletContext().getRealPath("/");
+
+            downloadService.save(download,attachs,logoPath);
+
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"CRH&AI下载信息保存成功\")</script>");
             return "redirect:/admin/download/findAll";
         } catch (Exception e) {
@@ -130,6 +132,8 @@ public class DownloadController {
             return "admin/download/form";
         }
     }
+
+
 
     /**
      * 删除信息
@@ -149,6 +153,39 @@ public class DownloadController {
         }
         return "redirect:/admin/download/findAll";
     }
+
+    /**
+     * 发布
+     * @return
+     */
+    @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
+    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+        Download download = downloadService.findById(id);
+        download.setDocumenttype("0");
+        try {
+            downloadService.save(download);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/download/findAll";
+    }
+
+    /**
+     * 取消发布
+     * @return
+     */
+    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
+    public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
+        try {
+            downloadService.updateDocumenttype(id);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"取消发布成功\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/download/findAll";
+    }
+
 
 
 }

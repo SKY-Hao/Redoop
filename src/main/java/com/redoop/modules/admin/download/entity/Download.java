@@ -8,9 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Administrator on
- */
+
 /**
  * 说明：CRH||AI实体类
  * 包名：cn.itweet.modules.admin.download
@@ -27,7 +25,7 @@ public class Download implements Serializable {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String      id;             //ID
     private String      producttype;    //产品类型  （0:CRH  1:AI）
-    private String      platformtype;   //平台类型  （0:X64   1:OpenPower  2:ARM/飞腾   3:申威  4:龙芯（敬请期待）5:X64 ）
+    private String      platformtype;   //平台类型  （0:X64   1:OpenPower  2:ARM/飞腾   3:申威  4:龙芯(敬请期待) ）
     private String      productversion; //产品版本  （0:CRH5.0   1:CRH4.9 ）
     private String      producttime;    //产品发布时间
 
@@ -37,8 +35,9 @@ public class Download implements Serializable {
 
 
     private String      documenturl;    //文档(下载)地址（下载目录:http://archive.redoop.com/crh/rpm/5.0.2.4/CRH/x86_64/centos6/）
+    private String      see;            //查看地址
     private String      documentauthor; //文档发布人
-    private String      documenttype;   //文档发布状态（0 发布 1 不发布（显示））
+    private String      documenttype;   //文档发布状态（0 发布 1 不发布）
     private int         docudowncount;  //文档下载次数
 
 
@@ -51,9 +50,54 @@ public class Download implements Serializable {
     private String      chippic;   //芯片图片
     private String      chippicname; //芯片图片名称
 
+    private String      outline;    //简报更新(和简报更新概要同步)
+
+    @Override
+    public String toString() {
+        return "Download{" +
+                "id='" + id + '\'' +
+                ", producttype='" + producttype + '\'' +
+                ", platformtype='" + platformtype + '\'' +
+                ", productversion='" + productversion + '\'' +
+                ", producttime='" + producttime + '\'' +
+                ", documentname='" + documentname + '\'' +
+                ", sysversion='" + sysversion + '\'' +
+                ", documenturl='" + documenturl + '\'' +
+                ", see='" + see + '\'' +
+                ", documentauthor='" + documentauthor + '\'' +
+                ", documenttype='" + documenttype + '\'' +
+                ", docudowncount=" + docudowncount +
+                ", docudownpeople='" + docudownpeople + '\'' +
+                ", documentupload='" + documentupload + '\'' +
+                ", systempic='" + systempic + '\'' +
+                ", systempicname='" + systempicname + '\'' +
+                ", chippic='" + chippic + '\'' +
+                ", chippicname='" + chippicname + '\'' +
+                ", outline='" + outline + '\'' +
+                ", tag=" + tag +
+                '}';
+    }
+
+    public String getOutline() {
+
+        return outline;
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
+    }
+
     @ManyToOne
     @JoinColumn(name = "tag_value")
     private Tag tag;
+
+    public String getSee() {
+        return see;
+    }
+
+    public void setSee(String see) {
+        this.see = see;
+    }
 
     public String getId() {
         return id;
@@ -200,27 +244,4 @@ public class Download implements Serializable {
         this.tag = tag;
     }
 
-    @Override
-    public String toString() {
-        return "Download{" +
-                "id='" + id + '\'' +
-                ", producttype='" + producttype + '\'' +
-                ", platformtype='" + platformtype + '\'' +
-                ", productversion='" + productversion + '\'' +
-                ", producttime='" + producttime + '\'' +
-                ", sysversion='" + sysversion + '\'' +
-                ", documentname='" + documentname + '\'' +
-                ", documenturl='" + documenturl + '\'' +
-                ", documentauthor='" + documentauthor + '\'' +
-                ", documenttype='" + documenttype + '\'' +
-                ", docudowncount=" + docudowncount +
-                ", docudownpeople='" + docudownpeople + '\'' +
-                ", documentupload='" + documentupload + '\'' +
-                ", systempic='" + systempic + '\'' +
-                ", systempicname='" + systempicname + '\'' +
-                ", chippic='" + chippic + '\'' +
-                ", chippicname='" + chippicname + '\'' +
-                ", tag=" + tag +
-                '}';
-    }
 }

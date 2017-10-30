@@ -195,7 +195,7 @@
 	</div>
 </section>
 
-<section class="block  grey-bg" id="case" style="margin: auto;">
+<%--<section class="block  grey-bg" id="case" style="margin: auto;">
 	<div class="container clearfix">
 		<h2 class="title">成功案例</h2>
 		<c:if test="${empty solutionList2}">
@@ -224,7 +224,41 @@
 		</c:if>
 	</div>
 
+</section>--%>
+
+<section class="block grey-bg"  id="solutionSection">
+	<div class="container clearfix">
+		<h2 class="title">产品案例</h2>
+		<div class="row" style="margin-top: auto;">
+			<c:if test="${empty solutionList2}">
+				<div style="margin-left: 15px; margin-top: 15px;">
+					<h3 style="color: brown"> 产品案例更新中,请您耐心等待新版本发布......</h3>
+				</div>
+			</c:if>
+			<c:if test="${not empty solutionList2}">
+				<c:forEach items="${solutionList2}" var="one2">
+					<div class="col-2 fl" id="solutionCol-2">
+						<div class="img">
+							<a href="<%=basePath%>/front/solutiondetail/${one2.id}" id="solutionImg2">
+								<img src="<%=basePath%>/${one2.solutionpic}"/>
+							</a>
+						</div>
+						<div class="txt">
+							<h3 style="margin: auto">
+								<a href="<%=basePath%>/front/solutiondetail/${one2.id}">
+										${one2.title}
+								</a>
+							</h3>
+							<p>${one2.intro}</p>
+						</div>
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+
+	</div>
 </section>
+
 <div style="margin-right: auto;margin-left: auto;margin-bottom: 30px;max-width: 1200px;min-width: 1200px;margin-top: -50px">
 	<a href="<%=basePath%>/front/solution" class="moreLink fr">更多&gt;</a>
 </div>

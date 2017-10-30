@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 说明：方案及案例实体类
+ * 说明：行业版本及案例实体类
  * 包名：cn.itweet.modules.admin.solution
  * 项目名：itweet-boot
  * 创建人：黄天浩
@@ -29,7 +29,7 @@ public class Solution implements Serializable {
     private String name;            //0：解决方案  1：成功案例
     private String title;           //标题
     private String solutionpic;     //图片
-    private  String solutionpicnamne; //图片名称
+    private String solutionpicnamne; //图片名称
     private String intro;           //简介（成功案例简介）
 
     @Column(name = "content",columnDefinition="TEXT")
@@ -39,6 +39,7 @@ public class Solution implements Serializable {
     private Date authortime;        //时间（发布时间）
     private int state;              //前台是否展示0：展示 1：不展示
 
+    private String outline;         //概要（和简报更新概要同步）
 
     @Override
     public String toString() {
@@ -53,7 +54,16 @@ public class Solution implements Serializable {
                 ", author='" + author + '\'' +
                 ", authortime=" + authortime +
                 ", state=" + state +
+                ", outline='" + outline + '\'' +
                 '}';
+    }
+
+    public String getOutline() {
+        return outline;
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
     }
 
 

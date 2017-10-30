@@ -4,14 +4,19 @@ import com.redoop.common.config.ConfigProperties;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.BasePageBuilder;
 import com.redoop.common.utils.DeleteUtils;
+import com.redoop.common.utils.HtmlUtil;
 import com.redoop.common.utils.Uuid;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.repository.DownloadRepository;
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.repository.MessRepository;
+import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.system.entity.Tag;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
@@ -19,10 +24,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/9/22.
+ * 说明：RdoopCRH||AI DownloadServiceImpl
+ * 包名：cn.itweet.modules.admin.download.service
+ * 项目名：License-Admin
+ * 创建人：黄天浩
+ * 创建时间：2017年10月25日10:28:37
  */
 @Service
 public class DownloadServiceImpl implements DownloadService{
@@ -31,12 +41,16 @@ public class DownloadServiceImpl implements DownloadService{
     DownloadRepository downloadRepository;
     @Autowired
     private ConfigProperties configProperties;
+    @Autowired
+    private MessRepository messRepository;
+
+    private Sort sort = new Sort(Sort.Direction.DESC,"producttime");
     /**
      * CRH&AI下载列表
      * @return
      */
     public Page<Download> findAll(Integer page) {
-        return downloadRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize()));
+        return downloadRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
     }
 
 
@@ -55,8 +69,8 @@ public class DownloadServiceImpl implements DownloadService{
      * @param download
      * @throws SystemException
      */
-   @Override
-    public void save(Download download) throws SystemException {
+    @Override
+    public void save(Download download, MultipartFile[] attachs, String logoPath) throws Exception {
         if (download.getProducttype() == null || "".equals(download.getProducttype())) {
             throw new SystemException("<script>toastr.error(\"产品类型不能为空\")</script>");
         }
@@ -66,9 +80,6 @@ public class DownloadServiceImpl implements DownloadService{
         if (download.getProducttime() == null || "".equals(download.getProducttime())) {
             throw new SystemException("<script>toastr.error(\"产品发布时间不能为空\")</script>");
         }
-        if (download.getProductversion() == null || "".equals(download.getProductversion())) {
-            throw new SystemException("<script>toastr.error(\"产品版本不能为空\")</script>");
-        }
         if (download.getDocumentname() == null || "".equals(download.getDocumentname())) {
             throw new SystemException("<script>toastr.error(\"文档名称不能为空\")</script>");
         }
@@ -77,19 +88,82 @@ public class DownloadServiceImpl implements DownloadService{
         }
 
         if(download.getId() != null){
-            Download data_c = downloadRepository.findOne(download.getId());//id
-            download.setDocumentauthor(data_c.getDocumentauthor());//添加作者
+            Download date_download = downloadRepository.findOne(download.getId());
+            download.setDocumentauthor(date_download.getDocumentauthor());
+            download.setDocumenttype(date_download.getDocumenttype());
 
+            download.setSystempic(date_download.getSystempic());//系统图片
+            download.setSystempicname(date_download.getSystempicname());
+            download.setChippic(date_download.getChippic());    //芯片图片
+            download.setChippicname(date_download.getChippicname());
+
+            if(attachs.length > 0 && !attachs[0].getOriginalFilename().equals("")){
+                try {
+
+                    download = uploadPic(download,attachs,logoPath);
+                    DeleteUtils.deletePic(logoPath + date_download.getSystempic());
+                    DeleteUtils.deletePic(logoPath + date_download.getChippic());
+
+                } catch (IOException e) {
+                    throw new SystemException("<script>toastr.error(\"图片Logo上传失败\")</script>");
+                }
+            }else{
+
+                download.setSystempic(download.getSystempic());
+                download.setChippic(download.getChippic());
+
+            }
         }else{
-            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            download.setDocumentauthor(user.getUsername());
-        }
 
+            if(attachs.length<=0){
+
+                throw new SystemException("<script>toastr.error(\"图片Logo不能为空\")</script>");
+
+            }else{
+
+                try {
+                    download = uploadPic(download,attachs,logoPath);
+                } catch (IOException e) {
+                    throw new SystemException("<script>toastr.error(\"图片Logo上传失败\")</script>");
+                }
+
+            }
+            User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            download.setDocumentauthor(user.getUsername());
+            download.setDocumenttype("1");
+        }
         downloadRepository.save(download);
     }
+    /**
+     * 图片上传
+     * @param download
+     * @param attachs
+     * @param logoPath
+     * @return
+     * @throws IOException
+     */
+    private Download uploadPic(Download download, MultipartFile[] attachs,String logoPath) throws IOException {
+        logoPath = logoPath + configProperties.getUploadSuffix();
 
-
-
+        File filePath=new File(logoPath);
+        if(!filePath.exists()){
+            filePath.mkdirs();
+        }
+            for (int i=0;i<attachs.length;i++){
+                String picNameOld = attachs[i].getOriginalFilename();
+                String picType = picNameOld.substring(picNameOld.lastIndexOf("."),picNameOld.length());
+                String picNameNew = Uuid.getUuid() + picType;
+                //最终文件名
+                File realFile=new File(logoPath + File.separator + picNameNew);
+                FileUtils.copyInputStreamToFile(attachs[i].getInputStream(), realFile);
+                if (i==0){
+                    download.setSystempic(configProperties.getUploadSuffix() + picNameNew);
+                }else {
+                    download.setChippic(configProperties.getUploadSuffix() + picNameNew);
+                }
+            }
+        return download;
+    }
 
     /**
      * 删除信息
@@ -115,19 +189,22 @@ public class DownloadServiceImpl implements DownloadService{
      * @param platformtype
      * @return
      */
-    //CRH5.0版本
     public List<Download> listByDocumenttype(String platformtype) {
-        return downloadRepository.listByDocumenttype(platformtype);
+
+        List<Download> downloadList =    downloadRepository.listByDocumenttype(platformtype);
+
+        for(Download download: downloadList){
+            String date = download.getProducttime().toString();
+            String time=null;
+            if(date.length() > 10){
+
+                date = date.substring(0,10);
+                time = date.substring(0,10);
+            }
+            download.setProducttime(time);
+        }
+        return downloadList;
     }
-    //CRH4.9版本
-    @Override
-    public List<Download> listByProductversion2(String platformtype) {
-        return downloadRepository.listByProductversion2(platformtype);
-    }
-   /* @Override分页
-    public Page<Download> listByDocumenttype(String platformtype, Integer page) {
-        return downloadRepository.listByDocumenttype(platformtype,BasePageBuilder.create(page,configProperties.getPageSize()));
-    }*/
 
 
     /**
@@ -146,19 +223,66 @@ public class DownloadServiceImpl implements DownloadService{
      * @param platformtype
      * @return
      */
-
     public List<Download> byAIDocumenttype(String platformtype) {
-        return downloadRepository.byAIDocumenttype(platformtype);
-    }
 
-   /* @Override
-    public Page<Download> byAIDocumenttype(String platformtype, Integer page) {
-        return downloadRepository.byAIDocumenttype(platformtype,BasePageBuilder.create(page,configProperties.getPageSize()));
-    }*/
+        List<Download> downloadList =  downloadRepository.byAIDocumenttype(platformtype);
+        for(Download download: downloadList){
+            String date = download.getProducttime().toString();
+            String time=null;
+            if(date.length() > 10){
+
+                date = date.substring(0,10);
+                time = date.substring(0,10);
+            }
+            download.setProducttime(time);
+        }
+        return downloadList;
+    }
 
 
     @Override
     public List<Tag> listBytype(String type) {
         return downloadRepository.listBytype(type);
+    }
+
+
+
+
+    /**
+     * 发布
+     * @param download
+     * @throws Exception
+     */
+    @Override
+    public void save(Download download) throws Exception {
+        downloadRepository.save(download);
+        Mess mess = new Mess();
+        mess.setAuthortime(new Date());
+        mess.setTablename(Download.class.getSimpleName());
+        mess.setTableid(download.getId());
+        mess.setTitle(download.getDocumentname());
+        mess.setAuthor(download.getDocumentauthor());
+        mess.setOutline(download.getOutline());
+        messRepository.save(mess);
+    }
+
+    /**
+     * 取消发布
+     * @param id
+     * @throws SystemException
+     */
+    @Override
+    public void updateDocumenttype(String id) throws SystemException {
+        downloadRepository.updateDocumenttype(id);
+    }
+
+    /**
+     * 获取点击次数
+     * @param id
+     * @return
+     */
+    @Override
+    public String findByCout(String id) {
+        return downloadRepository.findBycount(id);
     }
 }

@@ -225,6 +225,14 @@
                     </div>
 
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">合作伙伴概要(大概内容:简单,明了)</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control" name="outline">${form.outline}</textarea>
+                        </div>
+                        <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
+                    </div>
+
 
 
                     <div class="form-group">

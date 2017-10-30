@@ -1,8 +1,14 @@
 package com.redoop.modules.admin.system.web;
 
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.service.MessService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +20,8 @@ import java.util.Map;
  */
 @Controller
 public class MainController {
-
+    @Autowired
+    private MessService messService;
     /**
      * 后台Main
      * @param model
@@ -33,7 +40,7 @@ public class MainController {
      * @return
      */
     @GetMapping(value = "/")
-    public String front(Map<String, Object> model) {
+    public String front(Map<String, Object> model, Model model1) {
         return "front/website/index";
     }
 

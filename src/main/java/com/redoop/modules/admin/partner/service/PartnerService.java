@@ -1,5 +1,6 @@
 package com.redoop.modules.admin.partner.service;
 
+import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.common.exception.SystemException;
 import org.springframework.data.domain.Page;
@@ -58,7 +59,7 @@ public interface PartnerService {
      * @throws SystemException
      */
     public void save(Partner partner, MultipartFile attach, String logoPath) throws SystemException;
-
+           void save(Partner partner) throws SystemException;
     /**
      * 合作伙伴前台申请添加
      * @param partner
@@ -84,7 +85,7 @@ public interface PartnerService {
 
 
     /**
-     * 认证（未认证）认证通过是0    未认证是1
+     * 认证（已认证）认证通过是0    未认证是1
      * @param id
      * @throws SystemException
      */
@@ -98,5 +99,11 @@ public interface PartnerService {
     /*public List<Partner> findByPartnertype(String partnertype) throws Exception;*/
 
     Page<Partner> findByPartnertype(Integer page, String partnertype)throws Exception;
+
+    /**
+     * 取消发布
+     * @param id
+     */
+    void updateIntention(String id)throws SystemException;
 }
 

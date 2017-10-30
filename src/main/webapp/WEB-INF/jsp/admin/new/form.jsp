@@ -13,7 +13,7 @@
     <jsp:include page="../../tools/style/common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
     <link href="<%=basePath%>/backstage/kindeditor/themes/default/default.css">
-
+    <script type="text/javascript" src="<%=basePath%>/backstage/My97DatePicker/WdatePicker.js"></script>
     <%--<script src="<%=basePath%>/backstage/editor/jquery.js"></script>
     <script src="<%=basePath%>/backstage/editor/kindeditor.js"></script>
 
@@ -54,13 +54,21 @@
                         </div>
                     </div>
 
-                    <%--<div class="form-group">
-                        <label class="col-sm-2 control-label">新闻内容</label>
+                    <div class="form-group" >
+                        <label class="col-sm-2 control-label">新闻发布时间</label>
                         <div class="col-sm-4">
-                            <textarea name="content" id="content7" style="width:800px;height:350px;visibility:hidden;">${form.content}</textarea>
+                            <input type="text" class="form-control" style="height: 38px;" name="date"value="${form.date}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                         </div>
                     </div>
---%>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">新闻概要(大概内容:简单,明了)</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control" name="outline">${form.outline}</textarea>
+                        </div>
+                        <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">新闻内容</label>
                         <div class="col-sm-4">

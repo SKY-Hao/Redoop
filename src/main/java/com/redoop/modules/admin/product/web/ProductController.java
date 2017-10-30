@@ -1,5 +1,7 @@
 package com.redoop.modules.admin.product.web;
 
+import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.modules.admin.product.entity.Product;
 import com.redoop.modules.admin.product.service.ProductService;
 import com.redoop.modules.admin.system.service.TagService;
@@ -141,6 +143,47 @@ public class ProductController {
         }
         return "redirect:/admin/product/findAll";
     }
+
+    /**
+     * 发布
+     * @return
+     */
+    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
+    public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
+        Product product = productService.findById(id);
+        product.setProtype("0");
+        try {
+            productService.save(product);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/product/findAll";
+    }
+
+    /**
+     * 取消发布
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
+    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+       /* Product product = productService.findById(id);
+        product.setProtype("1");*/
+        try {
+            productService.updateProtype(id);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"已取消发布\")</script>");
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/product/findAll";
+    }
+
+
+
+
+
 
 
 }

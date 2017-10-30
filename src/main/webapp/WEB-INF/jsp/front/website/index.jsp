@@ -1,4 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -29,7 +29,7 @@
 </div>
 <section id="news">
 	<div class="container">
-               <a href="http://www.redoop.com/front/news" class="fr moreLink">更多</a>
+              <a href="http://www.redoop.com/front/news" class="fr moreLink">更多</a>
 		<i></i>
 		<p>
 		<a href="http://www.redoop.com/front/onenew/30"  target="_blank">红象云腾与新云东方技术交流会圆满结束</a>
@@ -90,7 +90,6 @@
 						<ul>
 							<li>CRH基于YARN实现一体化的架构、统一资源管理。这种架构使得各种应用程序间可灵活的动态分配资源。</li>
                             				<li>YARN使企业可以灵活的支撑不同的数据应用，从而最大限度的使用资源快速提取数据。</li>
-                           				 <li>YARN为数据治理提供安全的集群服务、保障集群的稳定性。</li>
                            				 <li>YARN为数据治理提供安全的集群服务、保障集群的稳定性。</li>
 						</ul>
 					</div>

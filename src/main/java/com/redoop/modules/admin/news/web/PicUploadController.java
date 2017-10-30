@@ -98,9 +98,9 @@ public class PicUploadController {
 		//TODO
 		//fileUploadResult.setUrl("http://localhost:9090/upload/files/"+picUrl);
 		fileUploadResult.setUrl(tempContextUrl+configProperties.getUploadSuffix()+picUrl);
-		System.out.println("tempcontextURL==="+tempContextUrl);
+		/*System.out.println("tempcontextURL==="+tempContextUrl);
 		System.out.println("getUpload=="+configProperties.getUploadSuffix());
-		System.out.println("picURL=="+picUrl);
+		System.out.println("picURL=="+picUrl);*/
 
 		File newFile = new File(filePath);
 

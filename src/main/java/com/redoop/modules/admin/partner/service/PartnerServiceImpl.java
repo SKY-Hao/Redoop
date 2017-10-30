@@ -5,6 +5,8 @@ import com.redoop.common.utils.BasePageBuilder;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.Uuid;
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.modules.admin.partner.repository.PartnerRepository;
 import org.apache.commons.io.FileUtils;
@@ -39,7 +41,10 @@ public class PartnerServiceImpl  implements PartnerService {
     @Autowired
     private ConfigProperties configProperties;
 
-    private Sort sort = new Sort(Sort.Direction.DESC,"date");
+    @Autowired
+    private MessRepository messRepository;
+
+    private Sort sort = new Sort(Sort.Direction.DESC,"auditortime");
 
 
     /**
@@ -48,7 +53,7 @@ public class PartnerServiceImpl  implements PartnerService {
      */
     @Override
     public Page<Partner> findAll(Integer page) {
-        return partnerRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize()));
+        return partnerRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
     }
 
     /**
@@ -117,7 +122,7 @@ public class PartnerServiceImpl  implements PartnerService {
 
         if(partner.getId() != null){
             Partner data_c = partnerRepository.findOne(partner.getId());//id
-            partner.setApplicationtime(data_c.getApplicationtime());//申请时间
+            partner.setApplicationtime(new Date());//申请时间
             partner.setAuditor(data_c.getAuditor());//审核人
             partner.setAuditortime(data_c.getAuditortime());//审核时间
             partner.setCompanypicname(data_c.getCompanypicname());//logo名称
@@ -154,6 +159,7 @@ public class PartnerServiceImpl  implements PartnerService {
 
         partnerRepository.save(partner);
     }
+
 
     /**
      * 合作伙伴前台申请添加
@@ -260,14 +266,7 @@ public class PartnerServiceImpl  implements PartnerService {
        if (StringUtils.isEmpty(partnertype)) {
             return partnerRepository.listByIntention(BasePageBuilder.create(page, configProperties.getPageSize()));
         }
-        //选择1个的时候搜索
-      /* if (!partnertype.contains(",")) {
-
-            List<String> partnertypes = new ArrayList<String>();
-            partnertypes.add(partnertype);
-            return  partnerRepository.findByPartnertype(partnertypes,BasePageBuilder.create(page,configProperties.getPageSize()));
-        }*/
-        //选择>=2个的时候搜索
+        //选择>=1个的时候搜索
         Page<Partner> partnerList = null;
 
         String[] split = partnertype.split(",");
@@ -279,5 +278,32 @@ public class PartnerServiceImpl  implements PartnerService {
         partnerList = partnerRepository.findByPartnertype(partnertypes, BasePageBuilder.create(page,configProperties.getPageSize()));
         return partnerList;
     }
+    /**
+     * 发布
+     * @param partner
+     * @throws SystemException
+     */
+    @Override
+    public void save(Partner partner) throws SystemException {
+        partnerRepository.save(partner);
+        //保存简报
+        Mess mess = new Mess();
+        mess.setAuthortime(new Date());
+        mess.setTablename(Partner.class.getSimpleName());
+        mess.setTableid(partner.getId());
+        mess.setTitle(partner.getCompanyname());
+        mess.setAuthor(partner.getAuditor());
+        mess.setOutline(partner.getOutline());
+        messRepository.save(mess);
+    }
 
+    /**
+     * 取消发布
+     * @param id
+     * @throws SystemException
+     */
+    @Override
+    public void updateIntention(String id) throws SystemException {
+        partnerRepository.updateIntention(id);
+    }
 }

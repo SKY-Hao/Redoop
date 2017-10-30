@@ -9,7 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/9/22.
+ * 说明：RdoopCRH||AI service
+ * 包名：cn.itweet.modules.admin.download.service
+ * 项目名：License-Admin
+ * 创建人：黄天浩
+ * 创建时间：2017年10月25日10:28:37
  */
 public interface DownloadService {
 
@@ -41,10 +45,7 @@ public interface DownloadService {
      * @param download
      * @throws SystemException
      */
-    //public void save(Download download) throws SystemException;
-
-    public void save(Download download) throws Exception;
-   // public void save1(Download download, MultipartFile attach2, String logoPath) throws Exception;
+    public void save(Download download, MultipartFile[] attachs, String logoPath) throws Exception;
 
 
     /**
@@ -60,8 +61,7 @@ public interface DownloadService {
      * @return
      */
      List<Download> listByDocumenttype(String platformtype);//5.0版本
-    List<Download> listByProductversion2(String platformtype);//4.9版本
-    //public Page<Download> listByDocumenttype(String platformtype,Integer page);
+
 
 
     /**
@@ -81,7 +81,6 @@ public interface DownloadService {
      */
     List<Download> byAIDocumenttype(String producttype);
 
-    //public Page<Download> byAIDocumenttype(String platformtype,Integer page);
 
 
     /**
@@ -92,4 +91,24 @@ public interface DownloadService {
     List<Tag> listBytype(String type);
 
 
+    /**
+     * 发布
+     * @param download
+     * @throws SystemException
+     */
+    void save(Download download)throws Exception;
+
+    /**
+     * 取消发布
+     * @param id
+     * @throws SystemException
+     */
+    void updateDocumenttype(String id) throws SystemException;
+
+    /**
+     * 获取点击次数
+     * @param id
+     * @return
+     */
+    String findByCout(String id);
 }

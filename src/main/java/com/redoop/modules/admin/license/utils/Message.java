@@ -38,7 +38,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
+        return "Messages{" +
                 "msg='" + msg + '\'' +
                 ", code='" + code + '\'' +
                 '}';

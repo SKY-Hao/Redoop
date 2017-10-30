@@ -107,8 +107,10 @@
             </form>
         </div>
         <a href="<%=basePath%>/front/appstore?type=0" <c:if test="${type==0}"> class="on"</c:if>>组件</a>
-        <a href="<%=basePath%>/front/appstore?type=1" <c:if test="${type==1}"> class="on"</c:if>>案例</a>
-        <a href="<%=basePath%>/front/appstore?type=2" <c:if test="${type==2}"> class="on"</c:if>>行业版本</a>
+        <%--<a href="<%=basePath%>/front/appstore?type=1" <c:if test="${type==1}"> class="on"</c:if>>案例</a>
+        <a href="<%=basePath%>/front/appstore?type=2" <c:if test="${type==2}"> class="on"</c:if>>行业版本</a>--%>
+        <a class="a" style="font-size: 1px;">案例(敬请期待)</a>
+        <a class="a" style="font-size: 1px;">行业版本(敬请期待)</a>
 
     </div>
 </div>
@@ -261,5 +263,10 @@
             "json"
         );
     });
+
+   $(function(){
+       $('.a').removeAttr('href');//去掉a标签中的href属性
+       $('.a').removeAttr('onclick');//去掉a标签中的onclick事件
+   });
 </script>
 </html>

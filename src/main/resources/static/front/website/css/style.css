@@ -38,8 +38,8 @@ textarea{overflow:auto}
 optgroup{font-weight:700}
 table{border-collapse:collapse;border-spacing:0}
 td,th{padding:0}
-	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;font-weight: 400}
-	button,input[type="submit"],input[type="checkbox"],input[type="radio"]{cursor: pointer;border: 0;}table{border-collapse: separate;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;font-weight: 400}
+button,input[type="submit"],input[type="checkbox"],input[type="radio"]{cursor: pointer;border: 0;}table{border-collapse: separate;}
 input:focus{outline: none;}
 i{font-style:normal}
 .fl {float: left;}
@@ -263,12 +263,12 @@ ul.partnersList li{ margin-bottom:36px; margin-left:15px; margin-right:15px; flo
 
 /*news*/
 .newsCon{margin-bottom:6%; float:left; width:90%;}
-.grid_1 {float: left;width:7.5%;}
+.grid_1 {float: left;width:90px; margin-bottom:15px;}
 .alpha {margin-right:2.6%;}
-.date {	background:#cd2027;	font-size:0.85em;line-height: 18px;	font-weight: 300;	padding: 11px 10px 12px;color: #FFF;text-align: left;text-transform: uppercase;}
+.date {	background:#cd2027;	font-size:1em;line-height: 18px;	font-weight: 300;	padding: 11px 10px 12px;color: #FFF;text-align: center;text-transform: uppercase; overflow:hidden}
 .date span {display: block;	margin-bottom: 7px;	font-size: 30px;line-height: 30px;	text-align:center;}
 .date span.year{  letter-spacing:0.3em; font-size:1em; line-height:15px; text-align:center;}
-.span_2_of_single{	width:89.1%;}
+.span_2_of_single{	width:85%;}
 h4.blog_title{	font-size: 1.4em;	text-transform: uppercase;	margin: -5px 0 15px 0;}
 .wrapper_single{	width: 66.2%;	float: left;}
 h4.blog_title a {	color:#cd2027;}

@@ -6,16 +6,20 @@ import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.BasePageBuilder;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.common.utils.Uuid;
+import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.solution.repository.SolutionRepository;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -35,7 +39,9 @@ public class SolutionServiceImpl implements SolutionService {
     private SolutionRepository solutionRepository;
     @Autowired
     private ConfigProperties configProperties;
-
+    @Autowired
+    private MessRepository messRepository;
+    private Sort sort = new Sort(Sort.Direction.DESC,"authortime");
 
 
     /**
@@ -45,7 +51,7 @@ public class SolutionServiceImpl implements SolutionService {
      */
     @Override
     public Page<Solution> findAll(Integer page) {
-        return solutionRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize()));
+        return solutionRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
     }
 
     
@@ -73,7 +79,8 @@ public class SolutionServiceImpl implements SolutionService {
             solution.setAuthor(data_c.getAuthor());//作者
             solution.setSolutionpicnamne(data_c.getSolutionpicnamne());//方案及案例LOGO
             solution.setSolutionpic(data_c.getSolutionpic());//方案及案例名称
-            solution.setAuthortime(data_c.getAuthortime());//发布时间
+            solution.setAuthortime(new Date());//发布时间
+            solution.setState(data_c.getState());//发布状态 0:发布 1:不发布
 
             if(attach.isEmpty()){
                 solution.setSolutionpic(data_c.getSolutionpic());
@@ -99,6 +106,7 @@ public class SolutionServiceImpl implements SolutionService {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             solution.setAuthor(user.getUsername());
             solution.setAuthortime(new Date());//发布时间
+            solution.setState(1);
         }
 
         solutionRepository.save(solution);
@@ -115,7 +123,6 @@ public class SolutionServiceImpl implements SolutionService {
      */
     private Solution uploadPic(Solution solution, MultipartFile attach, String logoPath) throws IOException {
         logoPath = logoPath + configProperties.getUploadSuffix();
-        //System.out.println(logoPath+"==logopath");
         File filePath=new File(logoPath);
         if(!filePath.exists()){
             filePath.mkdirs();
@@ -178,13 +185,29 @@ public class SolutionServiceImpl implements SolutionService {
     }
 
     /**
-     * 修改展示与否
+     * 发布
      * @param solution
      * @throws SystemException
      */
     @Override
     public void save(Solution solution)  throws SystemException {
         solutionRepository.save(solution);
+        //保存到简报
+        Mess mess = new Mess();
+        mess.setAuthortime(new Date());
+        mess.setTablename(Solution.class.getSimpleName());
+        mess.setTableid(solution.getId());
+        mess.setAuthor(solution.getAuthor());
+        mess.setTitle(solution.getTitle());
+        mess.setOutline(solution.getOutline());
+        messRepository.save(mess);
     }
-
+    /**
+     * 取消发布
+     * @param id
+     */
+    @Override
+    public void updateState(String id) throws SystemException {
+        solutionRepository.updateState(id);
+    }
 }

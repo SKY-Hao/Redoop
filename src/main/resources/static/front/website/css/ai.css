@@ -7,19 +7,19 @@ dt,dd,ul,li{ padding:0; margin:0;}
 .fl{ float:left;}
 .fr{ float:right;}
 .clearfix:after {
-     content:"\200B";
-     display:block;
-     height:0;
+    content:"\200B";
+    display:block;
+    height:0;
     clear:both;
- }
- .clearfix {*zoom:1;}/*IE/7/6*/
- ul,li{ list-style:none;}
+}
+.clearfix {*zoom:1;}/*IE/7/6*/
+ul,li{ list-style:none;}
 .container{ margin:0 auto;  max-width: 1200px;}
 
 .header1 { background:#252527;padding: 10px 0 0;z-index: 1; position:fixed; width:100%;}
 .logo,.header-l i{ background:url(img/aiImages/img.png) no-repeat;}
 ul.logoList{ margin-left:15px; }
-ul.logoList li{ float:left; margin-right:17px;} 
+ul.logoList li{ float:left; margin-right:17px;}
 ul.logoList li img{ width:180px; height:84px; border:1px solid #999;}
 .logo{ display:inline-block; width:145px; height:51px; background-position:0 0; background:url(img/aiImages/img.png);}
 .header-l{ margin-left:15px; width:400px;}
@@ -45,6 +45,34 @@ ul.logoList li img{ width:180px; height:84px; border:1px solid #999;}
 .verNav span{ color:#999;}
 .verNav em{ font-style:normal; font-size:12px;}
 
+
+.block{ margin:30px auto; padding:inherit; width:1000px;}
+.block h2{ color:#aa2123; font-size:30px; font-weight:normal; line-height:1em;}
+.block p{ margin-top:-15px; color:#666; font-size:14px;}
+.block .downList-crh{}
+.block .downList-crh li{padding:8px 0;border-bottom:1px solid #dbdbdb;}
+.block .downList-crh li span{ display:inline-block; margin-right:15px; vertical-align:middle; width:120px;}
+.block .downList-crh li span.img{ width:30px;}
+.block .downList-crh li span.downNum{ width:100px;}
+.block .downList-crh li span.downNum1{ width: 100.8px;font-size: 9px;}
+.block .downList-crh li span.downLink{ width:240px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.block .downList-crh li span.downLink a{ font-size:14px; color:#aa2123;}
+.block .downList-crh li span.fr{ float:right; width:80px; text-align:center; margin-right:0;}
+.block .downList-crh li span.fr a.checkBtn{ display:inline-block; float:right; font-size:14px; padding:5px 10px;color:#fff; background:#aa2123; border-radius:5px; font-family:'微软雅黑'}
+.block .downList-crh li span.fr a.checkBtn:hover{ background:#cb3d3f; text-decoration:none;}
+
+
+
+.section dl{ margin-top:20px; font-family:tahoma;}
+.section dt{ margin-bottom:5px; font-size:16px; color:#000; font-weight:bold;}
+.section dd{ line-height:1.5em; font-size:14px;}
+.section dd span{ margin-left:50px; color:#666;}
+.section dd a{ font-size:12px; color:#33a0ff;}
+.section dd a:hover{ text-decoration:underline;}
+.section dd a.checkBtn{ display:inline-block; float:right; font-size:14px; padding:5px 10px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑'}
+.section dd a.checkBtn:hover{ background:#2189e3; text-decoration:none;}
+.section dd.other{ margin-top:10px;}
+/*
 .section{ margin:30px auto; padding-bottom:30px; width:900px; border-bottom:1px solid #999;}
 .section h2{ color:#aa2123; font-size:30px; font-weight:normal; line-height:1em;}
 .section p{ margin-top:15px; color:#666; font-size:14px;}
@@ -57,6 +85,7 @@ ul.logoList li img{ width:180px; height:84px; border:1px solid #999;}
 .section dd a.checkBtn{ display:inline-block; float:right; font-size:14px; padding:5px 10px;color:#fff; background:#aa2123; border-radius:5px; font-family:'微软雅黑'}
 .section dd a.checkBtn:hover{ background:#cb3d3f; text-decoration:none;}
 .section dd.other{ margin-top:10px;}
+*/
 
 .section .zhichi{ float:left; margin-top:30px; vertical-align:middle; width:49%;}
 .section .zhichi img{ margin-right:20px; vertical-align:middle;}
@@ -71,3 +100,8 @@ ul.logoList li img{ width:180px; height:84px; border:1px solid #999;}
 .footer .contact p{ font-size:14px; }
 .footer .code img{ margin-top:10px;}
 .footer .code { font-size:12px;}
+
+.img img{max-width: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    min-height: 30px;}

@@ -35,16 +35,10 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
      * 前台CRH列表显示
      * @return
      */
-    //前端CRH5.0版本
-    @Query(value = "FROM Download WHERE  platformtype = :platformtype and documenttype = 0 and producttype = 0 and productversion = 0 ORDER BY producttime DESC")
-    List<Download> listByDocumenttype(@Param("platformtype") String platformtype);
-    //前端CRH4.9版本
-    @Query(value = "FROM Download WHERE  platformtype = :platformtype and documenttype = 0 and producttype = 0 and productversion = 1 ORDER BY producttime DESC")
-    public List<Download> listByProductversion2(@Param("platformtype") String platformtype);
 
-   /* @Query(value = "FROM Download a WHERE  a.platformtype = :platformtype and a.documenttype = 0 and (a.productversion = 1 or a.productversion =0 )and a.producttype = 0")
-    Page<Download> listByDocumenttype(@Param("platformtype") String platformtype,Pageable pageable);
-   */
+    @Query(value = "FROM Download WHERE  platformtype = :platformtype and documenttype = 0 and producttype = 0  ORDER BY producttime DESC")
+    List<Download> listByDocumenttype(@Param("platformtype") String platformtype);
+
 
     /**
      * 前台AI列表显示
@@ -52,11 +46,8 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
      */
 
     @Query(value = "FROM Download WHERE  platformtype = :platformtype and documenttype = 0 and producttype = 1  ORDER BY producttime DESC")
-    public List<Download> byAIDocumenttype(@Param("platformtype") String platformtype);
+    List<Download> byAIDocumenttype(@Param("platformtype") String platformtype);
 
-    /*@Query(value = "FROM Download  a WHERE  a.platformtype = :platformtype and a.documenttype = 0 and (a.productversion = 0 or a.productversion = 1) and a.producttype = 1 ")
-    Page<Download> byAIDocumenttype(@Param("platformtype") String platformtype,Pageable pageable);
-*/
 
     /**
      * 修改下载次数
@@ -72,6 +63,20 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
     @Query(value = "select type  from sys_tag group by type ",nativeQuery = true)
     public List<Tag> listBytype(@Param("type") String type);
 
+    /**
+     * 取消发布
+     * @param id
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "update Download  set documenttype = 1 where  id = :id")
+    void updateDocumenttype(@Param("id") String id);
 
-
+    /**
+     * 获取点击次数
+     * @param id
+     * @return
+     */
+    @Query(value = "select docudowncount  from download where  id = :id",nativeQuery = true)
+    String findBycount(@Param("id")String id);
 }

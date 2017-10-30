@@ -3,6 +3,7 @@ package com.redoop.modules.admin.news.web;
 
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
+import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.news.service.NewService;
 import org.apache.tomcat.jni.Directory;
@@ -36,6 +37,8 @@ public class NewController {
 
     @Autowired
     private NewService newService;
+    @Autowired
+    private MessService messService;
 
     /**
      * 分页-全部-查询
@@ -131,10 +134,10 @@ public class NewController {
      */
     @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
     public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
-        News news = newService.findById(id);
-        news.setState(0);
+        //News news = newService.findById(id);
+        //news.setState(0);
         try {
-            newService.save(news);
+            newService.updateState(id);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"新闻取消发布成功\")</script>");
         } catch (SystemException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());

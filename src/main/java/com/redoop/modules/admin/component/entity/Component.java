@@ -34,7 +34,9 @@ public class Component implements Serializable {
     private String subjection;      //组件（案例）所属
     private String open;           //是否开源（0：不开源1：开源）
     private String mpl;             //开源协议（若是开源，不开源为闭源）
-    private String description;     //描述
+
+    private String description;     //描述     (和简报更新概要同步)
+
     private int downloads;          //下载量（默认0）
     private String memorysize;      //存储大小
     private String picname;         //图片名称

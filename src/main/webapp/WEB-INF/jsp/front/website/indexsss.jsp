@@ -1,4 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -29,11 +29,12 @@
 </div>
 <section id="news">
 	<div class="container">
-               <a href="http://www.redoop.com/front/news" class="fr moreLink">更多</a>
+		<%--<a href="http://www.redoop.com/front/news" class="fr moreLink">更多</a>--%>
+		<a href="<%=basePath%>/front/message" class="fr moreLink">红象云腾周报</a>
 		<i></i>
 		<p>
-		<a href="http://www.redoop.com/front/onenew/30"  target="_blank">红象云腾与新云东方技术交流会圆满结束</a>
-		<a href="http://www.redoop.com/front/onenew/29" target="_blank">《中国经济导报》专访红象云腾童小军先生</a>
+			<a href="http://www.redoop.com/front/onenew/30"  target="_blank">红象云腾与新云东方技术交流会圆满结束</a>
+			<a href="http://www.redoop.com/front/onenew/29" target="_blank">《中国经济导报》专访红象云腾童小军先生</a>
 
 
 		</p>
@@ -66,7 +67,7 @@
 		</div>
 	</div>
 </section>
-<section class="block grey-bg" id="character">
+<section class="block grey-bg" id="character" style="margin: auto;">
 	<div class="container clearfix">
 		<h2 class="title">产品特性</h2>
 		<div class="clearfix">
@@ -77,9 +78,9 @@
 						<h3>平台开放性</h3>
 						<ul>
 							<li>红象云腾(REDOOP)致力于采用完全开放的软件开发方式，集成组件和应用E-AppStore，从而保证了平台开放性和创新性。</li>
-                            				<li>CRH使企业在处理和存储海量的结构化、非结构化数据时无需像以前一样花费大量高额的成本。</li>
-                            				<li>CRH提供企业级Hadoop发行版，100%开源，促进了平台创新还可以防止供应商的技术垄断。</li>
-                            				<li>CRH跨平台，支持五大主流硬件X86，Power，ARM，MIPS，Alpha架构。CRH支持FPGA/GPU硬件加速，提升Hadoop整体性能。</li>
+							<li>CRH使企业在处理和存储海量的结构化、非结构化数据时无需像以前一样花费大量高额的成本。</li>
+							<li>CRH提供企业级Hadoop发行版，100%开源，促进了平台创新还可以防止供应商的技术垄断。</li>
+							<li>CRH跨平台，支持五大主流硬件X86，Power，ARM，MIPS，Alpha架构。CRH支持FPGA/GPU硬件加速，提升Hadoop整体性能。</li>
 						</ul>
 					</div>
 				</div>
@@ -89,9 +90,8 @@
 						<h3>一体化</h3>
 						<ul>
 							<li>CRH基于YARN实现一体化的架构、统一资源管理。这种架构使得各种应用程序间可灵活的动态分配资源。</li>
-                            				<li>YARN使企业可以灵活的支撑不同的数据应用，从而最大限度的使用资源快速提取数据。</li>
-                           				 <li>YARN为数据治理提供安全的集群服务、保障集群的稳定性。</li>
-                           				 <li>YARN为数据治理提供安全的集群服务、保障集群的稳定性。</li>
+							<li>YARN使企业可以灵活的支撑不同的数据应用，从而最大限度的使用资源快速提取数据。</li>
+							<li>YARN为数据治理提供安全的集群服务、保障集群的稳定性。</li>
 						</ul>
 					</div>
 				</div>
@@ -102,10 +102,10 @@
 					<div class="txt">
 						<h3>互操作</h3>
 						<ul>
-                        				<li>CRH与广泛的数据中心和云供应商可以互操作。</li>
-                            				<li>CRH数据的处理能力帮助企业最大程度降低成本、节省时间并且最大化的利用企业现有IT基础设施。</li>
-                            				<li>借助CRH，客户在采用Hadoop后仍然可以保全现有IT架构的投资。</li>
-                       				 </ul>
+							<li>CRH与广泛的数据中心和云供应商可以互操作。</li>
+							<li>CRH数据的处理能力帮助企业最大程度降低成本、节省时间并且最大化的利用企业现有IT基础设施。</li>
+							<li>借助CRH，客户在采用Hadoop后仍然可以保全现有IT架构的投资。</li>
+						</ul>
 					</div>
 				</div>
 				<div class="col-2 fl">
@@ -114,8 +114,8 @@
 						<h3>企业级安全</h3>
 						<ul>
 							<li>CRH提供了对集群的一体化管理、监控和审计。</li>
-                           				 <li>使用CRH，企业大数据平台内置数据安全、数据治理能力。</li>
-                          				  <li>CRH可以确保数据访问时的可靠性、并提供安全管控的能力。</li>
+							<li>使用CRH，企业大数据平台内置数据安全、数据治理能力。</li>
+							<li>CRH可以确保数据访问时的可靠性、并提供安全管控的能力。</li>
 						</ul>
 					</div>
 				</div>
@@ -128,32 +128,51 @@
 		<h2 class="title">成功案例</h2>
 		<div class="row">
 			<div class="col-2 fl">
-				<div class="img"><a href="<%=basePath%>/front/caseSpace"><img src="<%=basePath%>/front/website/img/case-space.jpg" /></a></div>
+				<div class="img">
+					<!-- <a href="<%=basePath%>/front/caseSpace">-->
+					<a>
+						<img src="<%=basePath%>/front/website/img/case-space.jpg" />
+					</a>
+				</div>
 				<div class="txt">
-					<h3><a href="<%=basePath%>/front/caseSpace">红象数据高铁为中国航天事业保驾护航</a></h3>
+					<h3>
+						<!--<a href="<%=basePath%>/front/caseSpace">红象数据高铁为中国航天事业保驾护航</a></h3>-->
+						红象数据高铁为中国航天事业保驾护航</h3>
 					<p>卫星在发射、运行过程中会产生大量的数据，如何有效存储数据以及快速计算分析这些数据，实时检测卫星状况是XX航天集团亟需解决的问题。</p>
 				</div>
 			</div>
 			<div class="col-2 fl">
-				<div class="img"><a href="<%=basePath%>/front/caseLenovo"><img src="<%=basePath%>/front/website/img/case-lenovo.jpg" /></a></div>
+				<div class="img">
+					<!--<a href="<%=basePath%>/front/caseLenovo">-->
+					<a>
+						<img src="<%=basePath%>/front/website/img/case-lenovo.jpg" />
+					</a>
+				</div>
 				<div class="txt">
-					<h3><a href="<%=basePath%>/front/caseLenovo">构建联想电商大数据平台</a></h3>
+					<h3>
+						<!--<a href="<%=basePath%>/front/caseLenovo">构建联想电商大数据平台</a>-->
+						构建联想电商大数据平台
+					</h3>
 					<p>针对联想电商平台进行用户画像，用户流量分析等，对用户最终消费行为分析，实现用户精准营销的推送。</p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-2 fl">
-				<div class="img"><a href="<%=basePath%>/front/caseTraffic"><img src="<%=basePath%>/front/website/img/case-traffic.jpg" /></a></div>
+				<!--<div class="img"><a href="<%=basePath%>/front/caseTraffic"><img src="<%=basePath%>/front/website/img/case-traffic.jpg" /></a></div>-->
+				<div class="img"><a><img src="<%=basePath%>/front/website/img/case-traffic.jpg" /></a></div>
 				<div class="txt">
-					<h3><a href="<%=basePath%>/front/caseTraffic">交通智能化！助力辽宁智慧交通，构建高效智能城市</a></h3>
+					<!--<h3><a href="<%=basePath%>/front/caseTraffic">交通智能化！助力辽宁智慧交通，构建高效智能城市</a></h3>-->
+					<h3>交通智能化！助力辽宁智慧交通，构建高效智能城市</h3>
 					<p>如何能全面、准确、及时地监控和分析卡口道路交通状况，缓解交通压力，降低事故率以及快速分析卡口车辆通过信息采集和打击犯罪，是当前交通厅系统急于解决的问题。</p>
 				</div>
 			</div>
 			<div class="col-2 fl">
-				<div class="img"><a href="<%=basePath%>/front/caseUnicom"><img src="<%=basePath%>/front/website/img/case-unicom.jpg" /></a></div>
+				<!--<div class="img"><a href="<%=basePath%>/front/caseUnicom"><img src="<%=basePath%>/front/website/img/case-unicom.jpg" /></a></div>-->
+				<div class="img"><a><img src="<%=basePath%>/front/website/img/case-unicom.jpg" /></a></div>
 				<div class="txt">
-					<h3><a href="<%=basePath%>/front/caseUnicom">助力联通打造云端大数据平台，实现大数据平台一键上云</a></h3>
+					<!--<h3><a href="<%=basePath%>/front/caseUnicom">助力联通打造云端大数据平台，实现大数据平台一键上云</a></h3>-->
+					<h3>助力联通打造云端大数据平台，实现大数据平台一键上云</h3>
 					<p>大数据分析和处理需要海量的存储资源和计算资源。联通云大数据平台提供了“无限”的存储和计算能力，可以一键部署。</p>
 				</div>
 			</div>
@@ -161,11 +180,11 @@
 		<a href="<%=basePath%>/front/solution" class="moreLink fr">更多&gt;</a>
 	</div>
 </section>
-<section class="block grey-bg">
+<section class="block grey-bg" style="margin: auto;">
 	<div class="container clearfix" id="solution">
 		<h2 class="title">解决方案</h2>
 		<div class="clearfix">
-			<div class="col-4">
+			<!--<div class="col-4">
 				<a href="<%=basePath%>solutionPolice"><img src="<%=basePath%>/front/website/img/solution-police.jpg" alt="" class="center-block" /></a>
 				<h4><a href="<%=basePath%>solutionPolice">公安大数据解决方案</a></h4>
 			</div>
@@ -180,6 +199,22 @@
 			<div class="col-4">
 				<a href="<%=basePath%>solutionBridge"><img src="<%=basePath%>/front/website/img/solution-bridge.jpg" class="center-block" /></a>
 				<h4><a href="<%=basePath%>solutionBridge">桥梁大数据解决方案</a></h4>
+			</div>-->
+			<div class="col-4">
+				<a><img src="<%=basePath%>/front/website/img/solution-police.jpg" alt="" class="center-block" /></a>
+				<h4>公安大数据解决方案</h4>
+			</div>
+			<div class="col-4">
+				<a><img src="<%=basePath%>/front/website/img/solution-gene.jpg" class="center-block" /></a>
+				<h4>基因大数据解决方案</h4>
+			</div>
+			<div class="col-4">
+				<a><img src="<%=basePath%>/front/website/img/solution-traffic.jpg" class="center-block" /></a>
+				<h4>交通大数据解决方案</h4>
+			</div>
+			<div class="col-4">
+				<a><img src="<%=basePath%>/front/website/img/solution-bridge.jpg" class="center-block" /></a>
+				<h4>桥梁大数据解决方案</h4>
 			</div>
 		</div>
 		<a href="<%=basePath%>/front/solution" class="moreLink fr">更多&gt;</a>
@@ -218,7 +253,7 @@
 		</dl>
 	</div>
 </section>
-<section class="block grey-bg">
+<section class="block grey-bg" style="margin: auto;">
 	<div class="container clearfix">
 		<h2 class="title">我们的客户</h2>
 		<ul class="logoList">

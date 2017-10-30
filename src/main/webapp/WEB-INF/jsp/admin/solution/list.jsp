@@ -10,7 +10,7 @@
 <html>
 
 <head>
-    <title>方案及案例列表</title>
+    <title>行业版本&案例列表</title>
     <jsp:include page="../../tools/style/common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
 </head>
@@ -19,7 +19,7 @@
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="ibox-title">
-            <h4>方案及案例列表</h4>
+            <h4>行业版本&案例列表</h4>
         </div>
         <div>
             <div style="text-align: center;color: red;margin-bottom: 10px;">
@@ -31,7 +31,7 @@
                     <span style="margin-right: 10px;">
                         <em>(0:行业版本  1:成功案例)</em>
                     </span>
-                    <span>方案及案例名称查询:<input type="text" name="name" style="width: 100px;" value="${name}">
+                    <span>行业版本及案例名称查询:<input type="text" name="name" style="width: 100px;" value="${name}">
                         <button id="sub">查询</button>
                     </span>
                 </form>
@@ -66,8 +66,8 @@
                         <td>
                             <a href="<%=basePath%>/front/solutiondetail/${solution.id}" target="_blank" class="tablelink">预览</a>
                             <a href="<%=basePath%>/admin/solution/form/${solution.id}" class="tablelink">修改</a>
-                            <c:if test="${solution.state eq 0}"><a href="<%=basePath%>/admin/solution/abolish/${solution.id}" class="tablelink">取消展示</a></c:if>
-                            <c:if test="${solution.state eq 1}"><a href="<%=basePath%>/admin/solution/affirm/${solution.id}" class="tablelink">确认展示</a></c:if>
+                            <c:if test="${solution.state eq 0}"><a href="<%=basePath%>/admin/solution/abolish/${solution.id}" class="tablelink">取消发布</a></c:if>
+                            <c:if test="${solution.state eq 1}"><a href="<%=basePath%>/admin/solution/affirm/${solution.id}" class="tablelink">确认发布</a></c:if>
                             <a href="<%=basePath%>/admin/solution/delete/${solution.id}" class="tablelink" onclick="return del()">删除</a>
                         </td>
                     </tr>

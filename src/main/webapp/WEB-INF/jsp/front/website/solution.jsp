@@ -29,7 +29,7 @@
 			</c:if>
 			<c:if test="${not empty solutionList}">
 				<c:forEach items="${solutionList}" var="one">
-					<div class="col-4">
+					<div class="col-4" style="margin-left: 30px;">
 						<a href="<%=basePath%>/front/solutiondetail/${one.id}">
 							<span id="solutionImg">
 								<img src="<%=basePath%>/${one.solutionpic}" alt="" class="center-block" />

@@ -59,18 +59,20 @@
                         <span style="color: #d43f3a;font-size: 16px;">*</span>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">文档发布状态</label>
-                        <div class="col-sm-4">
-                            <label><input name="protype" type="radio" value="0" ${form.protype=='0' || form.protype==null?'checked':''} />发布(显示)</label>
-                            <label><input name="protype" type="radio" value="1" ${form.protype=='1'?'checked':''} />不发布(不显示)</label>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">文档发布时间</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="producttime" value="${form.producttime}" onclick="WdatePicker()">
+                            <input type="text" class="form-control" name="producttime" value="${form.producttime}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+                        </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">文档概要</label>
+                        <div class="col-sm-4">
+                            <textarea type="text" class="form-control" name="outline">${form.outline}</textarea>
                         </div>
                         <span style="color: #d43f3a;font-size: 16px;">*</span>
                     </div>

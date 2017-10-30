@@ -49,7 +49,7 @@
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-        <li class="active"><a href="<%=basePath%>admin/new/list" target="main"><span
+        <li class="active"><a href="<%=basePath%>admin/new/findAll" target="main"><span
                 class="glyphicon glyphicon-dashboard"></span>Dashboard</a></li>
 
 
@@ -81,17 +81,17 @@
                 <!--方案管理-->
                 <li class="parent">
                     <a href="#sub-item-3" data-toggle="collapse">
-                        <span class="glyphicon glyphicon-folder-close"></span>方案及案例
+                        <span class="glyphicon glyphicon-folder-close"></span>行业版本及案例
                     </a>
                     <ul class="children collapse" id="sub-item-3">
                         <li class="item">
                             <a href="<%=basePath%>admin/solution/findAll" target="main">
-                                <span class="glyphicon glyphicon-calendar"></span>方案和案例列表
+                                <span class="glyphicon glyphicon-calendar"></span>行业版本|案例列表
                             </a>
                         </li>
                         <li class="item">
                             <a href="<%=basePath%>admin/solution/form/null" target="main">
-                                <span class="glyphicon glyphicon-plus-sign"></span>方案和案例添加
+                                <span class="glyphicon glyphicon-plus-sign"></span>行业版本|案例添加
                             </a>
                         </li>
                     </ul>
@@ -143,7 +143,7 @@
                 </li>
 
                 <!--下载管理-->
-                <%--<li class="parent">
+                <li class="parent">
                     <a href="#sub-item-6" data-toggle="collapse">
                         <span class="glyphicon glyphicon-download-alt"></span>下&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;载
                     </a>
@@ -159,7 +159,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>--%>
+                </li>
                 <li class="parent">
                     <a href="#sub-item-7" data-toggle="collapse">
                         <span class="glyphicon glyphicon-list-alt"></span>产品资料
@@ -175,6 +175,24 @@
                                 <span class="glyphicon glyphicon-plus-sign"></span>资料添加
                             </a>
                         </li>
+                    </ul>
+                </li>
+                <!--简报-->
+                <li class="parent">
+                    <a href="#sub-item-8" data-toggle="collapse">
+                        <span class="glyphicon glyphicon-list-alt"></span>简报更新
+                    </a>
+                    <ul class="children collapse" id="sub-item-8">
+                        <li class="item">
+                            <a href="<%=basePath%>admin/mess/findAll" target="main">
+                                <span class="glyphicon glyphicon-th-list"></span>简报列表
+                            </a>
+                        </li>
+                        <%--<li class="item">
+                            <a href="<%=basePath%>admin/mess/form/null" target="main">
+                                <span class="glyphicon glyphicon-plus-sign"></span>简报添加
+                            </a>
+                        </li>--%>
                     </ul>
                 </li>
             </ul>

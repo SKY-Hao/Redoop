@@ -4,9 +4,11 @@ import com.redoop.modules.admin.component.entity.Component;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -44,4 +46,13 @@ public interface ComponentRepository extends JpaRepository<Component, String> {
      */
     @Query(value = "SELECT DISTINCT name FROM component WHERE type='0'",nativeQuery = true)
     List<String> findComponentNameList();
+
+    /**
+     * 取消发布
+     * @param id
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "update Component set showstate = 0 where  id = :id")
+    void updatedescription(@Param("id") String id);
 }
