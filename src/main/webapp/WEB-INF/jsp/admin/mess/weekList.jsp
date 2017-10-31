@@ -10,7 +10,7 @@
 <html>
 
 <head>
-    <title>简报日志表</title>
+    <title>简报7天表</title>
     <jsp:include page="../../tools/style/common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
     <script type="text/javascript" src="<%=basePath%>/backstage/My97DatePicker/WdatePicker.js"></script>
@@ -20,23 +20,17 @@
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="ibox-title">
-            <h4>简报日志表</h4>
+            <h4>简报7天表</h4>
         </div>
-        <div>
-            <div style="text-align: center;color: red;margin-bottom: 10px;">
-                ${message}
+        <%--<form method="post" action="" id="f1">--%>
+            <div>
+                <div style="text-align: center;color: red;margin-bottom: 10px;">
+                    ${message}
+                </div>
+                <div style="float: right">
+                    <input type="button" class="btn btn-info" value="生成简报">
+                </div>
             </div>
-            <div style="margin-top:8px;margin-bottom: 5px;float: right;">
-                <form id="form" action="<%=basePath%>/admin/mess/select" method="GET">
-                    <span>
-                        开始日期:<input type="text" name="starttime" style="width: 100px;" value="${starttime}"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" >
-                        结束日期:<input type="text" name="endtime" style="width: 100px;" value="${endtime}"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" >
-                        <button id="sub">查询</button>
-                    </span>
-                </form>
-            </div>
-        </div>
-
             <div class="ibox-content">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -47,13 +41,13 @@
                         <th>类目</th>
                         <th>标题</th>
                         <th>更新概要</th>
-                        <th>更新时间</th>
                         <th>发布者</th>
+                        <th>更新时间</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${pageList.getContent()}" var="mess">
+                        <c:forEach items="${list}" var="mess">
                             <tr>
                                 <td>
                                     <input type="checkbox" value="${mess.id}" name="ids" class="ck">
@@ -70,17 +64,14 @@
                                      <%--<c:if test="${mess.state eq 1}"><a href="<%=basePath%>/admin/mess/cancelRelease/${mess.id}" class="tablelink">取消发布</a></c:if>
                                     <c:if test="${mess.state eq 0}"><a href="<%=basePath%>/admin/mess/release/${mess.id}" class="tablelink">发布</a></c:if>--%>
                                     <a href="<%=basePath%>/admin/mess/delete/${mess.id}" class="tablelink" onclick="return del()">删除</a>
-
+                                    <a href="<%=basePath%>/admin/messBriefing/lastAdd/${mess.id}" class="tablelink">生成简报</a>
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
-
-
-    <jsp:include page="../../tools/page/admin_page.jsp"></jsp:include>
-
+       <%-- </form>--%>
  </div>
 </div>
 
@@ -99,6 +90,21 @@
                 }
             }
         });
+        
+       /* $("#f1").click(function () {
+            $.post(
+                "<%=basePath%>/admin/mess/lastAdd",
+                $("#f1").serialize(),
+                function (obj) {
+                    alert(obj);
+                    if(obj){
+                        location.reload();
+                    }else {
+                        alert("生成失败");
+                    }
+                }
+            );
+        })*/
 
     })
 </script>

@@ -1,6 +1,7 @@
 package com.redoop.modules.admin.mess.web;
 
 import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.mess.entity.Briefing;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.News;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Time;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -149,6 +151,20 @@ public class MessController {
         model.addAttribute("endtime",endtime);
         return "admin/mess/list";
     }
+
+    /**
+     *  简报7天表
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/briefing",method = RequestMethod.GET)
+    public String briefing(Model model){
+        List<Mess> list= messService.list();
+        model.addAttribute("list",list);
+        return "admin/mess/weekList";
+    }
+
+
 
 
 

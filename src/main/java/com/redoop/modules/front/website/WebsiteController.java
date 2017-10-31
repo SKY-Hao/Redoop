@@ -640,12 +640,12 @@ public class WebsiteController {
      * @param model
      * @return
      */
-    @GetMapping(value = "/message")
+   /* @GetMapping(value = "/message")
     public String message(Model model) {
         List<Mess> messList=messService.list();
         model.addAttribute("messList",messList);
         return "front/website/message";
-    }
+    }*/
 
 
 

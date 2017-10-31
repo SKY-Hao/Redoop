@@ -3,6 +3,7 @@ package com.redoop.modules.admin.news.web;
 
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.news.service.NewService;
@@ -86,7 +87,6 @@ public class NewController {
         try {
             request.setCharacterEncoding( "utf-8" );
             String logoPath = request.getSession().getServletContext().getRealPath("/");
-            //System.out.println("logopath："+logoPath);
             newService.save(news,attach,logoPath);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"新闻保存成功\")</script>");
             return "redirect:/admin/new/findAll";
@@ -116,13 +116,13 @@ public class NewController {
      * @return
      */
     @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
-    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+    public String release(@PathVariable String id,RedirectAttributes redirectAttributes,Mess mess) {
         News news = newService.findById(id);
         news.setState(1);
         try {
-            newService.save(news);
+            newService.save(news,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"新闻发布成功\")</script>");
-        } catch (SystemException e) {
+        } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/new/findAll";
@@ -159,12 +159,6 @@ public class NewController {
         model.addAttribute("title",title);
         return "admin/new/list";
     }
-
-
-
-
-
-
 
 
 

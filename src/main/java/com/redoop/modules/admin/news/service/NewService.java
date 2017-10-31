@@ -3,6 +3,7 @@ package com.redoop.modules.admin.news.service;
 
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.exception.ValidateException;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.news.entity.New;
 import com.redoop.modules.admin.news.entity.News;
 import org.springframework.data.domain.Page;
@@ -26,14 +27,14 @@ public interface NewService {
      * @param logoPath
      * @throws SystemException
      */
-    void save(News news, MultipartFile attach, String logoPath) throws SystemException;
+    void save(News news, MultipartFile attach, String logoPath) throws Exception;
 
     /**
      * 新闻保存（没有图片附件）
      * @param news
-     * @throws SystemException
+     * @throws Exception
      */
-    void save(News news) throws SystemException;
+    void save(News news,Mess mess) throws Exception;
 
     /**
      * 按标题模糊查询新闻 分页

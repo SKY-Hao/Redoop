@@ -1,6 +1,7 @@
 package com.redoop.modules.admin.mess.service;
 
 import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.mess.entity.Briefing;
 import com.redoop.modules.admin.mess.entity.Mess;
 import org.springframework.data.domain.Page;
 
@@ -24,16 +25,19 @@ public interface MessService {
 
     void delete(String id) throws SystemException;
 
+
+    Page<Mess> selectByTime(String starttime, String endtime, Integer page) throws ParseException;
     /**
-     * 官网首页简报更新
+     *  简报7天表
      * @return
      */
     List<Mess> list();
 
-    Page<Mess> selectByTime(String starttime, String endtime, Integer page) throws ParseException;
+    /**
+     * 最终简报表（前端用）
+     * @return
+     */
+    List<Briefing> briefingList();
 
 
-
-
-    // Page<Mess> selectByTime(Integer page, String authortime);
 }

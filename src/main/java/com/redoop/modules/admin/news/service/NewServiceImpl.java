@@ -51,7 +51,7 @@ public class NewServiceImpl  implements NewService{
      * @throws SystemException
      */
     @Override
-    public void save(News news, MultipartFile attach, String logoPath) throws SystemException {
+    public void save(News news, MultipartFile attach, String logoPath) throws Exception {
 
         if (news.getTitle() == null || "".equals(news.getTitle())) {
             throw new SystemException("<script>toastr.error(\"新闻标题不能为空\")</script>");
@@ -69,10 +69,12 @@ public class NewServiceImpl  implements NewService{
                 try {
                     news = uploadPic(news,attach,logoPath);
                     DeleteUtils.deletePic(logoPath + date_news.getPicpath());
-                } catch (IOException e) {
+                } catch (Exception e) {
                     throw new SystemException("<script>toastr.error(\"新闻Logo上传失败\")</script>");
                 }
             }
+            Mess mess=new Mess();
+            news =saveMess(news,mess);
         }else{
             if(attach.isEmpty()){
                 throw new SystemException("<script>toastr.error(\"新闻Logo不能为空\")</script>");
@@ -98,9 +100,19 @@ public class NewServiceImpl  implements NewService{
      * @throws SystemException
      */
     @Override
-    public void save(News news) throws SystemException {
+    public void save(News news,Mess mess) throws Exception {
+        news =saveMess(news,mess);
         newRepository.save(news);
-        Mess mess = new Mess();
+    }
+
+    /**
+     * 保存简报日志表
+     * @param news
+     * @param mess
+     * @return
+     * @throws IOException
+     */
+    private News saveMess(News news,Mess mess) throws IOException {
         mess.setAuthortime(new Date());
         mess.setTablename(News.class.getSimpleName());
         mess.setTableid(news.getId());
@@ -108,7 +120,10 @@ public class NewServiceImpl  implements NewService{
         mess.setTitle(news.getTitle());
         mess.setOutline(news.getOutline());
         messRepository.save(mess);
+        return news;
     }
+
+
 
     /**
      * 图片上传
@@ -149,45 +164,7 @@ public class NewServiceImpl  implements NewService{
         return newRepository.findByTitleLike(title,BasePageBuilder.create(page,configProperties.getPageSize(),sort));
     }
 
-    /**
-     * 新闻列表(网站前端)
-     * @return
-     */
-   /* @Override
-    public List<New> listNew() {
-        List<New> newList = new ArrayList<New>();
-        List<News> newsList =  newRepository.findByStatusList();
 
-        for(News news : newsList){
-            New oneNew = new New();
-
-            oneNew.setId(news.getId());
-            oneNew.setTitle(news.getTitle());
-
-            String date = news.getDate().toString();
-
-            String time=null;
-            if(date.length() > 10){
-
-                date = date.substring(0,10);
-                time = date.substring(0,10);
-            }
-
-            oneNew.setTime(time);
-
-            oneNew.setPicPath(news.getPicpath());
-            String content = news.getContent();
-            content = HtmlUtil.delHTMLTag(content);
-            if(content.length() > 200){
-                oneNew.setContent(content.substring(0,200));
-            }else{
-                oneNew.setContent(content);
-            }
-            newList.add(oneNew);
-        }
-        return newList;
-    }
-*/
     /**
      * 新闻列表(网站前端)
      * @return

@@ -59,8 +59,8 @@
             <c:forEach  items="${list}" var="one">
             <ul class="downList-crh" style="margin-top: 20px;">
                <li>
-                    <span class="fr"  name="see"  id="${one.id}">
-                        <a href="${one.see}" class="checkBtn">查看</a>
+                    <span class="fr">
+                        <a href="${one.see}" class="checkBtn" name="see"  id="${one.id}">查看</a>
                     </span>
 
                     <span class="img">
@@ -72,8 +72,8 @@
                     <span class="img">
                         <img src="<%=basePath%>/${one.chippic}" />
                     </span>
-                    <span class="downLink"  name="see"  id="${one.id}">
-                        <a href="${one.documenturl}">${one.documenturl}</a>
+                    <span class="downLink" >
+                        <a href="${one.documenturl}" id="${one.id}" name="see">${one.documenturl}</a>
                     </span>
                     <span class="downNum">点击次数：${one.docudowncount}</span>
                     <span class="downNum1">${one.producttime}更新</span>
@@ -87,24 +87,24 @@
 <jsp:include page="tools/footer.jsp"></jsp:include>
 </body>
 <script>
+    $(function () {
         $("[name='see']").click(function () {
-            alert("1");
-            //var url=$(this).val();
+            var url=$(this).val();
             var id = $(this).attr("id");
             $.post(
                 "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
                 "",
                 function (obj) {
-                  /*  alert(obj);
                     if (obj){
-
                         location.href=url;
-                    }*/
-
+                        return false;
+                    }
                 },
                 "json"
             )
         });
+    })
+
 
 </script>
 </html>
