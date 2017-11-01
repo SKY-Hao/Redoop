@@ -40,6 +40,9 @@ public class Mess implements Serializable {
     private Date        starttime;      //开始时间
     private Date        endtime;        //结束时间
 
+    private String      jumpurl;         //路径
+
+
     @Override
     public String toString() {
         return "Mess{" +
@@ -55,7 +58,16 @@ public class Mess implements Serializable {
                 ", authortime=" + authortime +
                 ", starttime=" + starttime +
                 ", endtime=" + endtime +
+                ", jumpurl='" + jumpurl + '\'' +
                 '}';
+    }
+
+    public String getJumpurl() {
+        return jumpurl;
+    }
+
+    public void setJumpurl(String jumpurl) {
+        this.jumpurl = jumpurl;
     }
 
 

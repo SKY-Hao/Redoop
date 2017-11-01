@@ -73,8 +73,7 @@ public class NewServiceImpl  implements NewService{
                     throw new SystemException("<script>toastr.error(\"新闻Logo上传失败\")</script>");
                 }
             }
-            Mess mess=new Mess();
-            news =saveMess(news,mess);
+
         }else{
             if(attach.isEmpty()){
                 throw new SystemException("<script>toastr.error(\"新闻Logo不能为空\")</script>");
@@ -106,7 +105,7 @@ public class NewServiceImpl  implements NewService{
     }
 
     /**
-     * 保存简报日志表
+     * 保存简报日志表（mess）
      * @param news
      * @param mess
      * @return

@@ -1,10 +1,8 @@
 package com.redoop.modules.admin.mess.web;
 
 import com.redoop.common.exception.SystemException;
-import com.redoop.modules.admin.mess.entity.Briefing;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
-import com.redoop.modules.admin.news.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -13,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Time;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 
@@ -97,39 +93,7 @@ public class MessController {
         return "redirect:/admin/mess/findAll";
     }
 
-    /**
-     * 发布
-     * @return
-     */
-    @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
-    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
-        Mess mess = messService.findById(id);
-        mess.setState(1);
-        try {
-            messService.save(mess);
-            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"简报发布成功\")</script>");
-        } catch (SystemException e) {
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
-        }
-        return "redirect:/admin/mess/findAll";
-    }
 
-    /**
-     * 取消发布
-     * @return
-     */
-    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
-    public String cancelRelease(@PathVariable String id, RedirectAttributes redirectAttributes) {
-        Mess Mess = messService.findById(id);
-        Mess.setState(0);
-        try {
-            messService.save(Mess);
-            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"简报取消发布成功\")</script>");
-        } catch (SystemException e) {
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
-        }
-        return "redirect:/admin/mess/findAll";
-    }
 
     /**
      * 时间查询

@@ -8,6 +8,7 @@ import com.redoop.common.utils.DeleteUtils;
 import com.redoop.common.utils.Uuid;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
+import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.solution.repository.SolutionRepository;
 import org.apache.commons.io.FileUtils;
@@ -19,6 +20,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -190,17 +194,33 @@ public class SolutionServiceImpl implements SolutionService {
      * @throws SystemException
      */
     @Override
-    public void save(Solution solution)  throws SystemException {
+    public void save(Solution solution,Mess mess)  throws Exception {
+
+        //调用下面的保存简报方法
+        solution=saveMess(solution,mess);
+
         solutionRepository.save(solution);
-        //保存到简报
-        Mess mess = new Mess();
+
+    }
+
+    /**
+     * 保存到简报表
+     * @param solution
+     * @param mess
+     * @return
+     * @throws IOException
+     */
+    private Solution saveMess(Solution solution, Mess mess) throws Exception {
+
         mess.setAuthortime(new Date());
         mess.setTablename(Solution.class.getSimpleName());
         mess.setTableid(solution.getId());
         mess.setAuthor(solution.getAuthor());
         mess.setTitle(solution.getTitle());
         mess.setOutline(solution.getOutline());
+
         messRepository.save(mess);
+        return solution;
     }
     /**
      * 取消发布

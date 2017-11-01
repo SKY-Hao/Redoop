@@ -28,4 +28,5 @@ public interface MessbrifingRepository extends JpaRepository<Briefing,String> {
          */
         @Query(value = "select * from briefing where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(authortime) order by authortime desc " ,nativeQuery = true)
         List<Briefing> briefingList();
+
 }

@@ -3,10 +3,8 @@ package com.redoop.modules.admin.mess.service;
 import com.redoop.common.config.ConfigProperties;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.BasePageBuilder;
-import com.redoop.modules.admin.mess.entity.Briefing;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
-import com.redoop.modules.admin.news.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -14,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -116,14 +113,6 @@ public class MessServiceImpl implements MessService{
         return messRepository.list();
     }
 
-    /**
-     * 最终简报表（前端用）
-     * @return
-     */
-    @Override
-    public List<Briefing> briefingList() {
-        return messRepository.briefingList();
-    }
 
 
 

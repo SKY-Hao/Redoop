@@ -22,31 +22,35 @@
         <div class="ibox-title">
             <h4>最终简报表</h4>
         </div>
-            <div class="ibox-content">
-                <table class="table table-bordered table-striped">
-                    <thead>
+        <div class="ibox-content">
+           <%-- <table class="table table-bordered table-striped" style="table-layout: fixed;">--%>
+               <table class="table table-bordered table-striped" >
+                <thead>
                     <tr>
+                        <th>ID</th>
                         <th>类目</th>
                         <th>标题</th>
                         <th>更新概要</th>
                         <th>发布者</th>
                         <th>更新时间</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${list}" var="mess">
-                            <tr>
-                                <td>${mess.tablename}</td>
-                                <td>${mess.tabletitle}</td>
-                                <td>${mess.outline}</td>
-                                <td>${mess.author}</td>
-                                <td>${mess.authortime}</td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
- </div>
+                </thead>
+                <tbody>
+                    <c:forEach items="${list}" var="mess">
+                        <tr>
+                            <td>${mess.tableid}</td>
+                            <td>${mess.tablename}</td>
+                            <td>${mess.tabletitle}</td>
+                            <%--<td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>--%>
+                            <td>${mess.outline}</td>
+                            <td>${mess.author}</td>
+                            <td>${mess.date}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,10 +21,16 @@ public interface MessbriefingService {
 
 
     /**
+     * 生成最终简报保存
+     * @param briefing
+     * @return
+     */
+    void lastAdd(Briefing briefing,String[] ids) throws IOException;
+
+    /**
      * 最终简报表（前端用）
      * @return
      */
     List<Briefing> briefingList();
 
-    void lastAdd(Briefing briefing,Mess mess) throws IOException;
 }

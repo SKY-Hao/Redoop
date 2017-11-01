@@ -59,9 +59,13 @@
             <c:forEach  items="${list}" var="one">
             <ul class="downList-crh" style="margin-top: 20px;">
                <li>
-                    <span class="fr">
+                    <%--<span class="fr">
                         <a href="${one.see}" class="checkBtn" name="see"  id="${one.id}">查看</a>
-                    </span>
+                    </span>--%>
+                   <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
+                   style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--下载地址-->
+                       查看
+                   </button>
 
                     <span class="img">
                         <img src="<%=basePath%>/${one.systempic}" />
@@ -72,8 +76,8 @@
                     <span class="img">
                         <img src="<%=basePath%>/${one.chippic}" />
                     </span>
-                    <span class="downLink" >
-                        <a href="${one.documenturl}" id="${one.id}" name="see">${one.documenturl}</a>
+                    <span class="downLink">
+                        <a href="${one.documenturl}" id="${one.id}">${one.documenturl}</a>
                     </span>
                     <span class="downNum">点击次数：${one.docudowncount}</span>
                     <span class="downNum1">${one.producttime}更新</span>

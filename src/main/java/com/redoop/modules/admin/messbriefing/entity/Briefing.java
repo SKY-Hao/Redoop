@@ -35,6 +35,33 @@ public class Briefing {
     private String      author;         //作者
     private Date        authortime;     //更新时间
 
+    private String      jumpurl;         //路径
+
+    @Override
+    public String toString() {
+        return "Briefing{" +
+                "id='" + id + '\'' +
+                ", tablename='" + tablename + '\'' +
+                ", tableid='" + tableid + '\'' +
+                ", tabletitle='" + tabletitle + '\'' +
+                ", tablecontents='" + tablecontents + '\'' +
+                ", date='" + date + '\'' +
+                ", outline='" + outline + '\'' +
+                ", state=" + state +
+                ", author='" + author + '\'' +
+                ", authortime=" + authortime +
+                ", jumpurl='" + jumpurl + '\'' +
+                '}';
+    }
+
+    public String getJumpurl() {
+        return jumpurl;
+    }
+
+    public void setJumpurl(String jumpurl) {
+        this.jumpurl = jumpurl;
+    }
+
     public String getId() {
         return id;
     }
@@ -115,19 +142,4 @@ public class Briefing {
         this.authortime = authortime;
     }
 
-    @Override
-    public String toString() {
-        return "Briefing{" +
-                "id='" + id + '\'' +
-                ", tablename='" + tablename + '\'' +
-                ", tableid='" + tableid + '\'' +
-                ", tabletitle='" + tabletitle + '\'' +
-                ", tablecontents='" + tablecontents + '\'' +
-                ", date='" + date + '\'' +
-                ", outline='" + outline + '\'' +
-                ", state=" + state +
-                ", author='" + author + '\'' +
-                ", authortime=" + authortime +
-                '}';
-    }
 }

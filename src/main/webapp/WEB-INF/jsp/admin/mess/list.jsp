@@ -38,12 +38,9 @@
         </div>
 
             <div class="ibox-content">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" style="table-layout: fixed;">
                     <thead>
                     <tr>
-                        <th>
-                            <input type="checkbox" id="qx">全选/反选
-                        </th>
                         <th>类目</th>
                         <th>标题</th>
                         <th>更新概要</th>
@@ -55,13 +52,10 @@
                     <tbody>
                         <c:forEach items="${pageList.getContent()}" var="mess">
                             <tr>
-                                <td>
-                                    <input type="checkbox" value="${mess.id}" name="ids" class="ck">
-                                </td>
                                 <td style="display: none;">${mess.id}</td>
                                 <td>${mess.tablename}</td>
                                 <td>${mess.title}</td>
-                                <td>${mess.outline}</td>
+                                <td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>
                                 <td>${mess.author}</td>
                                 <td>${mess.authortime}</td>
                                 <td>
@@ -85,21 +79,5 @@
 </div>
 
 </body>
-<script type="text/javascript">
-    $(function () {
-        //全选反选
-        $("#qx").click(function () {
-            var ids = document.getElementsByName("ids");
-            for(var i=0;i<ids.length;i++){
-                if(ids[i].checked) {
-                    ids[i].checked = false;
-                }
-                else{
-                    ids[i].checked=true ;
-                }
-            }
-        });
 
-    })
-</script>
 </html>

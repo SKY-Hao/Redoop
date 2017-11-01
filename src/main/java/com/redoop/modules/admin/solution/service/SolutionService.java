@@ -2,6 +2,7 @@ package com.redoop.modules.admin.solution.service;
 
 
 import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.news.entity.New;
 import com.redoop.modules.admin.solution.entity.Solution;
 import org.springframework.data.domain.Page;
@@ -45,7 +46,7 @@ public interface SolutionService {
      * 修改官网是否展示
      * @param solution
      */
-    void save(Solution solution)throws SystemException;
+    void save(Solution solution, Mess mess)throws Exception;
 
     /**
      * 根据Name进行查询(0:行业版本 1:产品方案)

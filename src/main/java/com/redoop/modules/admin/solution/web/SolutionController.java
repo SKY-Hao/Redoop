@@ -5,6 +5,7 @@ import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.modules.admin.customer.entity.Customer;
 import com.redoop.modules.admin.customer.service.CustomerService;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.PicUploadResult;
 import com.redoop.modules.admin.solution.entity.Solution;
@@ -147,13 +148,15 @@ public class SolutionController {
      * @return
      */
     @RequestMapping(value = "/affirm/{id}", method = RequestMethod.GET)
-    public String affirm(@PathVariable String id, Model mode, RedirectAttributes redirectAttributes) {
+    public String affirm(@PathVariable String id, Model mode,
+                         RedirectAttributes redirectAttributes, Mess mess) {
+
         Solution solution = solutionService.findById(id);
         solution.setState(0);
         try {
-            solutionService.save(solution);
+            solutionService.save(solution,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
-        } catch (SystemException e) {
+        } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/solution/findAll";

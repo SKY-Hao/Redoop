@@ -1,12 +1,10 @@
 package com.redoop.modules.admin.mess.service;
 
 import com.redoop.common.exception.SystemException;
-import com.redoop.modules.admin.mess.entity.Briefing;
 import com.redoop.modules.admin.mess.entity.Mess;
 import org.springframework.data.domain.Page;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,11 +31,6 @@ public interface MessService {
      */
     List<Mess> list();
 
-    /**
-     * 最终简报表（前端用）
-     * @return
-     */
-    List<Briefing> briefingList();
 
 
 }

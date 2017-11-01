@@ -2,6 +2,7 @@ package com.redoop.modules.admin.solution.repository;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.redoop.modules.admin.download.entity.Download;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.solution.entity.Solution;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,4 +47,5 @@ public interface SolutionRepository extends JpaRepository<Solution,String> {
      @Transactional
      @Query(value = "update Solution set state=1 where  id=:id")
     void updateState(@Param("id") String id);
+
 }

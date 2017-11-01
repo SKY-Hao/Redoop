@@ -4,6 +4,7 @@ import com.redoop.common.config.ConfigProperties;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.BasePageBuilder;
 import com.redoop.modules.admin.mess.entity.Mess;
+import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.messbriefing.entity.Briefing;
 import com.redoop.modules.admin.messbriefing.repository.MessbrifingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -31,10 +33,50 @@ public class MessbriefingServiceImpl implements MessbriefingService {
 
     @Autowired
     private MessbrifingRepository messbrifingRepository;
+    @Autowired
+    private MessRepository messRepository;
 
     @Autowired
     private ConfigProperties configProperties;
     private Sort sort = new Sort(Sort.Direction.DESC,"authortime");
+
+
+    /**
+     * 保存
+     * @param briefing
+     * @param ids
+     * @throws IOException
+     */
+    @Override
+    @Transactional
+    public void lastAdd(Briefing briefing,String[] ids) throws IOException {
+        Mess mess = new Mess();
+        //调用保存最终简报方法
+        if(ids.length>0){
+            for (int i=0;i<ids.length;i++){
+                mess = messRepository.findOne(ids[i]);
+                briefing =saveLast(mess);
+                messbrifingRepository.save(briefing);
+            }
+        }
+    }
+
+    /**
+     * 保存最终简报方法调用
+     * @param mess
+     * @return
+     * @throws IOException
+     */
+    private Briefing saveLast(Mess mess) throws IOException {
+        Briefing briefing = new Briefing();
+        briefing.setAuthortime(mess.getAuthortime());
+        briefing.setTablename(mess.getTablename());
+        briefing.setAuthor(mess.getAuthor());
+        briefing.setTableid(mess.getTableid());
+        briefing.setTabletitle(mess.getTitle());
+        briefing.setOutline(mess.getOutline());
+        return briefing;
+    }
 
     /**
      * 最终简报表（前端用）
@@ -42,30 +84,19 @@ public class MessbriefingServiceImpl implements MessbriefingService {
      */
     @Override
     public List<Briefing> briefingList() {
-        return messbrifingRepository.briefingList();
+
+        List<Briefing> briefingList=messbrifingRepository.briefingList();
+
+        for(Briefing briefing:briefingList){
+            String date = briefing.getAuthortime().toString();
+            String time=null;
+            if(date.length() > 10){
+                date = date.substring(0,10);
+                time = date.substring(0,10);
+            }
+            briefing.setDate(time);
+        }
+        return  briefingList;
     }
 
-    @Override
-    public void lastAdd(Briefing briefing,Mess mess) throws IOException {
-        briefing =saveLast(mess,briefing);
-        messbrifingRepository.save(briefing);
-    }
-
-    /**
-     * 保存最终简报方法调用
-     * @param briefing
-     * @param mess
-     * @return
-     * @throws IOException
-     */
-    private Briefing saveLast(Mess mess, Briefing briefing) throws IOException {
-        briefing.setAuthortime(mess.getAuthortime());
-        briefing.setTablename(mess.getTablename());
-        briefing.setAuthor(mess.getAuthor());
-        briefing.setTableid(mess.getTableid());
-        briefing.setTabletitle(mess.getTitle());
-        briefing.setOutline(mess.getOutline());
-        //messbrifingRepository.save(briefing);
-        return briefing;
-    }
 }

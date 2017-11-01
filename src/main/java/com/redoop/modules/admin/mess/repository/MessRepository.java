@@ -1,12 +1,10 @@
 package com.redoop.modules.admin.mess.repository;
 
-import com.redoop.modules.admin.mess.entity.Briefing;
 import com.redoop.modules.admin.mess.entity.Mess;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -35,10 +33,4 @@ public interface MessRepository extends JpaRepository<Mess,String> {
         //@Query(value = "select * from mess WHERE YEARWEEK(date_format(authortime,'%Y-%m-%d')) =YEARWEEK(now())-1 order by authortime desc " ,nativeQuery = true)
         List<Mess> list();
 
-        /**
-         * 最终简报表（前端用）
-         * @return
-         */
-        @Query(value = "select * from briefing where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(authortime) order by authortime desc " ,nativeQuery = true)
-        List<Briefing> briefingList();
 }

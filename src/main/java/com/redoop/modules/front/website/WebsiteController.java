@@ -10,6 +10,8 @@ import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
+import com.redoop.modules.admin.messbriefing.entity.Briefing;
+import com.redoop.modules.admin.messbriefing.service.MessbriefingService;
 import com.redoop.modules.admin.news.entity.New;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.news.service.NewService;
@@ -52,8 +54,9 @@ public class WebsiteController {
     private ProductService productService;
     @Autowired
     private SolutionService solutionService;
+
     @Autowired
-    private MessService  messService;
+    private MessbriefingService messbriefingService;
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -640,12 +643,13 @@ public class WebsiteController {
      * @param model
      * @return
      */
-   /* @GetMapping(value = "/message")
+    @GetMapping(value = "/message")
     public String message(Model model) {
-        List<Mess> messList=messService.list();
-        model.addAttribute("messList",messList);
-        return "front/website/message";
-    }*/
+        List<Briefing> list=messbriefingService.briefingList();
+        //System.out.println(list);
+        model.addAttribute("list",list);
+        return "front/website/week";
+    }
 
 
 
