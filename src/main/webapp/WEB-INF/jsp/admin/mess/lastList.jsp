@@ -23,8 +23,7 @@
             <h4>最终简报表</h4>
         </div>
         <div class="ibox-content">
-           <%-- <table class="table table-bordered table-striped" style="table-layout: fixed;">--%>
-               <table class="table table-bordered table-striped" >
+          <table class="table table-bordered table-striped" style="table-layout: fixed;">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -38,11 +37,10 @@
                 <tbody>
                     <c:forEach items="${list}" var="mess">
                         <tr>
-                            <td>${mess.tableid}</td>
+                            <td  style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.tableid}</td>
                             <td>${mess.tablename}</td>
                             <td>${mess.tabletitle}</td>
-                            <%--<td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>--%>
-                            <td>${mess.outline}</td>
+                            <td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>
                             <td>${mess.author}</td>
                             <td>${mess.date}</td>
                         </tr>

@@ -639,11 +639,11 @@ public class WebsiteController {
 
 
     /**
-     * 简报前端列表-暂时没用
+     * 最终简报表（前端单独页面用）
      * @param model
      * @return
      */
-    @GetMapping(value = "/message")
+    @GetMapping(value = "/weekly")
     public String message(Model model) {
         List<Briefing> list=messbriefingService.briefingList();
         //System.out.println(list);

@@ -3,6 +3,7 @@ package com.redoop.modules.admin.component.service;
 import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.customer.entity.Customer;
+import com.redoop.modules.admin.mess.entity.Mess;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -68,7 +69,7 @@ public interface ComponentService {
      * @param component
      * @throws SystemException
      */
-    void save(Component component) throws SystemException;
+    void save(Component component, Mess mess) throws Exception;
 
     /**
      * 取消发布

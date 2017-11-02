@@ -23,10 +23,19 @@ public interface MessbrifingRepository extends JpaRepository<Briefing,String> {
 
 
         /**
-         * 最终简报表（前端用）
+         * 官网首页显示最近两条信息
+         * @return
+         */
+        @Query(value = "select * from briefing where authortime<=NOW() ORDER BY authortime DESC LIMIT 2",nativeQuery = true)
+        List<Briefing> twoList();
+
+
+        /**
+         * 最终简报表（前端单独页面用）
          * @return
          */
         @Query(value = "select * from briefing where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(authortime) order by authortime desc " ,nativeQuery = true)
         List<Briefing> briefingList();
+
 
 }

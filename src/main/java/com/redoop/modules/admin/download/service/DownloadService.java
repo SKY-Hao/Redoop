@@ -2,6 +2,7 @@ package com.redoop.modules.admin.download.service;
 
 import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.download.entity.Download;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.system.entity.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
@@ -96,7 +97,7 @@ public interface DownloadService {
      * @param download
      * @throws SystemException
      */
-    void save(Download download)throws Exception;
+    void save(Download download, Mess mess)throws Exception;
 
     /**
      * 取消发布

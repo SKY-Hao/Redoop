@@ -7,7 +7,6 @@ import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.news.service.NewService;
-import org.apache.tomcat.jni.Directory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -19,11 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 
 /**
  * 说明：新闻Controller层
@@ -116,11 +112,19 @@ public class NewController {
      * @return
      */
     @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
-    public String release(@PathVariable String id,RedirectAttributes redirectAttributes,Mess mess) {
+    public String release(@PathVariable String id,RedirectAttributes redirectAttributes,
+                          Mess mess,HttpServletRequest request) {
+
+        //获取域名
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
+
         News news = newService.findById(id);
         news.setState(1);
         try {
-            newService.save(news,mess);
+            //mess.setTableid(news.getId());
+            //mess.setJumpurl(tempContextUrl+"front/onenew/"+mess.getTableid());
+            newService.save(news,mess,tempContextUrl);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"新闻发布成功\")</script>");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());

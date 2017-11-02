@@ -1,6 +1,7 @@
 package com.redoop.modules.admin.product.service;
 
 import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.product.entity.Product;
 import org.springframework.data.domain.Page;
 
@@ -39,7 +40,7 @@ public interface ProductService {
      * @param product
      * @throws SystemException
      */
-    public void save(Product product) throws SystemException;
+    public void save(Product product, Mess mess) throws Exception;
 
 
     /**

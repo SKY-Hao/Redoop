@@ -9,6 +9,7 @@ import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.component.repository.ComponentRepository;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
+import com.redoop.modules.admin.solution.entity.Solution;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -212,16 +213,27 @@ public class ComponentServiceImpl implements ComponentService{
      * @throws SystemException
      */
     @Override
-    public void save(Component component) throws SystemException {
+    public void save(Component component,Mess mess) throws Exception {
+        component = saveMess(component,mess);
         componentRepository.save(component);
-        Mess mess = new Mess();
+    }
+    /**
+     * 保存到简报表
+     * @param component
+     * @param mess
+     * @return
+     * @throws Exception
+     */
+    private Component saveMess(Component component, Mess mess) throws Exception {
+
         mess.setAuthortime(new Date());
         mess.setTablename(Component.class.getSimpleName());
         mess.setTableid(component.getId());
+        mess.setAuthor(component.getAdditive());
         mess.setOutline(component.getDescription());
         mess.setTitle(component.getName());
-        mess.setAuthor(component.getAdditive());
         messRepository.save(mess);
+        return component;
     }
 
     /**

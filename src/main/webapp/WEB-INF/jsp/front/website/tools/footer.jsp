@@ -28,11 +28,15 @@
         </div>
         <div class="contact fl">
             <h3 id="fotterH31">联系我们</h3>
-            <p>Tel: 400-0389-155 <br />
+            <p>
+                Tel: 400-0389-155 <br />
                 Email: bd@redoop.com<br />
-                北京海淀区中关村软件园二期互联网创新中心506
-<br />
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260549954'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260549954%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></p>
+                北京海淀区中关村软件园二期互联网创新中心506<br />
+                <script type="text/javascript">
+                    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                    document.write(unescape("%3Cspan id='cnzz_stat_icon_1260549954'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260549954%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+                </script>
+            </p>
         </div>
     </div>
    <div class="container" id="fotterUpdateP">

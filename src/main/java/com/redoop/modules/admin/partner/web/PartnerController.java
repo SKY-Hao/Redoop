@@ -3,6 +3,7 @@ package com.redoop.modules.admin.partner.web;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.modules.admin.download.entity.Download;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.modules.admin.partner.service.PartnerService;
@@ -200,6 +201,32 @@ public class PartnerController {
     }
 
     /**
+     * 发布
+     * @return
+     */
+    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
+    public String cancelRelease(@PathVariable String id, RedirectAttributes redirectAttributes,
+                                Mess mess ,HttpServletRequest request) {
+        //获取域名
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
+
+        Partner partner = partnerService.findById(id);
+        partner.setIntention("0");
+        try {
+            mess.setTableid(partner.getId());
+            mess.setJumpurl(tempContextUrl+"front/partners");
+            partnerService.save(partner,mess);
+            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/admin/partner/findAll";
+    }
+
+
+
+    /**
      * 取消发布
      * @param id
      * @param redirectAttributes
@@ -218,22 +245,6 @@ public class PartnerController {
         return "redirect:/admin/partner/findAll";
     }
 
-    /**
-     * 发布
-     * @return
-     */
-    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
-    public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
-        Partner partner = partnerService.findById(id);
-        partner.setIntention("0");
-        try {
-            partnerService.save(partner);
-            redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
-        } catch (SystemException e) {
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
-        }
-        return "redirect:/admin/partner/findAll";
-    }
 
 
 

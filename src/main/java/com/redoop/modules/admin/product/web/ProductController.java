@@ -1,6 +1,7 @@
 package com.redoop.modules.admin.product.web;
 
 import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.modules.admin.product.entity.Product;
 import com.redoop.modules.admin.product.service.ProductService;
@@ -113,9 +114,9 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String save(Model mode, Product product,RedirectAttributes redirectAttributes) {
+    public String save(Model mode, Product product,RedirectAttributes redirectAttributes,Mess mess) {
         try {
-            productService.save(product);
+            productService.save(product,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"产品资料信息保存成功\")</script>");
             return "redirect:/admin/product/findAll";
         } catch (Exception e) {
@@ -149,13 +150,25 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
-    public String cancelRelease(@PathVariable String id,RedirectAttributes redirectAttributes) {
+    public String cancelRelease(@PathVariable String id, RedirectAttributes redirectAttributes,
+                                Mess mess, HttpServletRequest request) {
+        //获取域名
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
+
+        System.out.println("域名1====="+tempContextUrl);
+
         Product product = productService.findById(id);
         product.setProtype("0");
         try {
-            productService.save(product);
+            mess.setTableid(product.getId());
+            mess.setJumpurl(product.getProducturl());
+            productService.save(product,mess);
+
+            System.out.println("jumpURL======"+mess.getJumpurl());
+
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
-        } catch (SystemException e) {
+        } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/product/findAll";

@@ -35,7 +35,15 @@ public class Briefing {
     private String      author;         //作者
     private Date        authortime;     //更新时间
 
-    private String      jumpurl;         //路径
+    private String      jumpurl;        //路径
+
+    public String getJumpurl() {
+        return jumpurl;
+    }
+
+    public void setJumpurl(String jumpurl) {
+        this.jumpurl = jumpurl;
+    }
 
     @Override
     public String toString() {
@@ -54,13 +62,6 @@ public class Briefing {
                 '}';
     }
 
-    public String getJumpurl() {
-        return jumpurl;
-    }
-
-    public void setJumpurl(String jumpurl) {
-        this.jumpurl = jumpurl;
-    }
 
     public String getId() {
         return id;

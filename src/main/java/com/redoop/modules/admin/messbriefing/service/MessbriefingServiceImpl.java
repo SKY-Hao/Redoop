@@ -42,6 +42,15 @@ public class MessbriefingServiceImpl implements MessbriefingService {
 
 
     /**
+     * 官网首页显示最近两条信息
+     * @return
+     */
+    @Override
+    public List<Briefing> twoList() {
+        return messbrifingRepository.twoList();
+    }
+
+    /**
      * 保存
      * @param briefing
      * @param ids
@@ -75,11 +84,12 @@ public class MessbriefingServiceImpl implements MessbriefingService {
         briefing.setTableid(mess.getTableid());
         briefing.setTabletitle(mess.getTitle());
         briefing.setOutline(mess.getOutline());
+        briefing.setJumpurl(mess.getJumpurl());
         return briefing;
     }
 
     /**
-     * 最终简报表（前端用）
+     * 最终简报表（前端单独页面用）
      * @return
      */
     @Override
@@ -98,5 +108,7 @@ public class MessbriefingServiceImpl implements MessbriefingService {
         }
         return  briefingList;
     }
+
+
 
 }

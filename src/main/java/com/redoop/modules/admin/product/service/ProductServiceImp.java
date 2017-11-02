@@ -7,6 +7,7 @@ import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.product.entity.Product;
 import com.redoop.modules.admin.product.repository.ProductRepository;
+import com.redoop.modules.admin.solution.entity.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -56,7 +57,7 @@ public class ProductServiceImp implements ProductService{
      * @throws SystemException
      */
     @Override
-    public void save(Product product) throws SystemException {
+    public void save(Product product,Mess mess) throws Exception {
         if (product.getProducttype() == null || "".equals(product.getProducttype())) {
             throw new SystemException("<script>toastr.error(\"文档类型不能为空\")</script>");
         }
@@ -75,17 +76,36 @@ public class ProductServiceImp implements ProductService{
             product.setProtype("1");//发布状态
         }
 
+        //调用保存到简报方法
+        product=saveMess(product,mess);
+
         productRepository.save(product);
-        //保存到简报
-        Mess mess = new Mess();
+
+
+    }
+
+
+    /**
+     * 保存到简报表
+     * @param product
+     * @param mess
+     * @return
+     * @throws Exception
+     */
+    private Product saveMess(Product product, Mess mess) throws Exception {
+
         mess.setAuthortime(new Date());
         mess.setTablename(Product.class.getSimpleName());
         mess.setTableid(product.getId());
         mess.setAuthor(product.getProductauthor());
         mess.setTitle(product.getProductname());
         mess.setOutline(product.getOutline());
-        messRepository.save(mess);
 
+        System.out.println("tableID2====="+mess.getTableid());
+        System.out.println("保存到简报表的路径3======"+mess.getJumpurl());
+
+        messRepository.save(mess);
+        return product;
     }
 
 

@@ -65,7 +65,7 @@ public class MessbirefingController {
 
 
     /**
-     * 最终简报表（前端用）
+     * 最终简报表（前端单独页面用）
      * @param model
      * @return
      */
@@ -75,7 +75,6 @@ public class MessbirefingController {
         model.addAttribute("list",list);
         return "admin/mess/lastList";
     }
-
 
 
 

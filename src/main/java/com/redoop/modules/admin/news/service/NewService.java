@@ -34,7 +34,7 @@ public interface NewService {
      * @param news
      * @throws Exception
      */
-    void save(News news,Mess mess) throws Exception;
+    void save(News news,Mess mess,String tempContextUrl) throws Exception;
 
     /**
      * 按标题模糊查询新闻 分页

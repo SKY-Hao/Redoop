@@ -9,6 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 import java.util.Map;
@@ -43,6 +45,11 @@ public class MainController {
      */
     @GetMapping(value = "/")
     public String front(Map<String, Object> model,Model m) {
+
+        //官网首页显示最近两条信息
+        List<Briefing> briefingList= messbriefingService.twoList();
+        m.addAttribute("briefingList",briefingList);
+
         return "front/website/index";
     }
 

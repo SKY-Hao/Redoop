@@ -11,6 +11,7 @@ import com.redoop.modules.admin.download.repository.DownloadRepository;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.news.entity.News;
+import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.system.entity.Tag;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
@@ -250,9 +251,37 @@ public class DownloadServiceImpl implements DownloadService{
      * @throws Exception
      */
     @Override
-    public void save(Download download) throws Exception {
+    public void save(Download download,Mess mess) throws Exception {
+
+        download=saveMess(download,mess);
         downloadRepository.save(download);
     }
+
+
+    /**
+     * 保存到简报表
+     * @param download
+     * @param mess
+     * @return
+     * @throws Exception
+     */
+    private Download saveMess(Download download, Mess mess) throws Exception {
+
+        mess.setAuthortime(new Date());
+        mess.setTablename(Download.class.getSimpleName());
+        mess.setTableid(download.getId());
+        mess.setAuthor(download.getDocumentauthor());
+        mess.setTitle("Redoop CRH"+"  "+download.getDocumentname()+"  "+download.getSysversion());
+        mess.setOutline(download.getOutline());
+
+        System.out.println("tableID2====="+mess.getTableid());
+        System.out.println("保存到简报表的路径3======"+mess.getJumpurl());
+        System.out.println("title===="+mess.getTitle());
+
+        messRepository.save(mess);
+        return download;
+    }
+
 
     /**
      * 取消发布

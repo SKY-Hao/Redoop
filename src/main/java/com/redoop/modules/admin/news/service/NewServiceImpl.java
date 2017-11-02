@@ -20,6 +20,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -99,7 +100,7 @@ public class NewServiceImpl  implements NewService{
      * @throws SystemException
      */
     @Override
-    public void save(News news,Mess mess) throws Exception {
+    public void save(News news,Mess mess ,String tempContextUrl) throws Exception {
         news =saveMess(news,mess);
         newRepository.save(news);
     }
@@ -111,10 +112,10 @@ public class NewServiceImpl  implements NewService{
      * @return
      * @throws IOException
      */
-    private News saveMess(News news,Mess mess) throws IOException {
+    private News saveMess(News news, Mess mess) throws IOException {
+
         mess.setAuthortime(new Date());
         mess.setTablename(News.class.getSimpleName());
-        mess.setTableid(news.getId());
         mess.setAuthor(news.getPublisher());
         mess.setTitle(news.getTitle());
         mess.setOutline(news.getOutline());

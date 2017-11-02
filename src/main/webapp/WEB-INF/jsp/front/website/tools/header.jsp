@@ -176,7 +176,7 @@
                 <li><a href="<%=basePath%>/front/news" class="${news}">新闻</a></li>
                 <li><a href="<%=basePath%>/front/download" class="${download}">产品资料</a></li>
                 <li><a href="<%=basePath%>/front/partners" class="${partners}">合作伙伴</a></li>
-                <li><a href="<%=basePath%>/front/appstore" class="${appstore}">应用商城</a></li>
+                <li><a href="<%=basePath%>/front/appstore" class="${appstore}">组件</a></li>
                 <li>
                         <div id="down">
                             <a style="text-decoration: none;">下载</a>
@@ -186,7 +186,7 @@
                             </div>--%>
                             <div id="aa" class="nav-nav" style="display: none;">
                                 <a class="CRH" href="<%=basePath%>/front/redoopCRH" style="border-bottom:1px dashed #4D4D4D">Redoop CRH</a>
-                                <a class="AI"  href="<%=basePath%>/front/redoopAI" style="border-bottom:0px dashed #4D4D4D">Redoop AI</a>
+                                <%--<a class="AI"  href="<%=basePath%>/front/redoopAI" style="border-bottom:0px dashed #4D4D4D">Redoop AI</a>--%>
                             </div>
                         </div>
                 </li>

@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <table class="table table-bordered table-striped" >
+                <table class="table table-bordered table-striped" style="table-layout: fixed;">
                     <thead>
                     <tr>
                         <th>
@@ -53,10 +53,10 @@
                                 <td>
                                     <input type="checkbox" value="${mess.id}" name="ids">
                                 </td>
-                                <td>${mess.tableid}</td>
+                                <td  style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.tableid}</td>
                                 <td>${mess.tablename}</td>
                                 <td>${mess.title}</td>
-                                <td>${mess.outline}</td>
+                                <td  style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>
                                 <td>${mess.author}</td>
                                 <td>${mess.authortime}</td>
                             </tr>

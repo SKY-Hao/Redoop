@@ -3,6 +3,7 @@ package com.redoop.modules.admin.download.web;
 import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.system.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,11 +160,20 @@ public class DownloadController {
      * @return
      */
     @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
-    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+    public String release(@PathVariable String id, RedirectAttributes redirectAttributes,
+                          Mess mess,HttpServletRequest request) {
+        //获取域名
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
+        System.out.println("域名1====="+tempContextUrl);
+
+
         Download download = downloadService.findById(id);
         download.setDocumenttype("0");
         try {
-            downloadService.save(download);
+            mess.setTableid(download.getId());
+            mess.setJumpurl(tempContextUrl+"front/redoopCRH");
+            downloadService.save(download,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());

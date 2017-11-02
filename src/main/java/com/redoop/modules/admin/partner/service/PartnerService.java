@@ -1,5 +1,6 @@
 package com.redoop.modules.admin.partner.service;
 
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.common.exception.SystemException;
@@ -59,7 +60,8 @@ public interface PartnerService {
      * @throws SystemException
      */
     public void save(Partner partner, MultipartFile attach, String logoPath) throws SystemException;
-           void save(Partner partner) throws SystemException;
+
+
     /**
      * 合作伙伴前台申请添加
      * @param partner
@@ -99,6 +101,14 @@ public interface PartnerService {
     /*public List<Partner> findByPartnertype(String partnertype) throws Exception;*/
 
     Page<Partner> findByPartnertype(Integer page, String partnertype)throws Exception;
+
+
+    /**
+     * 发布
+     * @param partner
+     * @throws Exception
+     */
+    void save(Partner partner, Mess mess) throws Exception;
 
     /**
      * 取消发布

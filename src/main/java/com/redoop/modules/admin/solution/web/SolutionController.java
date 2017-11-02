@@ -149,13 +149,25 @@ public class SolutionController {
      */
     @RequestMapping(value = "/affirm/{id}", method = RequestMethod.GET)
     public String affirm(@PathVariable String id, Model mode,
-                         RedirectAttributes redirectAttributes, Mess mess) {
+                         RedirectAttributes redirectAttributes, Mess mess,
+                         HttpServletRequest request) {
+
+        //获取域名
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
+
+        System.out.println("tempContextUrl====="+tempContextUrl);
 
         Solution solution = solutionService.findById(id);
         solution.setState(0);
         try {
+            mess.setTableid(solution.getId());
+            mess.setJumpurl(tempContextUrl+"front/solutiondetail/"+mess.getTableid());
+            System.out.println("mess.getTableid()======"+mess.getTableid());
+
             solutionService.save(solution,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
+            System.out.println("jumpUrl====="+mess.getJumpurl());
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }

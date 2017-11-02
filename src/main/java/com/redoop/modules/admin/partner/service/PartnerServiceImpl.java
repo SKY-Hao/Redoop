@@ -9,6 +9,7 @@ import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.partner.entity.Partner;
 import com.redoop.modules.admin.partner.repository.PartnerRepository;
+import com.redoop.modules.admin.solution.entity.Solution;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -284,17 +285,30 @@ public class PartnerServiceImpl  implements PartnerService {
      * @throws SystemException
      */
     @Override
-    public void save(Partner partner) throws SystemException {
+    public void save(Partner partner ,Mess mess) throws Exception {
+        partner = saveMess(partner,mess);
         partnerRepository.save(partner);
-        //保存简报
-        Mess mess = new Mess();
+    }
+
+
+    /**
+     * 保存到简报表
+     * @param partner
+     * @param mess
+     * @return
+     * @throws IOException
+     */
+    private Partner saveMess(Partner partner, Mess mess) throws Exception {
+
         mess.setAuthortime(new Date());
         mess.setTablename(Partner.class.getSimpleName());
         mess.setTableid(partner.getId());
         mess.setTitle(partner.getCompanyname());
         mess.setAuthor(partner.getAuditor());
         mess.setOutline(partner.getOutline());
+
         messRepository.save(mess);
+        return partner;
     }
 
     /**

@@ -4,6 +4,7 @@ import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
 import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.component.service.ComponentService;
+import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.partner.entity.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -132,13 +133,21 @@ public class ComponentController {
      * @return
      */
     @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
-    public String release(@PathVariable String id,RedirectAttributes redirectAttributes) {
+    public String release(@PathVariable String id, RedirectAttributes redirectAttributes,
+                          Mess mess, HttpServletRequest request) {
+
+        //获取域名
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
+
         Component component = componentService.findById(id);
         component.setShowstate(1);
         try {
-            componentService.save(component);
+            mess.setTableid(component.getId());
+            mess.setJumpurl(tempContextUrl+"/front/appstore");
+            componentService.save(component,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
-        } catch (SystemException e) {
+        } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/component/findAll";

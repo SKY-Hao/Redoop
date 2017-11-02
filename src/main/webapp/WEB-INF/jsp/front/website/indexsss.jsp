@@ -30,12 +30,14 @@
 <section id="news">
 	<div class="container">
 		<%--<a href="http://www.redoop.com/front/news" class="fr moreLink">更多</a>--%>
-		<a href="<%=basePath%>/front/message" class="fr moreLink">红象云腾周报</a>
+		<a href="<%=basePath%>/front/week" class="fr moreLink">红象云腾周报</a>
 		<i></i>
 		<p>
-			<a href="http://www.redoop.com/front/onenew/30"  target="_blank">红象云腾与新云东方技术交流会圆满结束</a>
-			<a href="http://www.redoop.com/front/onenew/29" target="_blank">《中国经济导报》专访红象云腾童小军先生</a>
-
+			<c:forEach items="${briefingList}" var="briefing">
+				<a href="<%=basePath%>/front/week"  target="_blank">红象云腾与新云东方技术交流会圆满结束</a>
+			</c:forEach>
+			<%--<a href="http://www.redoop.com/front/onenew/30"  target="_blank">红象云腾与新云东方技术交流会圆满结束</a>
+			<a href="http://www.redoop.com/front/onenew/29" target="_blank">《中国经济导报》专访红象云腾童小军先生</a>--%>
 
 		</p>
 	</div>

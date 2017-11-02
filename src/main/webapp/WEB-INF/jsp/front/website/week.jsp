@@ -1,5 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
@@ -7,51 +7,55 @@
 <!doctype html>
 <html>
 <head>
+	<jsp:include page="tools/head.jsp"></jsp:include>
+	<link rel="stylesheet" href="<%=basePath%>/front/website/css/week.css" type="text/css"/>
 
-	<link rel="stylesheet" href="<%=basePath%>/front/website/css/style.css" type="text/css" media="screen" />
-
-	<script type="text/javascript" src="<%=basePath%>/front/website/js/jquery-1.11.3.min.js"></script>
 </head>
+
 <body>
 
-			<table>
-				<c:forEach items="${list}" var="mess">
-						<tr>
-							<td>ID:</td>
-							<td>${mess.tableid}</td>
-						</tr>
-						<tr>
-							<td>类目：</td>
-							<td>${mess.tablename}</td>
+<header class="header">
+	<div class="container clearfix">
+		<div class="mzjy">截止日期:</div>
+		<div class="header-l fl clearfix">
+			<a href="http://www.redoop.com" class="logo fl" title="红象云腾"></a>
+			<i title="企业大数据旗舰厂商"></i>
+		</div>
+	</div>
+</header>
+<div class="wrap">
+	<div class="content1">
+		<c:if test="${empty list}">
+			<h3>抱歉,本周还有没更新最新业务,</h3>
+			<h3>请您耐心等待......</h3>
+		</c:if>
+		<c:if test="${not empty list}">
+			<c:forEach items="${list}" var="list">
+				<dl>
+					<dt>
+						<span>${list.date}</span>
+						<a href="${list.jumpurl}">${list.tabletitle}</a>
+					</dt>
+					<dd>
+						${list.outline}...
+					</dd>
+				</dl>
+			</c:forEach>
+		</c:if>
 
-						</tr>
-						<tr>
-							<td>标题：</td>
-							<td>
-								<a href="${mess.jumpurl}">
-										${mess.tabletitle}
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>概要：</td>
-							<td>${mess.outline}</td>
-						</tr>
-						<tr>
-							<td>发布者：</td>
-							<td>${mess.author}</td>
-						</tr>
-						<tr>
-							<td>时间:</td>
-							<td>${mess.date}</td>
-						</tr>
-						<tr>
-							<td>路径:</td>
-							<td>${mess.jumpurl}</td>
-						</tr>
-				</c:forEach>
-			</table>
+	</div>
+</div>
 
 
+<jsp:include page="tools/footer.jsp"></jsp:include>
 </body>
+<script>
+    $(function(){
+        var mydate = new Date();
+        var t=mydate.toLocaleDateString();
+		var s="截止日期:"
+        $(".mzjy").text(s+t);
+
+    });
+</script>
 </html>

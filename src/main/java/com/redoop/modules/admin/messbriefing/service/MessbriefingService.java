@@ -19,6 +19,11 @@ import java.util.List;
  */
 public interface MessbriefingService {
 
+    /**
+     * 官网首页显示最近两条信息
+     * @return
+     */
+    List<Briefing> twoList();
 
     /**
      * 生成最终简报保存
@@ -28,9 +33,10 @@ public interface MessbriefingService {
     void lastAdd(Briefing briefing,String[] ids) throws IOException;
 
     /**
-     * 最终简报表（前端用）
+     * 最终简报表（前端单独页面用）
      * @return
      */
     List<Briefing> briefingList();
+
 
 }
