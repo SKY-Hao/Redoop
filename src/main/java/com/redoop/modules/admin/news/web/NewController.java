@@ -122,8 +122,8 @@ public class NewController {
         News news = newService.findById(id);
         news.setState(1);
         try {
-            //mess.setTableid(news.getId());
-            //mess.setJumpurl(tempContextUrl+"front/onenew/"+mess.getTableid());
+            mess.setTableid(news.getId());
+            mess.setJumpurl(tempContextUrl+"front/onenew/"+mess.getTableid());
             newService.save(news,mess,tempContextUrl);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"新闻发布成功\")</script>");
         } catch (Exception e) {

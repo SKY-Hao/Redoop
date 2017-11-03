@@ -42,7 +42,7 @@ public class Component implements Serializable {
     private String picname;         //图片名称
     private String picurl;          //图片地址
     private String downurl;         //组件（案例）下载地址
-    private int showstate;          //显示状态
+    private int showstate;          //显示状态 0：不发布 1：发布
     private String version;         //产品版本
 
     public String getId() {

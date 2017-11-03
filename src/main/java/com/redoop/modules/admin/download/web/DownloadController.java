@@ -165,8 +165,6 @@ public class DownloadController {
         //获取域名
         StringBuffer url = request.getRequestURL();
         String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
-        System.out.println("域名1====="+tempContextUrl);
-
 
         Download download = downloadService.findById(id);
         download.setDocumenttype("0");

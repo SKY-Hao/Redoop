@@ -156,16 +156,12 @@ public class ProductController {
         StringBuffer url = request.getRequestURL();
         String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
 
-        System.out.println("域名1====="+tempContextUrl);
-
         Product product = productService.findById(id);
         product.setProtype("0");
         try {
             mess.setTableid(product.getId());
             mess.setJumpurl(product.getProducturl());
-            productService.save(product,mess);
-
-            System.out.println("jumpURL======"+mess.getJumpurl());
+            productService.saveFB(product,mess);
 
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
         } catch (Exception e) {

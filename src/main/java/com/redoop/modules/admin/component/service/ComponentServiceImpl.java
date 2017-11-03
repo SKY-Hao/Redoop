@@ -100,7 +100,7 @@ public class ComponentServiceImpl implements ComponentService{
             component.setDownloads(data_c.getDownloads());
             component.setPicname(data_c.getPicname());
             component.setPicurl(data_c.getPicurl());
-
+            component.setShowstate(0);
             if(attach.isEmpty()){
                 component.setPicurl(data_c.getPicurl());
             }else{
@@ -124,7 +124,6 @@ public class ComponentServiceImpl implements ComponentService{
             }
             User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             component.setAdditive(user.getUsername());
-            //component.setAdddate(new Date());
             component.setEditdate(new Date());
         }
 
@@ -174,7 +173,6 @@ public class ComponentServiceImpl implements ComponentService{
     @Override
     public Page<Component> selectByName(Integer page,String name) {
 
-        System.out.println(name+"---------------");
         return componentRepository.findByNameLike(name,BasePageBuilder.create(page,configProperties.getPageSize()));
     }
 

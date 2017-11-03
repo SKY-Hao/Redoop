@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <title>${form.id==null?"方案&案例添加":"方案&案例修改"}</title>
+    <title>${form.id==null?"CRH&AI下载添加":"CRH&AI下载修改"}</title>
     <jsp:include page="../../tools/style/common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
     <link href="<%=basePath%>/backstage/kindeditor/themes/default/default.css">
@@ -129,6 +129,14 @@
                         <span style="color: #d43f3a;font-size: 16px;">点击查看按钮查看地址</span>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">下载概要(大概内容:简单,明了)</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control" name="outline">${form.outline}</textarea>
+                        </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
+                        <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-2">

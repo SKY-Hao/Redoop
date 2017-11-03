@@ -71,9 +71,14 @@ public interface ComponentService {
      */
     void save(Component component, Mess mess) throws Exception;
 
+
+
+
     /**
      * 取消发布
      * @param id
      */
     void updatedescription(String id) throws SystemException;
+
+
 }

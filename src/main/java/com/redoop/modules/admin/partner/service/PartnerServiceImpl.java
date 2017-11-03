@@ -45,7 +45,7 @@ public class PartnerServiceImpl  implements PartnerService {
     @Autowired
     private MessRepository messRepository;
 
-    private Sort sort = new Sort(Sort.Direction.DESC,"auditortime");
+    private Sort sort = new Sort(Sort.Direction.DESC,"applicationtime");
 
 
     /**
@@ -128,7 +128,7 @@ public class PartnerServiceImpl  implements PartnerService {
             partner.setAuditortime(data_c.getAuditortime());//审核时间
             partner.setCompanypicname(data_c.getCompanypicname());//logo名称
             partner.setCompanypic(data_c.getCompanypic());//logo
-
+            partner.setIntention("1");
             if(attach.isEmpty()){
                 partner.setCompanypic(data_c.getCompanypic());
             }else{
@@ -155,7 +155,7 @@ public class PartnerServiceImpl  implements PartnerService {
             partner.setAuditor(user.getUsername());
             partner.setApplicationtime(new Date());//申请时间
             partner.setAuditortime(new Date());//审核时间
-
+            partner.setIntention("1");
         }
 
         partnerRepository.save(partner);
@@ -187,7 +187,7 @@ public class PartnerServiceImpl  implements PartnerService {
         if(partner.getId() == null){
             partner.setApplicationtime(new Date());//申请时间
             partner.setAuditortime(new Date());//审核时间
-
+            partner.setIntention("1");
         }
         partnerRepository.save(partner);
     }

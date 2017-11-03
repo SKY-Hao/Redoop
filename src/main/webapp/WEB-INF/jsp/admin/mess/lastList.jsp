@@ -26,7 +26,6 @@
           <table class="table table-bordered table-striped" style="table-layout: fixed;">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>类目</th>
                         <th>标题</th>
                         <th>更新概要</th>
@@ -37,7 +36,6 @@
                 <tbody>
                     <c:forEach items="${list}" var="mess">
                         <tr>
-                            <td  style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.tableid}</td>
                             <td>${mess.tablename}</td>
                             <td>${mess.tabletitle}</td>
                             <td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>

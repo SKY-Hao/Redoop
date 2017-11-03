@@ -88,30 +88,27 @@ public class DownloadServiceImpl implements DownloadService{
             throw new SystemException("<script>toastr.error(\"文档(下载)地址不能为空\")</script>");
         }
 
-        if(download.getId() != null){
-            Download date_download = downloadRepository.findOne(download.getId());
-            download.setDocumentauthor(date_download.getDocumentauthor());
-            download.setDocumenttype(date_download.getDocumenttype());
+            if(download.getId() != null){
+                Download date_download = downloadRepository.findOne(download.getId());
+                download.setDocumentauthor(date_download.getDocumentauthor());
+                download.setDocumenttype("1");
+                download.setSystempic(date_download.getSystempic());//系统图片
+                download.setSystempicname(date_download.getSystempicname());
+                download.setChippic(date_download.getChippic());    //芯片图片
+                download.setChippicname(date_download.getChippicname());
 
-            download.setSystempic(date_download.getSystempic());//系统图片
-            download.setSystempicname(date_download.getSystempicname());
-            download.setChippic(date_download.getChippic());    //芯片图片
-            download.setChippicname(date_download.getChippicname());
-
-            if(attachs.length > 0 && !attachs[0].getOriginalFilename().equals("")){
-                try {
-
-                    download = uploadPic(download,attachs,logoPath);
-                    DeleteUtils.deletePic(logoPath + date_download.getSystempic());
-                    DeleteUtils.deletePic(logoPath + date_download.getChippic());
-
-                } catch (IOException e) {
-                    throw new SystemException("<script>toastr.error(\"图片Logo上传失败\")</script>");
+                if(attachs.length > 0 && !attachs[0].getOriginalFilename().equals("")){
+                    try {
+                        download = uploadPic(download,attachs,logoPath);
+                        DeleteUtils.deletePic(logoPath + date_download.getSystempic());
+                        DeleteUtils.deletePic(logoPath + date_download.getChippic());
+                    } catch (Exception e) {
+                        throw new SystemException("<script>toastr.error(\"图片Logo上传失败,请重新上传系统和芯片图片\")</script>");
+                    }
+                }else{
+                    download.setSystempic(download.getSystempic());
+                    download.setChippic(download.getChippic());
                 }
-            }else{
-                download.setSystempic(download.getSystempic());
-                download.setChippic(download.getChippic());
-            }
         }else{
 
             if(attachs.length<=0){
@@ -217,10 +214,9 @@ public class DownloadServiceImpl implements DownloadService{
 
     /**
      * 前台AI列表
-     * @param platformtype
      * @return
      */
-    public List<Download> byAIDocumenttype(String platformtype) {
+   /* public List<Download> byAIDocumenttype(String platformtype) {
 
         List<Download> downloadList =  downloadRepository.byAIDocumenttype(platformtype);
         for(Download download: downloadList){
@@ -234,7 +230,7 @@ public class DownloadServiceImpl implements DownloadService{
             download.setProducttime(time);
         }
         return downloadList;
-    }
+    }*/
 
 
     @Override
@@ -273,10 +269,6 @@ public class DownloadServiceImpl implements DownloadService{
         mess.setAuthor(download.getDocumentauthor());
         mess.setTitle("Redoop CRH"+"  "+download.getDocumentname()+"  "+download.getSysversion());
         mess.setOutline(download.getOutline());
-
-        System.out.println("tableID2====="+mess.getTableid());
-        System.out.println("保存到简报表的路径3======"+mess.getJumpurl());
-        System.out.println("title===="+mess.getTitle());
 
         messRepository.save(mess);
         return download;

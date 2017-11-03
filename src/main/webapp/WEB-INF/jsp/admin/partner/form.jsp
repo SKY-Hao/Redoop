@@ -129,15 +129,6 @@
                         <span style="color: #d43f3a;font-size: 16px;">(官网Redoop测试版本)</span>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">合作伙伴意向</label>
-                        <div class="col-sm-4">
-                            <label><input name="intention" type="radio" value="0" ${form.intention=='0' || form.intention==null?'checked':''} />展示</label>
-                            <label><input name="intention" type="radio" value="1" ${form.intention=='1'?'checked':''} />不展示</label>
-                        </div>
-                        <%--<span style="color: #d43f3a;font-size: 16px;">*</span>--%>
-                    </div>
-
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">联系人名字</label>
@@ -230,6 +221,7 @@
                         <div class="col-sm-4">
                             <textarea class="form-control" name="outline">${form.outline}</textarea>
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
                     </div>
 

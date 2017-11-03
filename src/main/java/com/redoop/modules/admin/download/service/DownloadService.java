@@ -80,7 +80,7 @@ public interface DownloadService {
      * @param producttype
      * @return
      */
-    List<Download> byAIDocumenttype(String producttype);
+   // List<Download> byAIDocumenttype(String producttype);
 
 
 

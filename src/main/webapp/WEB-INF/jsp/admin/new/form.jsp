@@ -66,6 +66,7 @@
                         <div class="col-sm-4">
                             <textarea class="form-control" name="outline">${form.outline}</textarea>
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
                     </div>
 

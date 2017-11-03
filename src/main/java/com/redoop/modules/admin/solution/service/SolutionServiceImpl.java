@@ -84,7 +84,7 @@ public class SolutionServiceImpl implements SolutionService {
             solution.setSolutionpicnamne(data_c.getSolutionpicnamne());//方案及案例LOGO
             solution.setSolutionpic(data_c.getSolutionpic());//方案及案例名称
             solution.setAuthortime(new Date());//发布时间
-            solution.setState(data_c.getState());//发布状态 0:发布 1:不发布
+            solution.setState(1);//发布状态 0:发布 1:不发布
 
             if(attach.isEmpty()){
                 solution.setSolutionpic(data_c.getSolutionpic());

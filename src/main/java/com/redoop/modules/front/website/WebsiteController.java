@@ -539,7 +539,7 @@ public class WebsiteController {
      * @param model
      * @return
      */
-    @GetMapping(value = "/redoopAI")
+  /*  @GetMapping(value = "/redoopAI")
     public String redoopAI(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
         List<Download> list= downloadService.byAIDocumenttype(platformtype);
         model.addAttribute("list",list);
@@ -547,20 +547,8 @@ public class WebsiteController {
         model.addAttribute("platformtype",platformtype);
         setStyle(model,"redoopAI");
         return "front/website/redoopAI";
-    }
-   /* @GetMapping(value = "/redoopAI")
-    public String redoopAI(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model,
-                            @RequestParam(value ="platformtype",defaultValue = "5") String platformtype) {
-
-        Page<Download> pageList= downloadService.byAIDocumenttype(platformtype,page);
-        model.addAttribute("pageList", pageList);
-
-        model.addAttribute("platformtype",platformtype);
-        model.addAttribute("url","/front/redoopAI?");
-        setStyle(model,"redoopAI");
-
-        return "front/website/redoopAI";
     }*/
+
 
     /**
      * 首页轮播跳转航天

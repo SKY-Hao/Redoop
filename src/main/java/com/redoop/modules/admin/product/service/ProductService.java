@@ -68,8 +68,16 @@ public interface ProductService {
     public int addProductCount(String id) throws SystemException;
 
     /**
+     * 发布
+     * @param product
+     * @param mess
+     */
+    void saveFB(Product product, Mess mess) throws Exception;
+    /**
      * 取消发布
      * @param id
      */
     void updateProtype(String id)throws SystemException;
+
+
 }

@@ -64,6 +64,7 @@
                         <div class="col-sm-4">
                             <input type="text" style="text-overflow:ellipsis;" class="form-control" name="intro" value="${form.intro}">
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">*成功案例右侧简介（成功案例必填）</span>
                     </div>
 

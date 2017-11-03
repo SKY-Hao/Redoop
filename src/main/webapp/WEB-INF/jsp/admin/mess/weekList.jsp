@@ -35,11 +35,9 @@
                 <table class="table table-bordered table-striped" style="table-layout: fixed;">
                     <thead>
                     <tr>
-                        <th>
+                        <th style="width: 100px">
                             <input type="checkbox" id="qx">全选/反选
                         </th>
-
-                        <th>tableID</th>
                         <th>类目</th>
                         <th>标题</th>
                         <th>更新概要</th>
@@ -53,7 +51,6 @@
                                 <td>
                                     <input type="checkbox" value="${mess.id}" name="ids">
                                 </td>
-                                <td  style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.tableid}</td>
                                 <td>${mess.tablename}</td>
                                 <td>${mess.title}</td>
                                 <td  style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>

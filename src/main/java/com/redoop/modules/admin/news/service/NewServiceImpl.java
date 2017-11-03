@@ -61,8 +61,7 @@ public class NewServiceImpl  implements NewService{
         if(news.getId() != null){
             News date_news = newRepository.findOne(news.getId());
             news.setPublisher(date_news.getPublisher());
-            //news.setDate(date_news.getDate());
-            news.setState(date_news.getState());
+            news.setState(0);
 
             if(attach.isEmpty()){
                 news.setPicpath(date_news.getPicpath());

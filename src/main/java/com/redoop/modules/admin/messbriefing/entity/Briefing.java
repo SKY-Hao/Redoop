@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * 说明：简报实体类(前端用)
+ * 说明：最终周报实体类(前端单独页面用)
  * 包名：cn.itweet.modules.admin.briefing
  * 项目名：itweet-boot
  * 创建人：黄天浩

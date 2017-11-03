@@ -68,22 +68,30 @@ public class ProductServiceImp implements ProductService{
         if(product.getId() != null){
             Product data_c = productRepository.findOne(product.getId());//id
             product.setProductauthor(data_c.getProductauthor());//添加作者
-            product.setProtype(data_c.getProtype());//发布状态
+            product.setProtype("1");//发布状态0:发布 1:不发布
 
         }else{
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             product.setProductauthor(user.getUsername());
-            product.setProtype("1");//发布状态
+            product.setProtype("1");//发布状态0:发布 1:不发布
         }
-
-        //调用保存到简报方法
-        product=saveMess(product,mess);
 
         productRepository.save(product);
 
-
     }
 
+    /**
+     * 发布
+     * @param product
+     * @param mess
+     * @throws Exception
+     */
+    @Override
+    public void saveFB(Product product, Mess mess) throws Exception {
+        //调用保存到简报方法
+        product=saveMess(product,mess);
+        productRepository.save(product);
+    }
 
     /**
      * 保存到简报表
@@ -101,8 +109,6 @@ public class ProductServiceImp implements ProductService{
         mess.setTitle(product.getProductname());
         mess.setOutline(product.getOutline());
 
-        System.out.println("tableID2====="+mess.getTableid());
-        System.out.println("保存到简报表的路径3======"+mess.getJumpurl());
 
         messRepository.save(mess);
         return product;
