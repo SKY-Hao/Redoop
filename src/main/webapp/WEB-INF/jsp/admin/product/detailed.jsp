@@ -82,6 +82,10 @@
                             </a>
                         </th>
                     </tr>
+                    <tr>
+                        <th>htmlContent</th>
+                        <th> ${form.htmlContent}</th>
+                    </tr>
 
                 </thead>
             </table>

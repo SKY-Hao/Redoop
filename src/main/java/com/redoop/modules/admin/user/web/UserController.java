@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 说明：用户管理Controller
- * 包名：cn.itweet.modules.admin.user.web
+ * 包名：cn.itweet.modules.admin.Userr.web
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/3/13.
@@ -38,7 +38,7 @@ public class UserController {
     public String main(Model model) {
         List<SysUser> userList = userService.list();
         model.addAttribute("userList",userList);
-        return "admin/user/u_list";
+        return "admin/Userr/u_list";
     }
 
     /**
@@ -49,7 +49,7 @@ public class UserController {
     public String add(Model model){
         List<SysRole> roleList = roleService.list();
         model.addAttribute("roleList",roleList);
-        return "admin/user/u_add";
+        return "admin/Userr/u_add";
     }
 
     /**
@@ -66,7 +66,7 @@ public class UserController {
         } catch (SystemException e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/user/list";
+        return "redirect:/admin/Userr/list";
     }
 
     /**
@@ -88,7 +88,7 @@ public class UserController {
 
         System.out.println("取出roleIds:" + roleIds.toString());
 
-        return "/admin/user/u_edit";
+        return "/admin/Userr/u_edit";
     }
 
     /**
@@ -106,7 +106,7 @@ public class UserController {
         } catch (SystemException e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/user/list";
+        return "redirect:/admin/Userr/list";
     }
 
     /**
@@ -123,7 +123,7 @@ public class UserController {
             e.printStackTrace();
         }
 
-        return "redirect:/admin/user/list";
+        return "redirect:/admin/Userr/list";
     }
 
     /**
@@ -141,7 +141,7 @@ public class UserController {
         } catch (SystemException e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/user/list";
+        return "redirect:/admin/Userr/list";
     }
 
 }

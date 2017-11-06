@@ -14,15 +14,6 @@
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
     <link href="<%=basePath%>/backstage/kindeditor/themes/default/default.css">
     <script type="text/javascript" src="<%=basePath%>/backstage/My97DatePicker/WdatePicker.js"></script>
-    <%--<script src="<%=basePath%>/backstage/editor/jquery.js"></script>
-    <script src="<%=basePath%>/backstage/editor/kindeditor.js"></script>
-
-    <script type="text/javascript">
-        KE.show({
-            id: 'content7',
-            cssPath: '../index.css'
-        });
-    </script>--%>
 </head>
 
 <body class="gray-bg">
@@ -73,9 +64,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">新闻内容</label>
                         <div class="col-sm-4">
-                    <textarea id="editor_id" name="content" class="picFileUpload" style="width:800px;height:350px;visibility:hidden;">
+                        <textarea id="editor_id" name="content" class="picFileUpload" style="width:800px;height:350px;visibility:hidden;">
                             ${form.content}
-                    </textarea>
+                        </textarea>
                         </div>
                     </div>
 

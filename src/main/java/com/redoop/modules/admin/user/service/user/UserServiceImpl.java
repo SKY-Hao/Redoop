@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
             if (rIds != null)
                 addRoleUserInfo(rIds, su);
         }
-        LOGGER.debug("insert into user by username = {}",user.getUsername());
+        LOGGER.debug("insert into Userr by username = {}",user.getUsername());
     }
 
     private SysUser addUserInfo(SysUser user) throws SystemException {
@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
         if (u1 != null && rIds != null) {
             updateUserAndUserRoles(user, rIds, u1);
         }
-        LOGGER.debug("update user by username = {}", u1.getUsername());
+        LOGGER.debug("update Userr by username = {}", u1.getUsername());
     }
 
     private void updateUserAndUserRoles(SysUser user, List<Integer> rIds, SysUser u1) {
@@ -156,7 +156,7 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new SystemException("你要删除的用户是系统默认超级管理员，不能删除！");
         }
-        LOGGER.debug("delete user by username = {}",u.getUsername());
+        LOGGER.debug("delete Userr by username = {}",u.getUsername());
     }
 
     @Override

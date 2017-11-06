@@ -200,6 +200,26 @@
                         </li>
                     </ul>
                 </li>
+
+                <!--用户-->
+                <li class="parent">
+                    <a href="#sub-item-9" data-toggle="collapse">
+                        <span class="glyphicon glyphicon-list-alt"></span>user
+                    </a>
+                    <ul class="children collapse" id="sub-item-9">
+                        <li class="item">
+                            <a href="<%=basePath%>admin/huang/findAll" target="main">
+                                <span class="glyphicon glyphicon-th-list"></span>列表
+                            </a>
+                        </li>
+                        <li class="item">
+                            <a href="<%=basePath%>admin/huang/form/null" target="main">
+                                <span class="glyphicon glyphicon-plus-sign"></span>添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </li>
 

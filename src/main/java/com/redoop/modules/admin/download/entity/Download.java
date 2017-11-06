@@ -52,6 +52,13 @@ public class Download implements Serializable {
 
     private String      outline;    //简报更新(和简报更新概要同步)
 
+    @Column(name = "content",columnDefinition="TEXT")
+    private String content;         //内容
+
+    @Column(name = "htmlContent",columnDefinition="TEXT")
+    private String htmlContent;    //html内容
+
+
     @Override
     public String toString() {
         return "Download{" +
@@ -74,8 +81,26 @@ public class Download implements Serializable {
                 ", chippic='" + chippic + '\'' +
                 ", chippicname='" + chippicname + '\'' +
                 ", outline='" + outline + '\'' +
+                ", content='" + content + '\'' +
+                ", htmlContent='" + htmlContent + '\'' +
                 ", tag=" + tag +
                 '}';
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
     }
 
     public String getOutline() {

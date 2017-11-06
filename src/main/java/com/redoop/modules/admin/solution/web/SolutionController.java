@@ -3,11 +3,8 @@ package com.redoop.modules.admin.solution.web;
 
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.DeleteUtils;
-import com.redoop.modules.admin.customer.entity.Customer;
-import com.redoop.modules.admin.customer.service.CustomerService;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.service.MessService;
-import com.redoop.modules.admin.news.entity.PicUploadResult;
 import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.solution.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;

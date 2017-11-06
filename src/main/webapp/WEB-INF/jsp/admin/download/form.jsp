@@ -12,8 +12,11 @@
     <title>${form.id==null?"CRH&AI下载添加":"CRH&AI下载修改"}</title>
     <jsp:include page="../../tools/style/common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
-    <link href="<%=basePath%>/backstage/kindeditor/themes/default/default.css">
+
     <script type="text/javascript" src="<%=basePath%>/backstage/My97DatePicker/WdatePicker.js"></script>
+    <link href="<%=basePath%>/backstage/makedown/css/editormd.min.css" rel="stylesheet">
+    <script src="<%=basePath%>/backstage/makedown/js/editormd.min.js"></script>
+
 
 </head>
 
@@ -30,8 +33,13 @@
                 </div>
                 <h4><span style="color: #d43f3a;font-size: 16px;">*</span>为必填项</h4>
                 <form action="<%=basePath%>/admin/download/add" class="form-horizontal" method="POST" enctype="multipart/form-data">
+
                     <c:if test="${form.id != null}">
                         <input type="hidden" name="id" value="${form.id}"/>
+                    </c:if>
+
+                    <c:if test="${form.id != null}">
+                        <input type="hidden" name="uploadFile" value="111111"/>
                     </c:if>
 
                     <div class="form-group">
@@ -43,17 +51,6 @@
                             </select>
                         </div>
                     </div>
-                    <%--<div class="form-group">
-                        <label class="col-sm-2 control-label">产品类型</label>
-                        <div class="col-sm-4">
-                            <select class="form-control m-b" name="producttype">
-                                <c:forEach items="${tagList}" var="list">
-                                    <option value="${list.type}" ${form.tag.type==list.type?'selected':''} >${list.type}</option>
-                                </c:forEach>
-
-                            </select>
-                        </div>
-                    </div>--%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">平台类型</label>
@@ -121,15 +118,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">查看地址</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="see" value="${form.see}">
-                        </div>
-                        <span style="color: #d43f3a;font-size: 16px;">*</span>
-                        <span style="color: #d43f3a;font-size: 16px;">点击查看按钮查看地址</span>
-                    </div>
-
-                    <div class="form-group">
                         <label class="col-sm-2 control-label">下载概要(大概内容:简单,明了)</label>
                         <div class="col-sm-4">
                             <textarea class="form-control" name="outline">${form.outline}</textarea>
@@ -137,6 +125,16 @@
                         <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">详情文档</label>
+                        <div class="col-sm-4" id="editormd-content">
+                            <%--<input type="text" class="form-control" name="see" value="${form.see}">--%>
+                            <textarea class="editormd-markdown-textarea" name="content">${form.content}</textarea>
+                            <textarea class="editormd-html-textarea" name="htmlContent">${form.htmlContent}</textarea>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-2">
@@ -153,4 +151,23 @@
 </div>
 </body>
 
+<script>
+
+    $(function(){
+        editormd({
+            id:"editormd-content",
+            width:"80%",
+            height: 300,
+            syncScrolling : "single",
+            path: "<%=basePath%>/backstage/makedown/lib/",
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "<%=basePath%>/pic/upload",
+            emoji:true,
+            previewTheme : "dark",
+            saveHTMLToTextarea : true
+        });
+    });
+
+</script>
 </html>

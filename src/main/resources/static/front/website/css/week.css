@@ -6,5 +6,5 @@
 .content1 dl{ padding:15px 5px; border-bottom:1px solid #e4e4e4;}
 .content1 dt span{ display:inline-block; color:#fff; font-size:12px; padding:5px; background:#aa2123; border-radius:5px; vertical-align:top; margin-right:10px;}
 .content1 dt a{ font-size:18px; color:#333; line-height:1.8em;}
-/*.content1 dt a:hover{ color:#aa2123;}*/
+.content1 dt a:hover{ color:#aa2123;}
 .content1 dd{ margin-top:5px; font-size:15px; color:#666; line-height:1.6em;}

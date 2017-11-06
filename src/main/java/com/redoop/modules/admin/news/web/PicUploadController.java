@@ -45,9 +45,9 @@ public class PicUploadController {
 	// 允许上传的格式
 	private static final String[] IMAGE_TYPE = new String[] { ".bmp", ".jpg", ".jpeg", ".gif", ".png" };
 
-	private static  final  String REPOSITORY_PATH="D:\\Idea\\Redoop\\src\\main\\webapp\\upload\\files";
+	//private static  final  String REPOSITORY_PATH="D:\\Idea\\Redoop\\src\\main\\webapp\\upload\\files";
 
-	private static  final  String IMAGE_BASE_URL="http://www.redoop.com/upload/files/";
+	//private static  final  String IMAGE_BASE_URL="http://www.redoop.com/upload/files/";
 	//http://www.redoop.com/upload/files/8b48de2e7ebc489fbd01e95ae62f4d10.jpg
 
 	@Autowired
@@ -56,7 +56,7 @@ public class PicUploadController {
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST,produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
-	public String upload(@RequestParam("uploadFile") MultipartFile uploadFile ,
+	public String upload( MultipartFile uploadFile ,
 						 HttpServletResponse response, HttpServletRequest request) throws Exception {
 
 		//路径
@@ -98,9 +98,9 @@ public class PicUploadController {
 		//TODO
 		//fileUploadResult.setUrl("http://localhost:9090/upload/files/"+picUrl);
 		fileUploadResult.setUrl(tempContextUrl+configProperties.getUploadSuffix()+picUrl);
-		/*System.out.println("tempcontextURL==="+tempContextUrl);
+		System.out.println("tempcontextURL==="+tempContextUrl);
 		System.out.println("getUpload=="+configProperties.getUploadSuffix());
-		System.out.println("picURL=="+picUrl);*/
+		System.out.println("picURL=="+picUrl);
 
 		File newFile = new File(filePath);
 
@@ -117,6 +117,7 @@ public class PicUploadController {
 				isLegal = true;
 			}
 		} catch (IOException e) {
+			//System.out.println("图片格式有误~");
 		}
 
 		// 状态

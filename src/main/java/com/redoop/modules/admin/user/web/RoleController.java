@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 说明：角色管理Controller
- * 包名：cn.itweet.modules.admin.user.web
+ * 包名：cn.itweet.modules.admin.Userr.web
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/3/29.
@@ -36,7 +36,7 @@ public class RoleController {
     public String main(Model model) {
         List<SysRole> roleList = roleService.list();
         model.addAttribute("roleList",roleList);
-        return "admin/user/r_list";
+        return "admin/Userr/r_list";
     }
 
     /**
@@ -45,7 +45,7 @@ public class RoleController {
      */
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String add(){
-        return "admin/user/r_add";
+        return "admin/Userr/r_add";
     }
 
     /**
@@ -73,7 +73,7 @@ public class RoleController {
     public String edit(@PathVariable Integer id, Model model, HttpServletRequest request){
         SysRole sr = roleService.findById(id);
         model.addAttribute("form",sr);
-        return "/admin/user/r_edit";
+        return "/admin/Userr/r_edit";
     }
 
     /**
@@ -118,7 +118,7 @@ public class RoleController {
      */
     @RequestMapping(value = "/authorization/{id}",method = RequestMethod.GET)
     public String authorization(@PathVariable Integer id, HttpServletRequest request){
-        return "/admin/user/r_edit";
+        return "/admin/Userr/r_edit";
     }
 
 }

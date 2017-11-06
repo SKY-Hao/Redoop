@@ -143,19 +143,19 @@ public class DownloadServiceImpl implements DownloadService{
         if(!filePath.exists()){
             filePath.mkdirs();
         }
-            for (int i=0;i<attachs.length;i++){
-                String picNameOld = attachs[i].getOriginalFilename();
-                String picType = picNameOld.substring(picNameOld.lastIndexOf("."),picNameOld.length());
-                String picNameNew = Uuid.getUuid() + picType;
-                //最终文件名
-                File realFile=new File(logoPath + File.separator + picNameNew);
-                FileUtils.copyInputStreamToFile(attachs[i].getInputStream(), realFile);
-                if (i==0){
-                    download.setSystempic(configProperties.getUploadSuffix() + picNameNew);
-                }else {
-                    download.setChippic(configProperties.getUploadSuffix() + picNameNew);
-                }
+        for (int i=0;i<attachs.length;i++){
+            String picNameOld = attachs[i].getOriginalFilename();
+            String picType = picNameOld.substring(picNameOld.lastIndexOf("."),picNameOld.length());
+            String picNameNew = Uuid.getUuid() + picType;
+            //最终文件名
+            File realFile=new File(logoPath + File.separator + picNameNew);
+            FileUtils.copyInputStreamToFile(attachs[i].getInputStream(), realFile);
+            if (i==0){
+                download.setSystempic(configProperties.getUploadSuffix() + picNameNew);
+            }else {
+                download.setChippic(configProperties.getUploadSuffix() + picNameNew);
             }
+        }
         return download;
     }
 
