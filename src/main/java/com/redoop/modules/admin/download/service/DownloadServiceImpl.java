@@ -212,26 +212,6 @@ public class DownloadServiceImpl implements DownloadService{
         return downloadRepository.addDocumenCount(id);
     }
 
-    /**
-     * 前台AI列表
-     * @return
-     */
-   /* public List<Download> byAIDocumenttype(String platformtype) {
-
-        List<Download> downloadList =  downloadRepository.byAIDocumenttype(platformtype);
-        for(Download download: downloadList){
-            String date = download.getProducttime().toString();
-            String time=null;
-            if(date.length() > 10){
-
-                date = date.substring(0,10);
-                time = date.substring(0,10);
-            }
-            download.setProducttime(time);
-        }
-        return downloadList;
-    }*/
-
 
     @Override
     public List<Tag> listBytype(String type) {
@@ -293,5 +273,16 @@ public class DownloadServiceImpl implements DownloadService{
     @Override
     public String findByCout(String id) {
         return downloadRepository.findBycount(id);
+    }
+
+
+    /*@Override
+    public List<Download> findMarkDownId(String id) {
+        return downloadRepository.findMarkDownId(id);
+    }*/
+
+    @Override
+    public Download findMarkDownId(String id) {
+        return downloadRepository.findOne(id);
     }
 }

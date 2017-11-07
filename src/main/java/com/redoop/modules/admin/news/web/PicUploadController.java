@@ -46,7 +46,6 @@ public class PicUploadController {
 	private static final String[] IMAGE_TYPE = new String[] { ".bmp", ".jpg", ".jpeg", ".gif", ".png" };
 
 	//private static  final  String REPOSITORY_PATH="D:\\Idea\\Redoop\\src\\main\\webapp\\upload\\files";
-
 	//private static  final  String IMAGE_BASE_URL="http://www.redoop.com/upload/files/";
 	//http://www.redoop.com/upload/files/8b48de2e7ebc489fbd01e95ae62f4d10.jpg
 
@@ -56,7 +55,7 @@ public class PicUploadController {
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST,produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
-	public String upload( MultipartFile uploadFile ,
+	public String upload(@RequestParam("uploadFile")  MultipartFile uploadFile ,
 						 HttpServletResponse response, HttpServletRequest request) throws Exception {
 
 		//路径
@@ -64,10 +63,10 @@ public class PicUploadController {
 		String logoPath = request.getSession().getServletContext().getRealPath("/");
 		logoPath = logoPath + configProperties.getUploadSuffix();
 
+
 		//自动获取域名
 		StringBuffer url = request.getRequestURL();
 		String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append("/").toString();
-
 
 		// 校验图片格式
 		boolean isLegal = false;
@@ -96,12 +95,7 @@ public class PicUploadController {
 
 		//上线修改存放路径IMAGE_BASE_URL
 		//TODO
-		//fileUploadResult.setUrl("http://localhost:9090/upload/files/"+picUrl);
 		fileUploadResult.setUrl(tempContextUrl+configProperties.getUploadSuffix()+picUrl);
-		System.out.println("tempcontextURL==="+tempContextUrl);
-		System.out.println("getUpload=="+configProperties.getUploadSuffix());
-		System.out.println("picURL=="+picUrl);
-
 		File newFile = new File(filePath);
 
 		// 写文件到磁盘
@@ -120,13 +114,6 @@ public class PicUploadController {
 			//System.out.println("图片格式有误~");
 		}
 
-		// 状态
-		fileUploadResult.setError(isLegal ? 0 : 1);
-
-		if (!isLegal) {
-			// 不合法，将磁盘上的文件删除
-			newFile.delete();
-		}
 
 		//将java对象序列化成json 数据
 		return mapper.writeValueAsString(fileUploadResult);
@@ -145,6 +132,7 @@ public class PicUploadController {
 		}
 		// 生成新的文件名
 		String fileName = new DateTime(nowDate).toString("yyyyMMddhhmmssSSSS")+ RandomUtils.nextInt(100) + "." +  StringUtils.substringAfterLast(sourceFileName, ".");
+
 
 		return fileFolder + File.separator + fileName;
 	}

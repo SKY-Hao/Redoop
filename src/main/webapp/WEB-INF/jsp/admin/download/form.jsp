@@ -38,9 +38,9 @@
                         <input type="hidden" name="id" value="${form.id}"/>
                     </c:if>
 
-                    <c:if test="${form.id != null}">
+                    <%--<c:if test="${form.id != null}">
                         <input type="hidden" name="uploadFile" value="111111"/>
-                    </c:if>
+                    </c:if>--%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">产品类型</label>
@@ -131,7 +131,7 @@
                         <div class="col-sm-4" id="editormd-content">
                             <%--<input type="text" class="form-control" name="see" value="${form.see}">--%>
                             <textarea class="editormd-markdown-textarea" name="content">${form.content}</textarea>
-                            <textarea class="editormd-html-textarea" name="htmlContent">${form.htmlContent}</textarea>
+                            <textarea class="editormd-html-textarea" name="htmlcontent">${form.htmlcontent}</textarea>
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@
             path: "<%=basePath%>/backstage/makedown/lib/",
             imageUpload : true,
             imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL : "<%=basePath%>/pic/upload",
+            imageUploadURL : "<%=basePath%>/upload/uploadfile",
             emoji:true,
             previewTheme : "dark",
             saveHTMLToTextarea : true

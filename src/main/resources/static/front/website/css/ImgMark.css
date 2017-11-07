@@ -1,0 +1,11 @@
+/* CSS Document */
+
+img{display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    max-width: 900px;
+    max-height: 500px}
+p{max-width: 900px;
+    max-height: 500px}

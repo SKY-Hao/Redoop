@@ -58,14 +58,17 @@
         <c:if test="${not empty list}">
             <c:forEach  items="${list}" var="one">
             <ul class="downList-crh" style="margin-top: 20px;">
+                <span>${one.id}</span>
                <li>
-                    <%--<span class="fr">
-                        <a href="${one.see}" class="checkBtn" name="see"  id="${one.id}">查看</a>
-                    </span>--%>
-                   <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
-                   style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--下载地址-->
-                       查看
-                   </button>
+                    <span class="fr" >
+                        <a href="<%=basePath%>/front/byCRH/${one.id}" class="checkBtn" id="${one.id}" name="see" target="_blank">查看</a>
+                    </span>
+
+                       <%-- <button value="${one.htmlContent}" class="aBtn fr" name="see" id="${one.id}"
+                        style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff;
+                                 background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--文档详情-->
+                             查看
+                        </button>--%>
 
                     <span class="img">
                         <img src="<%=basePath%>/${one.systempic}" />
@@ -92,16 +95,21 @@
 </body>
 <script>
     $(function () {
-        $("[name='see']").click(function () {
-            var url=$(this).val();
-            var id = $(this).attr("id");
+        $(".fr").click(function () {
+           // var url=$(this).val();
+           /* var id = $(this).attr("id");*/
+            var id = $(this).children().attr("id");
+            //alert(id);
             $.post(
                 "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
                 "",
                 function (obj) {
                     if (obj){
-                        location.href=url;
-                        return false;
+                        //location.href=url;
+
+                       return false;
+                    }else {
+
                     }
                 },
                 "json"

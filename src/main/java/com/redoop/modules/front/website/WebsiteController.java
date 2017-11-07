@@ -21,6 +21,7 @@ import com.redoop.modules.admin.product.entity.Product;
 import com.redoop.modules.admin.product.service.ProductService;
 import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.solution.service.SolutionService;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -518,11 +519,21 @@ public class WebsiteController {
 
 
     /**
-     * 前端下载次数增加
-     * @param id
+     * 前端查看
      * @return
      * @throws SystemException
      */
+    @RequestMapping(value = "/byCRH/{id}", method = RequestMethod.GET)
+    public String addDocumenCount(@PathVariable String id,Download markDown, Mess mess,Model model){
+
+        markDown = downloadService.findMarkDownId(id);
+        model.addAttribute("markDown",markDown);
+        setStyle(model,"redoopCRH");
+
+        return "front/website/crhMarkDown";
+    }
+
+
     @ResponseBody
     @RequestMapping(value = "/redoopCRH/addDocumenCount/{id}", method = RequestMethod.POST)
     public boolean addDocumenCount(@PathVariable(value = "id") String id) throws SystemException {
@@ -533,22 +544,6 @@ public class WebsiteController {
             return false;
         }
     }
-
-    /**
-     * 下载AI
-     * @param model
-     * @return
-     */
-  /*  @GetMapping(value = "/redoopAI")
-    public String redoopAI(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
-        List<Download> list= downloadService.byAIDocumenttype(platformtype);
-        model.addAttribute("list",list);
-
-        model.addAttribute("platformtype",platformtype);
-        setStyle(model,"redoopAI");
-        return "front/website/redoopAI";
-    }*/
-
 
     /**
      * 首页轮播跳转航天

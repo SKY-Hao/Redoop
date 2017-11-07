@@ -1,3 +1,4 @@
+package com.redoop.common;
 
 import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.hibernate.boot.jaxb.SourceType;
@@ -14,6 +15,8 @@ import java.util.Locale;
  * Created by Administrator on 2017/10/25.
  */
 public class Stest {
+
+
     public static void main(String[] args) throws ParseException {
        /* String string = "2016-10-24 21:59:06";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -54,7 +57,7 @@ public class Stest {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             System.out.println(sdf.format(date));*/
 
-            Date time=new Date();
+          /*  Date time=new Date();
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd"); //设置时间格式
             Calendar cal = Calendar.getInstance();
             cal.setTime(time);
@@ -71,19 +74,22 @@ public class Stest {
             System.out.println("所在周星期一的日期："+imptimeBegin);
             cal.add(Calendar.DATE, 6);
             String imptimeEnd = sdf.format(cal.getTime());
-            System.out.println("所在周星期日的日期："+imptimeEnd);
+            System.out.println("所在周星期日的日期："+imptimeEnd);*/
 
 
 
             //获取前几天的时间
-            Date date=new Date();//取时间
+          /*  Date date=new Date();//取时间
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);
             calendar.add(calendar.DATE,-7);//把日期往前减少一天，若想把日期向后推一天则将负数改为正数
             date=calendar.getTime();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             String dateString = formatter.format(date);
-            System.out.println("前一天:"+dateString);
+            System.out.println("前一天:"+dateString);*/
+
+
+
 
 
     }

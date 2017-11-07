@@ -1,5 +1,6 @@
 package com.redoop.modules.admin.download.web;
 
+import com.redoop.common.config.ConfigProperties;
 import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
@@ -18,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Null;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +45,8 @@ public class DownloadController {
 
     @Autowired
     private TagService tagService;
+    @Autowired
+    private ConfigProperties configProperties;
 
     /**
      * CRH&AI下载列表
@@ -193,6 +198,7 @@ public class DownloadController {
         }
         return "redirect:/admin/download/findAll";
     }
+
 
 
 

@@ -53,7 +53,8 @@
                         return (settings.imageUpload) ? "<div class=\"" + classPrefix + "file-input\">" +
                             "<input type=\"file\" name=\"" + classPrefix + "image-file\" accept=\"image/*\" />" +
                             "<input type=\"submit\" value=\"" + imageLang.uploadButton + "\" />" +
-                            "<input type='hidden' name='uploadFile' value='1111' />" +
+
+
                             "</div>" : "";
                     })() +
                     "<br/>" +
@@ -131,7 +132,9 @@
                 fileInput.bind("change", function() {
                     var fileName  = fileInput.val();
                     var isImage   = new RegExp("(\\.(" + settings.imageFormats.join("|") + "))$"); // /(\.(webp|jpg|jpeg|gif|bmp|png))$/
-                    alert(fileName);
+
+                    //alert(fileName);
+                    //alert(isImage);
 
                     if (fileName === "")
                     {
@@ -157,11 +160,10 @@
 
                             loading(false);
 
-
                             var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
                             var json = (body.innerText) ? body.innerText : ( (body.textContent) ? body.textContent : null);
-                            json = (typeof JSON.parse !== "undefined") ? JSON.parse(json) : eval("(" + json + ")");
 
+                            json = (typeof JSON.parse !== "undefined") ? JSON.parse(json) : eval("(" + json + ")");
 
                             if(!settings.crossDomainUpload)
                             {

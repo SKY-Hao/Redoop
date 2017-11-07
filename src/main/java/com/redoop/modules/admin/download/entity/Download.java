@@ -55,8 +55,8 @@ public class Download implements Serializable {
     @Column(name = "content",columnDefinition="TEXT")
     private String content;         //内容
 
-    @Column(name = "htmlContent",columnDefinition="TEXT")
-    private String htmlContent;    //html内容
+    @Column(name = "htmlcontent",columnDefinition="TEXT")
+    private String htmlcontent;    //html内容
 
 
     @Override
@@ -82,54 +82,8 @@ public class Download implements Serializable {
                 ", chippicname='" + chippicname + '\'' +
                 ", outline='" + outline + '\'' +
                 ", content='" + content + '\'' +
-                ", htmlContent='" + htmlContent + '\'' +
-                ", tag=" + tag +
+                ", htmlcontent='" + htmlcontent + '\'' +
                 '}';
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getHtmlContent() {
-        return htmlContent;
-    }
-
-    public void setHtmlContent(String htmlContent) {
-        this.htmlContent = htmlContent;
-    }
-
-    public String getOutline() {
-
-        return outline;
-    }
-
-    public void setOutline(String outline) {
-        this.outline = outline;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "tag_value")
-    private Tag tag;
-
-    public String getSee() {
-        return see;
-    }
-
-    public void setSee(String see) {
-        this.see = see;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getProducttype() {
@@ -164,6 +118,13 @@ public class Download implements Serializable {
         this.producttime = producttime;
     }
 
+    public String getDocumentname() {
+        return documentname;
+    }
+
+    public void setDocumentname(String documentname) {
+        this.documentname = documentname;
+    }
 
     public String getSysversion() {
         return sysversion;
@@ -173,20 +134,20 @@ public class Download implements Serializable {
         this.sysversion = sysversion;
     }
 
-    public String getDocumentname() {
-        return documentname;
-    }
-
-    public void setDocumentname(String documentname) {
-        this.documentname = documentname;
-    }
-
     public String getDocumenturl() {
         return documenturl;
     }
 
     public void setDocumenturl(String documenturl) {
         this.documenturl = documenturl;
+    }
+
+    public String getSee() {
+        return see;
+    }
+
+    public void setSee(String see) {
+        this.see = see;
     }
 
     public String getDocumentauthor() {
@@ -261,12 +222,36 @@ public class Download implements Serializable {
         this.chippicname = chippicname;
     }
 
-    public Tag getTag() {
-        return tag;
+    public String getOutline() {
+        return outline;
     }
 
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    public void setOutline(String outline) {
+        this.outline = outline;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getHtmlcontent() {
+        return htmlcontent;
+    }
+
+    public void setHtmlcontent(String htmlcontent) {
+        this.htmlcontent = htmlcontent;
+    }
+
+    public String getId() {
+
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

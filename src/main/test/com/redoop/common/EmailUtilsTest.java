@@ -1,8 +1,9 @@
-package com.redoop.common.utils;
+package com.redoop.common;
 
 
 import com.redoop.RedoopApplication;
 import com.redoop.common.config.ConfigProperties;
+import com.redoop.common.utils.EmailUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

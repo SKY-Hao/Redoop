@@ -40,13 +40,6 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
     List<Download> listByDocumenttype(@Param("platformtype") String platformtype);
 
 
-    /**
-     * 前台AI列表显示
-     * @return
-     */
-   // @Query(value = "FROM Download WHERE  platformtype = :platformtype and documenttype = 0 and producttype = 1  ORDER BY producttime DESC")
-   // List<Download> byAIDocumenttype(@Param("platformtype") String platformtype);
-
 
     /**
      * 修改下载次数
@@ -78,4 +71,11 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
      */
     @Query(value = "select docudowncount  from download where  id = :id",nativeQuery = true)
     String findBycount(@Param("id")String id);
+
+    @Query(value = "select  * from download where id= :id",nativeQuery = true)
+    Download findMarkDownId(@Param("id")String id);
+
+  /* @Query(value = "select  * from download where id= :id",nativeQuery = true)
+    List<Download> findMarkDownId(@Param("id")String id);*/
+
 }

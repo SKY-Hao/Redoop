@@ -45,7 +45,7 @@
                                 <td>${mess.id}</td>
                                 <td>${mess.name}</td>
                                 <td>${mess.sex}</td>
-                                <td>${mess.dept.name}</td>
+                                <td>${mess.dept}</td>
                                 <td>
                                    <%-- <a href="<%=basePath%>/front/onenew/${mess.id}" target="_blank" class="tablelink">预览</a>--%>
                                    <%-- <a href="<%=basePath%>/admin/mess/form/${mess.id}" class="tablelink">修改</a>--%>

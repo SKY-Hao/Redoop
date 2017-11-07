@@ -112,4 +112,11 @@ public interface DownloadService {
      * @return
      */
     String findByCout(String id);
+
+    Download findMarkDownId(String id);
+
+
+    //List<Download> findMarkDownId(String id);
+
+
 }

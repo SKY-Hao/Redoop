@@ -102,19 +102,26 @@
                     <th>文档下载次数</th>
                     <th>${form.docudowncount}</th>
                 </tr>
+
                 <tr>
                     <th>查看地址</th>
                     <th>${form.see}</th>
                 </tr>
-               <tr class="warning">
+
+                <tr class="warning">
                     <th>支持的图片</th>
                     <th><img src="<%=basePath%>/${form.systempic}" width="80" height="50"></th>
                 </tr>
+
                 <tr class="warning">
                     <th>芯片支持的图片</th>
                     <th><img src="<%=basePath%>/${form.chippic}" width="80" height="50"></th>
                 </tr>
+
                 </thead>
+
+
+
             </table>
             <a href="<%=basePath%>/admin/download/findAll">
                 <button class="btn btn-danger" type="button">返回</button>
