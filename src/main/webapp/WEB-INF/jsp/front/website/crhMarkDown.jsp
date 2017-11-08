@@ -8,6 +8,9 @@
 <html>
 <head>
     <jsp:include page="tools/head.jsp"></jsp:include>
+    <link href="<%=basePath%>/backstage/makedown/css/editormd.min.css" rel="stylesheet">
+    <script src="<%=basePath%>/backstage/makedown/js/editormd.min.js"></script>
+
 </head>
 
 <body>

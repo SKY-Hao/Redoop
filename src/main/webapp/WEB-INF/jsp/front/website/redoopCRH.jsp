@@ -60,8 +60,8 @@
             <ul class="downList-crh" style="margin-top: 20px;">
                 <span>${one.id}</span>
                <li>
-                    <span class="fr" >
-                        <a href="<%=basePath%>/front/byCRH/${one.id}" class="checkBtn" id="${one.id}" name="see" target="_blank">查看</a>
+                    <span class="fr">
+                        <a href="<%=basePath%>/front/byCRH/${one.id}" class="checkBtn" id="${one.id}" target="_blank">查看</a>
                     </span>
 
                        <%-- <button value="${one.htmlContent}" class="aBtn fr" name="see" id="${one.id}"
