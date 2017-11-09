@@ -66,4 +66,5 @@
 <jsp:include page="tools/footer.jsp"></jsp:include>
 
 </body>
+
 </html>

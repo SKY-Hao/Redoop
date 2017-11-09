@@ -62,14 +62,14 @@ public class WebsiteController {
     @Autowired
     private JavaMailSender javaMailSender;
     private void setStyle(Model model,String state){
-        model.addAttribute("product","");
-        model.addAttribute("solution","");
-        model.addAttribute("news","");
-        model.addAttribute("download","");
-        model.addAttribute("partners","");
-        model.addAttribute("aboutus","");
-        model.addAttribute("appstore","");
-        model.addAttribute("redoopCRH","");
+        model.addAttribute("product","");   //产品
+        model.addAttribute("solution","");  //行业版本 案例
+        model.addAttribute("news","");      //新闻
+        model.addAttribute("download","");  //产品资料
+        model.addAttribute("partners","");  //合作伙伴
+        model.addAttribute("aboutus","");   //关于我们
+        model.addAttribute("appstore","");  //应用组件
+        model.addAttribute("redoopCRH",""); //CRH
         model.addAttribute("redoopAI","");
         model.addAttribute(state,"on");
     }
@@ -515,11 +515,12 @@ public class WebsiteController {
         model.addAttribute("platformtype",platformtype);
         setStyle(model,"redoopCRH");
         return "front/website/redoopCRH";
+//        return "front/website/redoopCRHMakedown";
     }
 
 
     /**
-     * 前端查看
+     * CRH前端查看log
      * @return
      * @throws SystemException
      */
@@ -530,10 +531,15 @@ public class WebsiteController {
         model.addAttribute("markDown",markDown);
         setStyle(model,"redoopCRH");
 
-        return "front/website/crhMarkDown";
+        return "front/website/crhMakeDown";
     }
 
-
+    /**
+     * 修改点击次数
+     * @param id
+     * @return
+     * @throws SystemException
+     */
     @ResponseBody
     @RequestMapping(value = "/redoopCRH/addDocumenCount/{id}", method = RequestMethod.POST)
     public boolean addDocumenCount(@PathVariable(value = "id") String id) throws SystemException {

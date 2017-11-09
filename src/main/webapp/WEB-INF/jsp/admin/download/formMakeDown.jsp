@@ -14,6 +14,8 @@
     <jsp:include page="../../tools/style/toastr.jsp"></jsp:include>
 
     <script type="text/javascript" src="<%=basePath%>/backstage/My97DatePicker/WdatePicker.js"></script>
+    <link href="<%=basePath%>/backstage/makedown/css/editormd.min.css" rel="stylesheet">
+    <script src="<%=basePath%>/backstage/makedown/js/editormd.min.js"></script>
 
 
 </head>
@@ -35,6 +37,10 @@
                     <c:if test="${form.id != null}">
                         <input type="hidden" name="id" value="${form.id}"/>
                     </c:if>
+
+                    <%--<c:if test="${form.id != null}">
+                        <input type="hidden" name="uploadFile" value="111111"/>
+                    </c:if>--%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">产品类型</label>
@@ -111,18 +117,6 @@
                         <span style="color: #d43f3a;font-size: 16px;">*</span>
                     </div>
 
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">查看地址</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="see" value="${form.see}">
-                        </div>
-                        <span style="color: #d43f3a;font-size: 16px;">*</span>
-                        <span style="color: #d43f3a;font-size: 16px;">点击查看按钮查看地址</span>
-                    </div>
-
-
-
                     <div class="form-group">
                         <label class="col-sm-2 control-label">下载概要(大概内容:简单,明了)</label>
                         <div class="col-sm-4">
@@ -132,6 +126,14 @@
                         <span style="color: #d43f3a;font-size: 16px;">和简报更新概要同步</span>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">详情文档</label>
+                        <div class="col-sm-4" id="editormd-content">
+                            <%--<input type="text" class="form-control" name="see" value="${form.see}">--%>
+                            <textarea class="editormd-markdown-textarea" name="content">${form.content}</textarea>
+                            <textarea class="editormd-html-textarea" name="htmlcontent">${form.htmlcontent}</textarea>
+                        </div>
+                    </div>
 
 
                     <div class="form-group">
@@ -149,4 +151,23 @@
 </div>
 </body>
 
+<script>
+
+    $(function(){
+        editormd({
+            id:"editormd-content",
+            width:"80%",
+            height: 300,
+            syncScrolling : "single",
+            path: "<%=basePath%>/backstage/makedown/lib/",
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "<%=basePath%>/upload/uploadfile",
+            emoji:true,
+            previewTheme : "dark",
+            saveHTMLToTextarea : true
+        });
+    });
+
+</script>
 </html>

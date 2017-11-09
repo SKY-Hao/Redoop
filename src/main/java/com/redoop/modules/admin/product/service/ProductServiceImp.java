@@ -143,7 +143,22 @@ public class ProductServiceImp implements ProductService{
      * @return
      */
     public Page<Product> byProducttype(String producttype, Integer page) {
-        return productRepository.byProducttype(producttype,BasePageBuilder.create(page,configProperties.getPageSize(),sort));
+
+        Page<Product> productList =  productRepository.byProducttype(producttype,BasePageBuilder.create(page,configProperties.getPageSize(),sort));
+
+        for (Product product:productList){
+            String date = product.getProducttime().toString();
+
+            String time=null;
+            if(date.length() > 10){
+
+                date = date.substring(0,10);
+                time = date.substring(0,10);
+            }
+            product.setProducttime(time);
+        }
+
+        return productList;
     }
 
     /**

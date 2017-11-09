@@ -7,22 +7,22 @@
 <!doctype html>
 <html>
 <head>
-    <jsp:include page="tools/head.jsp"></jsp:include>
-    <link href="<%=basePath%>/backstage/makedown/css/editormd.min.css" rel="stylesheet">
-    <script src="<%=basePath%>/backstage/makedown/js/editormd.min.js"></script>
+    <jsp:include page="crhHeade.jsp"></jsp:include>
 
+    <script src="<%=basePath%>/backstage/makedown/js/bootstrap.min.js"></script>
+    <link href="<%=basePath%>/backstage/makedown/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-
 <jsp:include page="tools/header.jsp"></jsp:include>
 
-<section class="grey-bg" id="breadMenu" style="margin-top: 75px;">
-    <div class="container"><a href="<%=basePath%>/">首页</a> &gt; redoop crh</div>
+
+<section class="grey-bg" id="breadMenu" >
+    <div class="container"><a href="<%=basePath%>/">首页</a> &gt; Redoop CRH</div>
 </section>
 <section class="block" id="newsPage">
     <div class="container clearfix">
-        <div class="newsInfo"><!--内容-->
+        <div class="newsInfo" id="htmlcontent"><!--内容-->
             ${markDown.htmlcontent}
         </div>
     </div>

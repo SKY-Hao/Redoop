@@ -97,7 +97,7 @@ public class DownloadServiceImpl implements DownloadService{
                 download.setChippic(date_download.getChippic());    //芯片图片
                 download.setChippicname(date_download.getChippicname());
 
-                if(attachs.length > 0 && !attachs[0].getOriginalFilename().equals("")){
+                if(attachs.length >0 && !attachs[0].getOriginalFilename().equals("")){
                     try {
                         download = uploadPic(download,attachs,logoPath);
                         DeleteUtils.deletePic(logoPath + date_download.getSystempic());
@@ -111,15 +111,15 @@ public class DownloadServiceImpl implements DownloadService{
                 }
         }else{
 
-            if(attachs.length<=0){
+            if(attachs.length<=1){
 
-                throw new SystemException("<script>toastr.error(\"图片Logo不能为空\")</script>");
+                throw new SystemException("<script>toastr.error(\"图片Logo上传失败,请重新上传系统和芯片图片\")</script>");
 
             }else{
                 try {
                     download = uploadPic(download,attachs,logoPath);
-                } catch (IOException e) {
-                    throw new SystemException("<script>toastr.error(\"图片Logo上传失败\")</script>");
+                } catch (Exception e) {
+                    throw new SystemException("<script>toastr.error(\"图片Logo不能为空,请重新上传系统和芯片图片\")</script>");
                 }
             }
             User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();

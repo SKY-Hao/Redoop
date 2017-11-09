@@ -60,13 +60,11 @@
             <ul class="downList-crh" style="margin-top: 20px;">
                 <span>${one.id}</span>
                <li>
+                    <span class="fr">
+                        <a href="<%=basePath%>/front/byCRH/${one.id}" class="checkBtn" id="${one.id}" >ChangeLog</a>
+                    </span>
 
-                   <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
-                           style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--下载地址-->
-                       查看
-                   </button>
-
-                   <span class="img">
+                    <span class="img">
                         <img src="<%=basePath%>/${one.systempic}" />
                     </span>
                     <span style="width:87px;">Redoop CRH</span>
@@ -89,24 +87,20 @@
 </section>
 <jsp:include page="tools/footer.jsp"></jsp:include>
 </body>
-    <script>
-    $(function () {
-        $("[name='see']").click(function () {
-            var url=$(this).val();
-            var id = $(this).attr("id");
+<script>
+   $(function () {
+        $(".fr").click(function () {
+            var id = $(this).children().attr("id");
             $.post(
                 "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
                 "",
                 function (obj) {
-                    if (obj){
-                        location.href=url;
-                        return false;
-                    }
+                    if (obj){return false;}else {}
                 },
                 "json"
             )
         });
-    })
-</script>
+   })
 
+</script>
 </html>

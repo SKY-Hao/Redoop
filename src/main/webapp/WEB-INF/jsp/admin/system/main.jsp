@@ -180,7 +180,7 @@
                 <!--简报-->
                 <li class="parent">
                     <a href="#sub-item-8" data-toggle="collapse">
-                        <span class="glyphicon glyphicon-list-alt"></span>简报管理
+                        <span class="glyphicon glyphicon-print"></span>简报管理
                     </a>
                     <ul class="children collapse" id="sub-item-8">
                         <li class="item">
@@ -190,12 +190,12 @@
                         </li>
                         <li class="item">
                             <a href="<%=basePath%>admin/mess/briefing" target="main">
-                                <span class="glyphicon glyphicon-plus-sign"></span>简报7天表
+                                <span class="glyphicon glyphicon-paperclip"></span>简报7天表
                             </a>
                         </li>
                         <li class="item">
                             <a href="<%=basePath%>admin/messBriefing/last" target="main">
-                                <span class="glyphicon glyphicon-plus-sign"></span>最终简报表
+                                <span class="glyphicon glyphicon-send"></span>最终简报表
                             </a>
                         </li>
                     </ul>
