@@ -109,6 +109,12 @@ public class MessbriefingServiceImpl implements MessbriefingService {
         return  briefingList;
     }
 
-
-
+    /**
+     * 删除
+     * @param id
+     */
+    @Override
+    public void delete(String id) {
+        messbrifingRepository.delete(id);
+    }
 }

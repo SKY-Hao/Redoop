@@ -38,5 +38,9 @@ public interface MessbriefingService {
      */
     List<Briefing> briefingList();
 
-
+    /**
+     * 删除
+     * @param id
+     */
+    void delete(String id);
 }

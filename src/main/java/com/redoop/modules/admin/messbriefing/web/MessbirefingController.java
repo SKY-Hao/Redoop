@@ -2,23 +2,17 @@ package com.redoop.modules.admin.messbriefing.web;
 
 import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.mess.entity.Mess;
-import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.messbriefing.entity.Briefing;
 import com.redoop.modules.admin.messbriefing.service.MessbriefingService;
-import com.redoop.modules.admin.news.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Null;
-import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -35,8 +29,6 @@ public class MessbirefingController {
     @Autowired
     private MessbriefingService messbriefingService;
 
-    @Autowired
-    private MessService messService;
 
 
     /**
@@ -76,7 +68,19 @@ public class MessbirefingController {
         return "admin/mess/lastList";
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @param redirectAttributes
+     * @return
+     * @throws SystemException
+     */
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    public String delete(@PathVariable String id,RedirectAttributes redirectAttributes) throws SystemException {
+        messbriefingService.delete(id);
+        redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"简报删除成功\")</script>");
+        return "redirect:/admin/messBriefing/last";
+    }
 
 
 }

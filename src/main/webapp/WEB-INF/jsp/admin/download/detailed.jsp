@@ -54,7 +54,7 @@
                             申威
                         </c:if>
                         <c:if test="${form.platformtype=='4'}">
-                            龙芯<em>(敬请期待)</em>
+                            龙芯
                         </c:if>
                     </th>
                 </tr>

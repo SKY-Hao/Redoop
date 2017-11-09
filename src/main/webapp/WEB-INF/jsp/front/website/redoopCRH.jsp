@@ -49,6 +49,10 @@
             <c:if test="${platformtype==3}">申威</c:if>
             <c:if test="${platformtype==4}">龙芯</c:if>
         </h2>
+
+
+        <jsp:include page="redoopCRHMakedown.jsp"></jsp:include>
+
         <c:if test="${empty list}">
             <div style="margin-left: 15px; margin-top: 15px;">
                 <h3 style="color: brown;"> 版本更新中...</h3>
@@ -58,13 +62,32 @@
         <c:if test="${not empty list}">
             <c:forEach  items="${list}" var="one">
             <ul class="downList-crh" style="margin-top: 20px;">
-                <span>${one.id}</span>
+               <span>${one.id}</span>
                <li>
 
-                   <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
+                   <c:if test="${one.htmlcontent == ''}">
+                       <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
+                                    border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
+                           ChangeLog
+                       </button>
+                   </c:if>
+                   <c:if test="${one.htmlcontent != ''}">
+                      <%-- <span class="fr">
+                            <a href="<%=basePath%>/front/byCRH/${one.id}" class="checkBtn" id="${one.id}" >ChangeLog</a>
+                        </span>--%>
+                       <button value="<%=basePath%>/front/byCRH/${one.id}" class="aBtn fr" name="see" id="${one.id}"
+                               style="font-size: 14px;padding: 5px 5px;
+                                    color: #fff;background: #33a0ff;
+                                    border-radius: 5px;width: 89px;height: 30px;
+                                    line-height: 20px;"><!--下载地址-->
+                           ChangeLog
+                       </button>
+                   </c:if>
+                 <%--  <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
                            style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--下载地址-->
                        查看
-                   </button>
+                   </button>--%>
+
 
                    <span class="img">
                         <img src="<%=basePath%>/${one.systempic}" />
@@ -89,14 +112,26 @@
 </section>
 <jsp:include page="tools/footer.jsp"></jsp:include>
 </body>
-    <script>
+<script>
     $(function () {
+        /*$(".fr").click(function () {
+            var id = $(this).children().attr("id");
+            $.post(
+                "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
+                "",
+                function (obj) {
+                    if (obj){return false;}else {}
+                },
+                "json"
+            )
+        });*/
         $("[name='see']").click(function () {
             var url=$(this).val();
             var id = $(this).attr("id");
             $.post(
                 "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
                 "",
+
                 function (obj) {
                     if (obj){
                         location.href=url;
@@ -106,6 +141,7 @@
                 "json"
             )
         });
+
     })
 </script>
 

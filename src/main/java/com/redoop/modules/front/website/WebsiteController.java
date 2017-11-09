@@ -1,6 +1,5 @@
 package com.redoop.modules.front.website;
 import com.redoop.common.exception.SystemException;
-import com.redoop.common.utils.HtmlUtil;
 import com.redoop.common.utils.Uuid;
 import com.redoop.modules.admin.component.entity.Component;
 import com.redoop.modules.admin.component.service.ComponentService;
@@ -9,10 +8,8 @@ import com.redoop.modules.admin.customer.service.CustomerService;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
 import com.redoop.modules.admin.mess.entity.Mess;
-import com.redoop.modules.admin.mess.service.MessService;
 import com.redoop.modules.admin.messbriefing.entity.Briefing;
 import com.redoop.modules.admin.messbriefing.service.MessbriefingService;
-import com.redoop.modules.admin.news.entity.New;
 import com.redoop.modules.admin.news.entity.News;
 import com.redoop.modules.admin.news.service.NewService;
 import com.redoop.modules.admin.partner.entity.Partner;
@@ -21,7 +18,6 @@ import com.redoop.modules.admin.product.entity.Product;
 import com.redoop.modules.admin.product.service.ProductService;
 import com.redoop.modules.admin.solution.entity.Solution;
 import com.redoop.modules.admin.solution.service.SolutionService;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -55,12 +51,11 @@ public class WebsiteController {
     private ProductService productService;
     @Autowired
     private SolutionService solutionService;
-
     @Autowired
     private MessbriefingService messbriefingService;
-
     @Autowired
     private JavaMailSender javaMailSender;
+
     private void setStyle(Model model,String state){
         model.addAttribute("product","");   //产品
         model.addAttribute("solution","");  //行业版本 案例
@@ -508,14 +503,17 @@ public class WebsiteController {
      * @return
      */
     @GetMapping(value = "/redoopCRH")
-    public String redoopCRH(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype) {
+    public String redoopCRH(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype,
+                            Download download) throws Exception {
 
-        List<Download> list= downloadService.listByDocumenttype(platformtype);
+        List<Download> list = downloadService.listByDocumenttype(platformtype);
+
         model.addAttribute("list", list);
+
         model.addAttribute("platformtype",platformtype);
+
         setStyle(model,"redoopCRH");
         return "front/website/redoopCRH";
-//        return "front/website/redoopCRHMakedown";
     }
 
 
@@ -534,6 +532,8 @@ public class WebsiteController {
         return "front/website/crhMakeDown";
     }
 
+
+
     /**
      * 修改点击次数
      * @param id
@@ -550,6 +550,7 @@ public class WebsiteController {
             return false;
         }
     }
+
 
     /**
      * 首页轮播跳转航天

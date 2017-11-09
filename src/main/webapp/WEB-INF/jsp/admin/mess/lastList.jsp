@@ -31,6 +31,7 @@
                         <th>更新概要</th>
                         <th>发布者</th>
                         <th>更新时间</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,9 @@
                             <td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis">${mess.outline}</td>
                             <td>${mess.author}</td>
                             <td>${mess.date}</td>
+                            <td>
+                                <a href="<%=basePath%>/admin/messBriefing/delete/${mess.id}" class="tablelink" onclick="return del()">删除</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

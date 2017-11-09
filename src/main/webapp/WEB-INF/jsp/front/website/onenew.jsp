@@ -37,14 +37,14 @@
 </body>
 
 <script>
-    $(function () {
+   /* $(function () {
         var domain = document.domain;
         var url = window.location.href;
         alert(domain);
         alert(url);
     })
-
-    function GetUrlRelativePath()
+*/
+    /*function GetUrlRelativePath()
     {
         var url = document.location.toString();
         var arrUrl = url.split("//");
@@ -57,7 +57,15 @@
             relUrl = relUrl.split("?")[0];
         }
         return relUrl;
-    }
+    }*/
+   /* window.onload = function()
+    {
+        var urlArr = window.location.href.split('/');
+        var urlShowArea = document.createElement('div');
+
+        urlShowArea.innerHTML = urlArr[2];
+        document.body.appendChild(urlShowArea);
+    };*/
 </script>
 
 </html>
