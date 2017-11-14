@@ -60,7 +60,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label class="col-sm-2 control-label">产品发布时间</label>
                         <div class="col-sm-4">

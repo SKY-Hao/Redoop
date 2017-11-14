@@ -162,7 +162,7 @@ public class SolutionController {
 
             solutionService.save(solution,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"发布成功\")</script>");
-            System.out.println("jumpUrl====="+mess.getJumpurl());
+           // System.out.println("jumpUrl====="+mess.getJumpurl());
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }

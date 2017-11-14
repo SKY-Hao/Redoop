@@ -44,7 +44,7 @@ button,input[type="submit"],input[type="checkbox"],input[type="radio"]{cursor: p
 input:focus{outline: none;}
 i{font-style:normal}
 .fl {float: left;}
-.fr {float: right;}
+.fr {float: right;margin: 0;}
 .clearfix:before, .clearfix:after,.cols:before, .cols:after,.row:before, .row:after { content: ""; display: table; }.clearfix:after,.cols:after,.row:after { clear: both; }.clearfix,.cols,.row { zoom: 1; }
 * { box-sizing: border-box; }
 body { -webkit-text-size-adjust: none; -webkit-overflow-scrolling:touch}
@@ -55,7 +55,7 @@ a{text-decoration: none; color:#333;}
 ul li ul{margin-bottom: 10px;}
 
 /*input,textarea{border-radius: 0;box-shadow: none;-webkit-appearance: none}*/
-.block{ padding:35px 0; }
+.block{ padding:15px 0; }
 /*.block{ padding:70px 0; }*/
 
 .block h2.title {position: relative;color: #373d41;margin-bottom: 40px;font-size: 33px;line-height: 40px;letter-spacing: 0.03em;text-align: center;}
@@ -169,7 +169,7 @@ dl.logoListDL dd img{ width:180px; height:84px; border:1px solid #ccc;}
 .newsInfo p.imgTxt,#solution p.imgTxt{ text-align:center; margin-top:-10px;}
 .newsInfo p.imgTxtUp{ margin-bottom:10px;}
 /*.newsInfo img{ display:block; margin-left:auto; margin-right:auto; margin-bottom:18px; border:1px solid #ccc; max-width:900px;}*/
-.newsInfo img{ display:block; margin-left:auto; margin-right:auto; margin-bottom:100px; border:1px solid #ccc; max-width:900px;max-height: 500px;}
+.newsInfo img{ display:block; margin-left:auto; margin-right:auto; margin-bottom:50px; margin-top: 50px;border:1px solid #ccc; max-width:900px;max-height: 500px;}
 .newsInfo img.nobd{ border:0;}
 /*.newsInfo h2{ font-size:22px; letter-spacing:1px; margin: 24px 0px 24px 0px;}*/
 
@@ -241,12 +241,17 @@ dl.logoListDL dd img{ width:180px; height:84px; border:1px solid #ccc;}
 #twoWeekA{float: right;  color: #b31f23;}
 #twoWeekA:hover{color: #dc0005;  font-weight: bold;}
 
-img{display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 100px;
-    border: 1px solid #ccc;
-    max-width: 900px;
-    max-height: 500px}
+
+/*
 p{max-width: 900px;
     max-height: 500px}
+*/
+/*updatePartnerFotter*/
+#fotterUpdate{padding: 0;}
+#fotterP{margin: 0;}
+#fotterUpdateWX{padding: 0;max-width: 1200px;  min-width: 1200px;}
+#fotterUpdateP{padding: 0;}
+#fotterH3{font-size: 1.17em;margin: 0;}
+#fotterH31{margin: 0}
+#fotterUpdateP #fotterP2{padding: inherit;padding-top: 20px;}
+.footer{height: 290px;}

@@ -8,6 +8,8 @@
 <html>
 <head>
     <jsp:include page="tools/head.jsp"></jsp:include>
+
+    <link href="<%=basePath%>/front/website/css/CRHFotter.css" type="text/css" rel="stylesheet" />
     <link href="<%=basePath%>/front/website/css/crh.css" type="text/css" rel="stylesheet" />
 
 </head>
@@ -50,9 +52,6 @@
             <c:if test="${platformtype==4}">龙芯</c:if>
         </h2>
 
-
-        <jsp:include page="redoopCRHMakedown.jsp"></jsp:include>
-
         <c:if test="${empty list}">
             <div style="margin-left: 15px; margin-top: 15px;">
                 <h3 style="color: brown;"> 版本更新中...</h3>
@@ -62,7 +61,7 @@
         <c:if test="${not empty list}">
             <c:forEach  items="${list}" var="one">
             <ul class="downList-crh" style="margin-top: 20px;">
-               <span>${one.id}</span>
+              <%-- <span>${one.id}</span>--%>
                <li>
 
                    <c:if test="${one.htmlcontent == ''}">

@@ -204,16 +204,16 @@
                 <!--用户-->
                 <li class="parent">
                     <a href="#sub-item-9" data-toggle="collapse">
-                        <span class="glyphicon glyphicon-list-alt"></span>user
+                        <span class="glyphicon glyphicon-list-alt"></span>Test
                     </a>
                     <ul class="children collapse" id="sub-item-9">
                         <li class="item">
-                            <a href="<%=basePath%>admin/huang/findAll" target="main">
+                            <a href="<%=basePath%>admin/ceshi/findAll" target="main">
                                 <span class="glyphicon glyphicon-th-list"></span>列表
                             </a>
                         </li>
                         <li class="item">
-                            <a href="<%=basePath%>admin/huang/form/null" target="main">
+                            <a href="<%=basePath%>admin/ceshi/form/null" target="main">
                                 <span class="glyphicon glyphicon-plus-sign"></span>添加
                             </a>
                         </li>
