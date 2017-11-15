@@ -171,12 +171,12 @@
            <%-- <p><a href="<%=basePath%>/customer/register" target="_blank">注册</a> | <a href="<%=basePath%>/customer/login" target="_blank">登录</a></p>--%>
                <p style="color:#dc0005; font-weight:bold;font-family:tahoma arial;font-size:14px">TEL：400-0389-155</p>
             <ul>
-                <li><a href="<%=basePath%>/front/product" class="${product}">产品</a></li>
+                <li><a href="<%=basePath%>/front/products" class="${product}">产品</a></li>
                 <li><a href="<%=basePath%>/front/solution" class="${solution}">行业版本及案例</a></li>
                 <li><a href="<%=basePath%>/front/news" class="${news}">新闻</a></li>
                 <li><a href="<%=basePath%>/front/download" class="${download}">产品资料</a></li>
                 <li><a href="<%=basePath%>/front/partners" class="${partners}">合作伙伴</a></li>
-                <li><a href="<%=basePath%>/front/appstore" class="${appstore}">应用组件</a></li>
+                <%--<li><a href="<%=basePath%>/front/appstore" class="${appstore}">应用组件</a></li>--%>
                 <li>
                         <div id="down">
                             <a style="text-decoration: none;">下载</a>

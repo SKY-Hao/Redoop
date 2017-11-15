@@ -67,7 +67,7 @@
                    <c:if test="${one.htmlcontent == ''}">
                        <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
                                     border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
-                           ChangeLog
+                           文档
                        </button>
                    </c:if>
                    <c:if test="${one.htmlcontent != ''}">
@@ -79,7 +79,7 @@
                                     color: #fff;background: #33a0ff;
                                     border-radius: 5px;width: 89px;height: 30px;
                                     line-height: 20px;"><!--下载地址-->
-                           ChangeLog
+                           文档
                        </button>
                    </c:if>
                  <%--  <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"

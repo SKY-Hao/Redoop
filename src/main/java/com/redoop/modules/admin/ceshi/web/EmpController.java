@@ -2,6 +2,7 @@ package com.redoop.modules.admin.ceshi.web;
 
 import com.redoop.modules.admin.ceshi.entity.Dept;
 import com.redoop.modules.admin.ceshi.entity.Emp;
+import com.redoop.modules.admin.ceshi.service.DeptService;
 import com.redoop.modules.admin.ceshi.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,8 @@ public class EmpController {
     @Autowired
     private EmpService empService;
 
+    @Autowired
+    private DeptService deptService;
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public String findAll(Model mode) {
@@ -33,22 +36,21 @@ public class EmpController {
         List<Emp> list= empService.list();
         mode.addAttribute("list",list);
 
-        return "admin/emp/list";
+        return "admin/ceshi/list";
     }
 
 
     @RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
     public String form(@PathVariable String id, Model model) {
 
-        /*List<Dept> list= empService.deptList();
-        model.addAttribute("list",list);*/
-        System.out.println("id====="+id);
         if(id != null){
             Emp emp = empService.findById(id);
             model.addAttribute("form", emp);
         }
-
-        return "admin/emp/form";
+        List<Dept> deptList= deptService.list();
+        model.addAttribute("deptList",deptList);
+        //System.out.println("dept===="+deptList.toString());
+        return "admin/ceshi/form";
     }
 
 

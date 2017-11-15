@@ -56,13 +56,5 @@ public class Emp implements Serializable {
         this.dept = dept;
     }
 
-    @Override
-    public String toString() {
-        return "Emp{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", dept=" + dept +
-                '}';
-    }
+
 }

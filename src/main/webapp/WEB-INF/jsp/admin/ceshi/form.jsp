@@ -49,7 +49,7 @@
                         <div class="col-sm-4">
                             <select name="dept.id">
                                 <option value="">请选择部门</option>
-                                <c:forEach items="${list }" var="d">
+                                <c:forEach items="${deptList }" var="d">
                                     <option value="${d.id }">${d.name}</option>
                                 </c:forEach>
                             </select>
