@@ -202,7 +202,7 @@
                 </li>
 
                 <!--用户-->
-                <li class="parent">
+               <%-- <li class="parent">
                     <a href="#sub-item-9" data-toggle="collapse">
                         <span class="glyphicon glyphicon-list-alt"></span>Test
                     </a>
@@ -218,7 +218,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>--%>
 
             </ul>
         </li>

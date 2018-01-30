@@ -30,7 +30,7 @@ public class CRHWebController {
     private void setStyle(Model model,String state){
 
         model.addAttribute("redoopCRH",""); //CRH
-
+        model.addAttribute("redoopAD","");
         model.addAttribute(state,"on");
     }
 
@@ -52,6 +52,8 @@ public class CRHWebController {
         setStyle(model,"redoopCRH");
         return "front/website/redoopCRH";
     }
+
+
 
 
     /**

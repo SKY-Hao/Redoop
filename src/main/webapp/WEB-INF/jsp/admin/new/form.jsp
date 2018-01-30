@@ -36,6 +36,7 @@
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="title" value="${form.title}">
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                     </div>
 
                     <div class="form-group" >
@@ -43,6 +44,7 @@
                         <div class="col-sm-4">
                             <input type="file" class="form-control" style="height: 38px;" id="logo" name="logo">
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                     </div>
 
                     <div class="form-group" >
@@ -50,6 +52,7 @@
                         <div class="col-sm-4">
                             <input type="text" class="form-control" style="height: 38px;" name="date"value="${form.date}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*时间别忘填了哈</span>
                     </div>
 
                     <div class="form-group">

@@ -181,4 +181,22 @@ public class ProductServiceImp implements ProductService{
     public void updateProtype(String id) throws SystemException {
         productRepository.updateProtype(id);
     }
+
+
+    /**
+     * 获取下载次数
+     *
+     * @param id
+     * @return
+     */
+    /**
+     * 获取下载次数
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public String byCount(String id) {
+        return productRepository.byCount(id);
+    }
 }

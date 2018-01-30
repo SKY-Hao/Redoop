@@ -76,6 +76,6 @@ public interface DownloadRepository extends JpaRepository<Download,String> {
     Download findMarkDownId(@Param("id")String id);
 
   /* @Query(value = "select  * from download where id= :id",nativeQuery = true)
-    List<Download> findMarkDownId(@Param("id")String id);*/
+    List<Group> findMarkDownId(@Param("id")String id);*/
 
 }

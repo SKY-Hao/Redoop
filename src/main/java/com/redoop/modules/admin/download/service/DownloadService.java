@@ -80,7 +80,7 @@ public interface DownloadService {
      * @param producttype
      * @return
      */
-   // List<Download> byAIDocumenttype(String producttype);
+   // List<Group> byAIDocumenttype(String producttype);
 
 
 
@@ -116,7 +116,7 @@ public interface DownloadService {
     Download findMarkDownId(String id);
 
 
-    //List<Download> findMarkDownId(String id);
+    //List<Group> findMarkDownId(String id);
 
 
 }

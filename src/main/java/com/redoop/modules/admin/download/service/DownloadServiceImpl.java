@@ -29,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 说明：RdoopCRH||AI DownloadServiceImpl
+ * 说明：RdoopCRH||AI GroupServiceImpl
  * 包名：cn.itweet.modules.admin.download.service
  * 项目名：License-Admin
  * 创建人：黄天浩
@@ -277,7 +277,7 @@ public class DownloadServiceImpl implements DownloadService{
 
 
     /*@Override
-    public List<Download> findMarkDownId(String id) {
+    public List<Group> findMarkDownId(String id) {
         return downloadRepository.findMarkDownId(id);
     }*/
 

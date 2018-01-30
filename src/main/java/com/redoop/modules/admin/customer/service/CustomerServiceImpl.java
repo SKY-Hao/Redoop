@@ -130,9 +130,6 @@ public class CustomerServiceImpl implements CustomerService {
             customerRepository.save(customer);
             //发邮件
             EmailUtils eu = new EmailUtils();
-           /* eu.sendMail(javaMailSender,configProperties.getMailFrom(),customer.getEmail(),configProperties.getMailSubject(),
-                    "来自红象云腾技术系统有限公司的激活邮件:\n\n激活请点击连接: \n\n<a href='http://localhost:9090/front/regJH?code="+customer.getCode()+"'>\n\nhttp://localhost:9090/front/regJH?code="+customer.getCode()+"</a>\n\n如果单击链接没有反应，请将链接地址复制到浏览器窗口中，或直接输入链接。\n\n致敬！\n\n红象云腾");
-        */
             eu.sendMail(javaMailSender,configProperties.getMailFrom(),customer.getEmail(),configProperties.getMailSubject(),
                     "来自红象云腾技术系统有限公司的激活邮件:\n激活请点击连接: \n"+tempContextUrl+"/front/regJH?code="+customer.getCode()+"\n如果单击链接没有反应，请将链接地址复制到浏览器窗口中，或直接输入链接。\n致敬！\n红象云腾");
         }

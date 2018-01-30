@@ -80,4 +80,11 @@ public interface ProductService {
     void updateProtype(String id)throws SystemException;
 
 
+    /**
+     * 获取下载次数
+     * @param id
+     * @return
+     */
+    String byCount(String id);
+
 }

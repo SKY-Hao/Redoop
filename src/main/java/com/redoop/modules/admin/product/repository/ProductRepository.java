@@ -55,4 +55,11 @@ public interface ProductRepository extends JpaRepository<Product,String> {
     @Transactional
     @Query(value = "update  Product set  protype='1' where  id = :id")
     void updateProtype(@Param("id") String id);
+
+
+
+    @Query(value = "select productcount from  product where id= :id",nativeQuery = true)
+    String byCount(@Param("id") String id);
+
+
 }

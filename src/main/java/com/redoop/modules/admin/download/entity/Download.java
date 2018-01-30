@@ -61,7 +61,7 @@ public class Download implements Serializable {
 
     @Override
     public String toString() {
-        return "Download{" +
+        return "Group{" +
                 "id='" + id + '\'' +
                 ", producttype='" + producttype + '\'' +
                 ", platformtype='" + platformtype + '\'' +

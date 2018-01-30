@@ -504,9 +504,9 @@ public class WebsiteController {
 //     */
 //    @GetMapping(value = "/redoopCRH")
 //    public String redoopCRH(Model model,@RequestParam(value ="platformtype",defaultValue = "0") String platformtype,
-//                            Download download) throws Exception {
+//                            Group download) throws Exception {
 //
-//        List<Download> list = downloadService.listByDocumenttype(platformtype);
+//        List<Group> list = downloadService.listByDocumenttype(platformtype);
 //
 //        model.addAttribute("list", list);
 //
@@ -523,7 +523,7 @@ public class WebsiteController {
 //     * @throws SystemException
 //     */
 //    @RequestMapping(value = "/byCRH/{id}", method = RequestMethod.GET)
-//    public String addDocumenCount(@PathVariable String id,Download markDown, Mess mess,Model model){
+//    public String addDocumenCount(@PathVariable String id,Group markDown, Mess mess,Model model){
 //
 //        markDown = downloadService.findMarkDownId(id);
 //        model.addAttribute("markDown",markDown);

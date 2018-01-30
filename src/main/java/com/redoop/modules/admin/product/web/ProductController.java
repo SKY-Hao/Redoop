@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 说明：合作伙伴Web层
+ * 说明：产品资料Web层
  * 包名：cn.itweet.modules.admin.product.web
  * 项目名：License-Admin
  * 创建人：黄天浩
@@ -116,6 +116,11 @@ public class ProductController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String save(Model mode, Product product,RedirectAttributes redirectAttributes,Mess mess) {
         try {
+            if(product.getId()!=null){
+                String productcount=productService.byCount(product.getId());
+                product.setProductcount(Integer.parseInt(productcount));
+            }
+
             productService.save(product,mess);
             redirectAttributes.addFlashAttribute("message", "<script>toastr.success(\"产品资料信息保存成功\")</script>");
             return "redirect:/admin/product/findAll";

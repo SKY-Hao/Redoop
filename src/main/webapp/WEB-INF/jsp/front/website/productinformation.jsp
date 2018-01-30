@@ -84,8 +84,6 @@
 </body>
 <script>
     $(function () {
-
-
         $("[name='producturl']").click(function () {
             var id = $(this).attr("id");
             var url=$(this).val();
