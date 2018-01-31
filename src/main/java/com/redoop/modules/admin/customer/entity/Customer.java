@@ -34,6 +34,7 @@ public class Customer implements Serializable {
     private int activatestate;        //激活状态
     private String code;            //激活码
 
+    private String ip;              //IP
 
     @Override
     public String toString() {
@@ -48,9 +49,17 @@ public class Customer implements Serializable {
                 ", logindate=" + logindate +
                 ", activatestate=" + activatestate +
                 ", code='" + code + '\'' +
+                ", ip='" + ip + '\'' +
                 '}';
     }
 
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
     public String getId() {
         return id;
@@ -131,4 +140,5 @@ public class Customer implements Serializable {
     public String getCode() {
         return code;
     }
+
 }

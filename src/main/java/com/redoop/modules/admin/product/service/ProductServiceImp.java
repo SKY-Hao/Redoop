@@ -3,11 +3,11 @@ package com.redoop.modules.admin.product.service;
 import com.redoop.common.config.ConfigProperties;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.BasePageBuilder;
+import com.redoop.common.utils.IpUtil;
 import com.redoop.modules.admin.mess.entity.Mess;
 import com.redoop.modules.admin.mess.repository.MessRepository;
 import com.redoop.modules.admin.product.entity.Product;
 import com.redoop.modules.admin.product.repository.ProductRepository;
-import com.redoop.modules.admin.solution.entity.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -15,15 +15,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 产品资料service
  */
 
 @Service
-public class ProductServiceImp implements ProductService{
+public class ProductServiceImp implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
@@ -31,18 +31,21 @@ public class ProductServiceImp implements ProductService{
     private ConfigProperties configProperties;
     @Autowired
     private MessRepository messRepository;
-    private Sort sort = new Sort(Sort.Direction.DESC,"producttime");
+    private Sort sort = new Sort(Sort.Direction.DESC, "producttime");
     /**
      * 产品资料下载列表
      * @return
-     */;
+     */
+    ;
+
     public Page<Product> findAll(Integer page) {
-        return productRepository.findAll(BasePageBuilder.create(page,configProperties.getPageSize(),sort));
+        return productRepository.findAll(BasePageBuilder.create(page, configProperties.getPageSize(), sort));
     }
 
 
     /**
      * 按ID查询
+     *
      * @param id
      * @return
      */
@@ -53,11 +56,12 @@ public class ProductServiceImp implements ProductService{
 
     /**
      * 产品资料下载添加(修改)
+     *
      * @param product
      * @throws SystemException
      */
     @Override
-    public void save(Product product,Mess mess) throws Exception {
+    public void save(Product product, Mess mess) throws Exception {
         if (product.getProducttype() == null || "".equals(product.getProducttype())) {
             throw new SystemException("<script>toastr.error(\"文档类型不能为空\")</script>");
         }
@@ -65,12 +69,12 @@ public class ProductServiceImp implements ProductService{
             throw new SystemException("<script>toastr.error(\"文档下载地址不能为空\")</script>");
         }
 
-        if(product.getId() != null){
+        if (product.getId() != null) {
             Product data_c = productRepository.findOne(product.getId());//id
             product.setProductauthor(data_c.getProductauthor());//添加作者
             product.setProtype("1");//发布状态0:发布 1:不发布
 
-        }else{
+        } else {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             product.setProductauthor(user.getUsername());
             product.setProtype("1");//发布状态0:发布 1:不发布
@@ -82,6 +86,7 @@ public class ProductServiceImp implements ProductService{
 
     /**
      * 发布
+     *
      * @param product
      * @param mess
      * @throws Exception
@@ -89,12 +94,13 @@ public class ProductServiceImp implements ProductService{
     @Override
     public void saveFB(Product product, Mess mess) throws Exception {
         //调用保存到简报方法
-        product=saveMess(product,mess);
+        product = saveMess(product, mess);
         productRepository.save(product);
     }
 
     /**
      * 保存到简报表
+     *
      * @param product
      * @param mess
      * @return
@@ -108,8 +114,6 @@ public class ProductServiceImp implements ProductService{
         mess.setAuthor(product.getProductauthor());
         mess.setTitle(product.getProductname());
         mess.setOutline(product.getOutline());
-
-
         messRepository.save(mess);
         return product;
     }
@@ -117,6 +121,7 @@ public class ProductServiceImp implements ProductService{
 
     /**
      * 删除信息
+     *
      * @param id
      * @throws SystemException
      */
@@ -128,32 +133,34 @@ public class ProductServiceImp implements ProductService{
 
     /**
      * 后台产品文档查询
+     *
      * @param page
      * @param producttype
      * @return
      */
     public Page<Product> select(Integer page, String producttype) {
-        return productRepository.findByProducttypeLike(producttype,BasePageBuilder.create(page,configProperties.getPageSize()));
+        return productRepository.findByProducttypeLike(producttype, BasePageBuilder.create(page, configProperties.getPageSize()));
     }
 
     /**
      * 前台展示
+     *
      * @param producttype
      * @param page
      * @return
      */
     public Page<Product> byProducttype(String producttype, Integer page) {
 
-        Page<Product> productList =  productRepository.byProducttype(producttype,BasePageBuilder.create(page,configProperties.getPageSize(),sort));
+        Page<Product> productList = productRepository.byProducttype(producttype, BasePageBuilder.create(page, configProperties.getPageSize(), sort));
 
-        for (Product product:productList){
+        for (Product product : productList) {
             String date = product.getProducttime().toString();
 
-            String time=null;
-            if(date.length() > 10){
+            String time = null;
+            if (date.length() > 10) {
 
-                date = date.substring(0,10);
-                time = date.substring(0,10);
+                date = date.substring(0, 10);
+                time = date.substring(0, 10);
             }
             product.setProducttime(time);
         }
@@ -163,6 +170,7 @@ public class ProductServiceImp implements ProductService{
 
     /**
      * 产品资料修改下载次数
+     *
      * @param id
      * @return
      * @throws SystemException
@@ -174,6 +182,7 @@ public class ProductServiceImp implements ProductService{
 
     /**
      * 取消发布
+     *
      * @param id
      * @throws SystemException
      */
@@ -181,7 +190,6 @@ public class ProductServiceImp implements ProductService{
     public void updateProtype(String id) throws SystemException {
         productRepository.updateProtype(id);
     }
-
 
     /**
      * 获取下载次数

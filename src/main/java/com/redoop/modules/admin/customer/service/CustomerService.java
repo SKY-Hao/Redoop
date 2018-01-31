@@ -3,6 +3,7 @@ package com.redoop.modules.admin.customer.service;
 import com.redoop.common.exception.SystemException;
 import com.redoop.modules.admin.customer.entity.Customer;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -145,4 +146,7 @@ public interface CustomerService {
     public Customer findByUserName(String username);
 
 
+    Customer saveCustomer(Customer customer, HttpServletRequest request);
+
+    public  int findByIP(Customer customer, HttpServletRequest request);
 }

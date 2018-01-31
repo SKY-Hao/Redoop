@@ -3,13 +3,14 @@ package com.redoop.modules.admin.customer.service;
 import com.redoop.common.config.ConfigProperties;
 import com.redoop.common.exception.SystemException;
 import com.redoop.common.utils.EmailUtils;
-import com.redoop.common.utils.MailUtils;
+import com.redoop.common.utils.IpUtilS;
 import com.redoop.modules.admin.customer.entity.Customer;
 import com.redoop.modules.admin.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -297,7 +298,27 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return 3;
     }
+    @Override
+    public int findByIP(Customer customer, HttpServletRequest request) {
+        //0:没有获取到用户IP,让用户填写信息,并获取IP   1:获取到IP,数据库并有这个IP     2.
 
+       // System.out.println("customer.getIp()1111======"+customer.getIp());
+
+        customer.setIp(IpUtilS.getIpAddress(request));
+
+        //System.out.println("customer.getIp()2222======"+customer.getIp());
+
+        Customer cus= customerRepository.findByIp(customer.getIp());
+        //System.out.println("cus====="+cus);
+
+        if(cus==null){
+            return 0;
+        }
+       // System.out.println("cus.getIP====="+cus.getIp());
+
+
+        return 1;
+    }
 
 
 
@@ -330,6 +351,13 @@ public class CustomerServiceImpl implements CustomerService {
      */
     public List<Customer> findByEmail(String email) {
         return null;
+    }
+
+
+    @Override
+    public Customer saveCustomer(Customer customer, HttpServletRequest request) {
+        customer.setIp(IpUtilS.getIpAddress(request));
+        return customerRepository.save(customer);
     }
 
 

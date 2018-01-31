@@ -88,7 +88,7 @@
 				</div>
 			</c:forEach>
 		</c:if>
-
+	<%--表格--%>
 		<div class="modal fade" id="myModal" tabindex="100" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog" style="width:70%;  margin-top: 15%;" >
 				<div class="modal-content">
@@ -105,7 +105,7 @@
 					</div>
 
 					<div id="mo">
-						<!--模态框内容--><!--表格-->
+						<!--模态框内容-->
 						<div class="modal-body" id="sp" style="height: 25%; background-color: #c9302c;color: #f9f9f9; display-model: block" >
 							<table class="table table-bordered" id="table1" style="word-break:break-all;word-wrap: break-word;
 															background-color: #c9302c; padding: inherit;" >
@@ -240,6 +240,8 @@
 		</div>
 	</div>
 </div>
+
+
 <div style="margin-right: auto;
     margin-left: auto;
     margin-bottom: 30px;

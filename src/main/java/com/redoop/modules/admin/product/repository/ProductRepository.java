@@ -61,5 +61,4 @@ public interface ProductRepository extends JpaRepository<Product,String> {
     @Query(value = "select productcount from  product where id= :id",nativeQuery = true)
     String byCount(@Param("id") String id);
 
-
 }

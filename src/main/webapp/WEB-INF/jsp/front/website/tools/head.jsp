@@ -18,4 +18,5 @@
 <link rel="shortcut icon" href="<%=basePath%>/front/website/img/logo.ico">
 
 <script type="text/javascript" src="<%=basePath%>/front/website/js/jquery-1.11.3.min.js"></script>
+
 <%--<script type="text/javascript" src="<%=basePath%>/backstage/makedown/js/jquery-3.2.1.min.js"></script>--%>

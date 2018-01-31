@@ -1,110 +1,244 @@
 ﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!doctype html>
 <html>
 <head>
-	<jsp:include page="tools/head.jsp"></jsp:include>
+
+    <jsp:include page="tools/productHead.jsp"></jsp:include>
+    <script type="text/javascript" src="<%=basePath%>/front/website/js/jquery.validate.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("[name='producturl']").click(function () {
+                var id = $(this).attr("id");
+                var url=$(this).val();
+                $.post(
+                    "<%=basePath%>/front/productinformation/addProductCount/" + id,
+                    "",
+                    function (obj) {
+
+                        if(obj==0){
+
+                           $("#f1").show();
+
+                        }else if (obj==1) {
+
+                            location.href=url;
+
+                        }else if(obj==2){
+
+                            alert("下载失败");
+
+                        }
+                    },
+                    "json"
+                )
+            });
+            /* $(".a").click(function () {
+             $("[name='documenturl']").click();
+             })*/
+        });
+    </script>
+    <%--validate验证--%>
+    <script type="text/javascript">
+        $(function(){
+
+            //自定义验证手机号
+            jQuery.validator.addMethod("isMobile", function(value, element) {
+                var length = value.length;
+                var mobile = /^1[3456789]\d{9}$/;/*/^1(3|4|5|7|8)\d{9}$/*/
+                return this.optional(element) || (length == 11 && mobile.test(value));
+            }, "请正确填写您的手机号码");
+            //控件validate
+            $("#f1").validate({
+                rules:{
+                    companyname:{
+                        required:true,
+                        rangelength:[2,10]
+                    },
+                    username:{
+                        required:true,
+                        rangelength:[2,8]
+                    },
+                    phonenumber:{
+                        required:true,
+                        rangelength:[11,11],
+                        digits:true,
+                        number:true,
+                        isMobile : true
+                    },
+                    email:{
+                        required: true,
+                        email:true
+                    }
+                },
+                messages:{
+                    companyname:{
+                        required:"公司名称不能为空",
+                        rangelength:"公司名称长度不正确"
+                    },
+                    username:{
+                        required:"姓名不能为空",
+                        rangelength:"长度为2-10位"
+                    },
+                    phonenumber:{
+                        required:"手机号不能为空",
+                        rangelength:"手机号为11位",
+                        digits:"必须是数字"    ,
+                        number:"请输入有效数字",
+                        isMobile: "手机号格式错误"
+                    },
+                    email:{
+                        required:"请输入邮箱",
+                        email:"请输入正确格式的电子邮件"
+                    }
+                },
+                submitHandler:function(){
+                    $.post(
+                        "<%=basePath%>/front/productinformation/saveCustomer",
+                        $("#f1").serialize(),
+                        function(obj){
+                            if (obj){
+                                alert(obj);
+                                $("#f1").hide();
+                            }
+                        }
+                    );
+                }
+            });
+
+        });
+    </script>
 
 </head>
 
-
 <body>
+<jsp:include page="tools/productHeader.jsp"></jsp:include>
 
-<jsp:include page="tools/header.jsp"></jsp:include>
-
-<section class="grey-bg" id="breadMenu"  style="margin-top: 75px;">
-	<div class="container"><a href="<%=basePath%>/">首页</a> &gt; 产品资料</div>
+<section class="grey-bg" id="breadMenu">
+    <div class="container" id="partnerA"><a href="<%=basePath%>/">首页</a> &gt; 产品资料</div>
 </section>
 <!--文档类型-->
 <div class="verNav" style="height: 64px;border-bottom: 1px solid #999;margin-top: 0px;">
-	<div class="container">
-		<a href="<%=basePath%>/front/download?producttype=0"  <c:if test="${producttype==0}"> class="on"</c:if>>产品文档</a>
+    <div class="container">
         <a href="<%=basePath%>/front/download?producttype=1"  <c:if test="${producttype==1}"> class="on"</c:if>>产品技术文档</a>
+        <a href="<%=basePath%>/front/download?producttype=0"  <c:if test="${producttype==0}"> class="on"</c:if>>产品文档</a>
         <a href="<%=basePath%>/front/download?producttype=2"  <c:if test="${producttype==2}"> class="on"</c:if>>测试报告</a>
-	</div>
+    </div>
 </div>
 
 <section class="block">
-	<div class="container clearfix">
-		<!--文档类型-->
-		<h2 class="downloadH2" style="margin-top:0;">
-			Redoop-
-			<c:if test="${producttype==0}">产品文档</c:if>
-			<c:if test="${producttype==1}">产品技术文档</c:if>
-			<c:if test="${producttype==2}">测试报告</c:if>
+    <div class="container clearfix">
+        <!--文档类型-->
+        <h2 class="downloadH2" style="margin-top:0;">
+            Redoop-
+            <c:if test="${producttype==0}">产品文档</c:if>
+            <c:if test="${producttype==1}">产品技术文档</c:if>
+            <c:if test="${producttype==2}">测试报告</c:if>
 
-		</h2>
-
-		<c:if test="${empty pageList.getContent()}">
-			<div style="margin-left: 15px; margin-top: 15px;">
-				<h3 style="color: brown;"> 文档编译中...</h3>
-				<h3 style="color: brown;"> 请您耐心等待发布，谢谢...</h3>
-			</div>
-		</c:if>
-		<c:if test="${not empty pageList.getContent()}">
-			<c:forEach items="${pageList.getContent()}" var="one">
-				<ul class="downList">
-					<li>
-						<button value="${one.producturl}" class="aBtn fr" name="producturl" id="${one.id}"
-								style="margin-top: 10px;line-height: 40px;"><!--下载地址-->
-							下载
-						</button>
-						<div>
+        </h2>
+        <c:if test="${empty pageList.getContent()}">
+            <div style="margin-left: 15px; margin-top: 15px;">
+                <h3 style="color: brown;"> 文档编译中...</h3>
+                <h3 style="color: brown;"> 请您耐心等待发布，谢谢...</h3>
+            </div>
+        </c:if>
+        <c:if test="${not empty pageList.getContent()}">
+            <c:forEach items="${pageList.getContent()}" var="one">
+                <ul class="downList">
+                    <li>
+                        <button value="${one.producturl}" class="aBtn fr" name="producturl" id="${one.id}"
+                                style="margin-top: 10px;line-height: 40px;"><!--下载地址-->
+                            下载
+                        </button>
+                        <%--<span id="xiazai">
+                            <a href="${one.producturl}" class="aBtn fr" name="producturl"style="margin-top: 10px;line-height: 40px;">下载</a>
+                        </span>--%>
+                        <div>
                             <span style="text-decoration: none;">
                                 <a href="${one.producturl}">
-										${one.productname}
-								</a>
+                                        ${one.productname}
+                                </a>
                             </span>
-							<span style="font-size: 8px; margin-left: 30px;color: #999;">
+                            <span style="font-size: 8px; margin-left: 30px;color: #999;">
                                     ${one.producttime}更新发布
                             </span>
-						</div>
-						<span style="display:none;" name="docudowncount">${one.productcount}</span>
-					</li>
-				</ul>
-			</c:forEach>
-		</c:if>
+                        </div>
+                        <span style="display:none;" name="docudowncount">${one.productcount}</span>
+                    </li>
+                </ul>
+            </c:forEach>
+        </c:if>
+    </div>
 
-
-		<!--分页-->
-		<jsp:include page="../../tools/page/admin_page.jsp"></jsp:include>
-
-	</div>
 </section>
 
+<div class="modal fade" id="sqModal" tabindex="100" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:35%;margin-top: 25%;">
+
+        <div class="sqfrom">
+			<span type="button" style="color: #f7f7f8;margin-right: 1px;" class="close" data-dismiss="modal" aria-hidden="true" >
+				&times;
+		   	</span>
+            <h2 style=" height:80px; line-height:80px; text-align:center; font-size:25px; background:#252527; font-weight:normal; color:#fff; margin-top: 0;">申请为合作伙伴</h2>
+
+            <form action="" id="f1" class="form-horizontal" method="post" enctype="multipart/form-data"  style="display: none; ">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">公司名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="companyname">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">联系人名字</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">联系人电话</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="phonenumber">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">联系人邮箱</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="email">
+                    </div>
+                </div>
+                <input type="submit" value="提交信息" id="tjxx" class="btn btn-danger"style="margin-left:12%; width: 350px;">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div style="margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 30px;
+    max-width: 1200px;
+    min-width: 1200px;margin-top: -50px">
+    <jsp:include page="../../tools/page/admin_page.jsp"></jsp:include>
+</div>
 
 <jsp:include page="tools/footer.jsp"></jsp:include>
 
-
-
 </body>
-<script>
-    $(function () {
-        $("[name='producturl']").click(function () {
-            var id = $(this).attr("id");
-            var url=$(this).val();
-            $.post(
-                "<%=basePath%>/front/download/addProductCount/" + id,
-                "",
-                function (obj) {
-                    if (obj) {
-                        location.href=url;
-                    } else {
-                        alert("下载失败");
-                    }
-                },
-                "json"
-            )
-        });
 
-		/* $(".a").click(function () {
 
-		 $("[name='documenturl']").click();
-		 })*/
-    })
-</script>
 </html>

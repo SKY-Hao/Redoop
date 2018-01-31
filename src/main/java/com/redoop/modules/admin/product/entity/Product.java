@@ -35,6 +35,13 @@ public class Product implements Serializable {
 
     private String      outline;    //概要（和简报更新概要同步）
 
+
+    private String      username;   //用户
+    private int         usertel;    //电话
+    private String      useremail;  //email
+    private String      companyname; //公司名称
+    private String      ip;          //IP
+
     @Override
     public String toString() {
         return "Product{" +
@@ -49,15 +56,12 @@ public class Product implements Serializable {
                 ", productpeople='" + productpeople + '\'' +
                 ", productupload='" + productupload + '\'' +
                 ", outline='" + outline + '\'' +
+                ", username='" + username + '\'' +
+                ", usertel=" + usertel +
+                ", useremail='" + useremail + '\'' +
+                ", companyname='" + companyname + '\'' +
+                ", ip='" + ip + '\'' +
                 '}';
-    }
-
-    public String getOutline() {
-        return outline;
-    }
-
-    public void setOutline(String outline) {
-        this.outline = outline;
     }
 
     public String getId() {
@@ -140,4 +144,51 @@ public class Product implements Serializable {
         this.productupload = productupload;
     }
 
+    public String getOutline() {
+        return outline;
+    }
+
+    public void setOutline(String outline) {
+        this.outline = outline;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getUsertel() {
+        return usertel;
+    }
+
+    public void setUsertel(int usertel) {
+        this.usertel = usertel;
+    }
+
+    public String getUseremail() {
+        return useremail;
+    }
+
+    public void setUseremail(String useremail) {
+        this.useremail = useremail;
+    }
+
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 }

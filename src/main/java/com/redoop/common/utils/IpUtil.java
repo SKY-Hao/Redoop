@@ -8,7 +8,7 @@ import java.io.LineNumberReader;
 /**
  * Created by YY on 2017/6/11.
  */
-public class IpUtils {
+public class IpUtil {
 
  public static String getRemoteAddress(HttpServletRequest request) {
      String ip = request.getHeader("x-forwarded-for");

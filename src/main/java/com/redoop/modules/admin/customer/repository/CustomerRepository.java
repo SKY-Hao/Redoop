@@ -52,6 +52,10 @@ public interface CustomerRepository extends CrudRepository<Customer, String> {
     @Query(value = "FROM Customer WHERE email = :email")
     public Customer findByUserEmail(@Param("email") String email);
 
+    @Query(value = "FROM Customer WHERE ip = :ip")
+    Customer findByIp(@Param("ip") String ip);
+
+
     /**
      * 客户信息按用户名称精确查询
      *
@@ -78,4 +82,6 @@ public interface CustomerRepository extends CrudRepository<Customer, String> {
      */
     @Query(value = "FROM Customer WHERE code = :code")
     public Customer findByCode(@Param("code") String code);
+
+
 }
