@@ -193,9 +193,6 @@
 
                 <li class="last"><a href="<%=basePath%>/front/aboutus" class="${aboutus}" style="text-decoration: none;">关于我们</a></li>
 
-
-                <li><a href="<%=basePath%>/front/group" target="_blank">主题</a></li>
-
             </ul>
         </div>
         <div class="header-l fl clearfix">

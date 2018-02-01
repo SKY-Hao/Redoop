@@ -10,6 +10,7 @@
 
     <jsp:include page="tools/productHead.jsp"></jsp:include>
     <script type="text/javascript" src="<%=basePath%>/front/website/js/jquery.validate.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/front/website/css/productinformation.css" type="text/css" media="screen" />
 
     <script type="text/javascript">
         $(function () {
@@ -22,8 +23,9 @@
                     function (obj) {
 
                         if(obj==0){
-
-                           $("#f1").show();
+                            $(".mod-dialog-bg").show();
+                            $(".wrap").show();
+                            $("#f1").show();
 
                         }else if (obj==1) {
 
@@ -78,15 +80,15 @@
                 },
                 messages:{
                     companyname:{
-                        required:"公司名称不能为空",
+                        required:"请输入公司名称",
                         rangelength:"公司名称长度不正确"
                     },
                     username:{
-                        required:"姓名不能为空",
+                        required:"请输入您的名字",
                         rangelength:"长度为2-10位"
                     },
                     phonenumber:{
-                        required:"手机号不能为空",
+                        required:"请输入手机号",
                         rangelength:"手机号为11位",
                         digits:"必须是数字"    ,
                         number:"请输入有效数字",
@@ -103,14 +105,25 @@
                         $("#f1").serialize(),
                         function(obj){
                             if (obj){
-                                alert(obj);
+                                alert("提交成功,请下载您所需的文件");
+                                $(".mod-dialog-bg").hide();
+                                $(".wrap").hide();
                                 $("#f1").hide();
                             }
                         }
                     );
                 }
             });
-
+            $(".closeX").click(function () {
+                $(".mod-dialog-bg").hide();
+                $(".wrap").hide();
+                $("#f1").hide();
+            });
+            $(".mod-dialog-bg").click(function () {
+                $(".mod-dialog-bg").hide();
+                $(".wrap").hide();
+                $("#f1").hide();
+            });
         });
     </script>
 
@@ -125,9 +138,9 @@
 <!--文档类型-->
 <div class="verNav" style="height: 64px;border-bottom: 1px solid #999;margin-top: 0px;">
     <div class="container">
-        <a href="<%=basePath%>/front/download?producttype=1"  <c:if test="${producttype==1}"> class="on"</c:if>>产品技术文档</a>
-        <a href="<%=basePath%>/front/download?producttype=0"  <c:if test="${producttype==0}"> class="on"</c:if>>产品文档</a>
-        <a href="<%=basePath%>/front/download?producttype=2"  <c:if test="${producttype==2}"> class="on"</c:if>>测试报告</a>
+        <a href="<%=basePath%>/front/productinformation?producttype=1"  <c:if test="${producttype==1}"> class="on"</c:if>>产品技术文档</a>
+        <a href="<%=basePath%>/front/productinformation?producttype=0"  <c:if test="${producttype==0}"> class="on"</c:if>>产品文档</a>
+        <a href="<%=basePath%>/front/productinformation?producttype=2"  <c:if test="${producttype==2}"> class="on"</c:if>>测试报告</a>
     </div>
 </div>
 
@@ -155,9 +168,9 @@
                                 style="margin-top: 10px;line-height: 40px;"><!--下载地址-->
                             下载
                         </button>
-                        <%--<span id="xiazai">
-                            <a href="${one.producturl}" class="aBtn fr" name="producturl"style="margin-top: 10px;line-height: 40px;">下载</a>
-                        </span>--%>
+                            <%--<span id="xiazai">
+                                <a href="${one.producturl}" class="aBtn fr" name="producturl"style="margin-top: 10px;line-height: 40px;">下载</a>
+                            </span>--%>
                         <div>
                             <span style="text-decoration: none;">
                                 <a href="${one.producturl}">
@@ -177,68 +190,43 @@
 
 </section>
 
-<div class="modal fade" id="sqModal" tabindex="100" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width:35%;margin-top: 25%;">
+<div class="mod-dialog-bg"></div>
+<div class="wrap" style="">
+    <h4>申请下载文档<a href="#" class="closeX">X</a></h4>
+    <div class="con">
+        <form action="" id="f1" class="form-horizontal" method="post" enctype="multipart/form-data"  style="display: none; ">
 
-        <div class="sqfrom">
-			<span type="button" style="color: #f7f7f8;margin-right: 1px;" class="close" data-dismiss="modal" aria-hidden="true" >
-				&times;
-		   	</span>
-            <h2 style=" height:80px; line-height:80px; text-align:center; font-size:25px; background:#252527; font-weight:normal; color:#fff; margin-top: 0;">申请为合作伙伴</h2>
-
-            <form action="" id="f1" class="form-horizontal" method="post" enctype="multipart/form-data"  style="display: none; ">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">公司名称</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="companyname">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">联系人名字</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="username">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">联系人电话</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="phonenumber">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">联系人邮箱</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="email">
-                    </div>
-                </div>
-                <input type="submit" value="提交信息" id="tjxx" class="btn btn-danger"style="margin-left:12%; width: 350px;">
-            </form>
-
-        </div>
+            <div class="clearfix">
+                <label>姓名</label><input type="text" class="text" name="username"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <label>手机号码</label><input type="text" class="text" name="phonenumber"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <label>电子邮箱</label><input type="text" class="text"  name="email"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <label>公司名称</label><input type="text" class="text" name="companyname"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <input type="submit" value="提交信息" class="btn" />
+            </div>
+        </form>
     </div>
 </div>
 
-
-
-
-
-
-
-
-<div style="margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 30px;
-    max-width: 1200px;
-    min-width: 1200px;margin-top: -50px">
+<div style="margin-right: auto;margin-left: auto;margin-bottom: 30px;max-width: 1200px;min-width: 1200px;margin-top: -50px">
     <jsp:include page="../../tools/page/admin_page.jsp"></jsp:include>
 </div>
 
 <jsp:include page="tools/footer.jsp"></jsp:include>
 
 </body>
+
 
 
 </html>
