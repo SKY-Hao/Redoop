@@ -84,9 +84,9 @@ public class DownloadServiceImpl implements DownloadService{
         if (download.getDocumentname() == null || "".equals(download.getDocumentname())) {
             throw new SystemException("<script>toastr.error(\"文档名称不能为空\")</script>");
         }
-        if (download.getDocumenturl() == null || "".equals(download.getDocumenturl())) {
+        /*if (download.getDocumenturl() == null || "".equals(download.getDocumenturl())) {
             throw new SystemException("<script>toastr.error(\"文档(下载)地址不能为空\")</script>");
-        }
+        }*/
 
             if(download.getId() != null){
                 Download date_download = downloadRepository.findOne(download.getId());

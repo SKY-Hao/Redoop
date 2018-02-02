@@ -40,12 +40,10 @@
                 <thead>
                 <tr>
                     <th>用户名</th>
-                    <th>密码</th>
                     <th>公司名称</th>
                     <th>邮箱</th>
                     <th>电话</th>
                     <th>注册时间</th>
-                    <th>最后登录时间</th>
                     <th>激活状态</th>
                     <th>操作</th>
                 </tr>
@@ -54,12 +52,10 @@
                 <c:forEach items="${list}" var="one">
                     <tr>
                         <td>${one.username}</td>
-                        <td>${one.password}</td>
                         <td>${one.companyname}</td>
                         <td>${one.email}</td>
                         <td>${one.phonenumber}</td>
                         <td>${one.registerdate}</td>
-                        <td>${one.logindate}</td>
                         <c:if test="${one.activatestate==0}">
                             <td>未激活</td>
                         </c:if>

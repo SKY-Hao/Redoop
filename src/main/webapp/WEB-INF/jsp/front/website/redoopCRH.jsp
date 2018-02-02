@@ -82,13 +82,26 @@
                            文档
                        </button>
                    </c:if>--%>
-                    <button value="${one.documenturl}" class="aBtn fr" name="documenturl" id="${one.id}"
+
+
+                        <c:if test="${one.documenturl == ''}">
+                           <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
+                                        border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
+                               下载
+                           </button>
+                       </c:if>
+                       <c:if test="${one.documenturl != ''}">
+                           <button value="${one.documenturl}" class="aBtn fr" name="documenturl" id="${one.id}"
                             style="font-size: 14px;padding: 5px 5px;
                                     color: #fff;background: #33a0ff;
                                     border-radius: 5px;width: 89px;height: 30px;
                                     line-height: 20px;" target="_blank"><!--下载地址-->
-                        下载
-                    </button>
+                                 下载
+                             </button>
+                       </c:if>
+
+
+
                     <%--之前注释--%>
                  <%--  <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
                            style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--下载地址-->

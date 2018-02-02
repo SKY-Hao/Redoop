@@ -74,7 +74,7 @@ ul.logoList li img{ width:180px; height:84px; border:1px solid #999;}
 .section .zhichi img{ margin-right:20px; vertical-align:middle;}
 
 .support{ background:#2f3437; padding:25px 0; font-size:16px; color:#fff;}
-.support .hour{ margin-top:20px; height:46px; line-height:46px;padding-left:55px; background:url(img/crhImages/hour.png) no-repeat center left; }
+.support .hour{ height:46px; line-height:46px;padding-left:55px; background:url(img/crhImages/hour.png) no-repeat center left; }
 .support p{ margin-left:15px;height:46px; line-height:46px; }
 
 .footer{ background:#373d41; padding:40px; color:#78797a;}

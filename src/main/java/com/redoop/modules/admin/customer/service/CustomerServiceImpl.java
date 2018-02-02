@@ -357,6 +357,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer saveCustomer(Customer customer, HttpServletRequest request) {
         customer.setIp(IpUtilS.getIpAddress(request));
+        customer.setRegisterdate(new Date());
         return customerRepository.save(customer);
     }
 
