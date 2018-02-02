@@ -177,7 +177,6 @@
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="partnerproduct" value="${form.partnerproduct}">
                         </div>
-                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">(官网合作伙伴产品名)</span>
                     </div>
 
@@ -186,7 +185,6 @@
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="partnerversion" value="${form.partnerversion}">
                         </div>
-                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">(官网合作伙伴产品版本)</span>
                     </div>
 
@@ -196,17 +194,17 @@
                         <div class="col-sm-4">
                             <textarea class="form-control" name="testcontent">${form.testcontent}</textarea>
                         </div>
-                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                         <span style="color: #d43f3a;font-size: 16px;">(官网测试内容)</span>
                     </div>
 
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <label class="col-sm-2 control-label">测试时间</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="testtime" value="${form.testtime}" onclick="WdatePicker()">
                         </div>
+                        <span style="color: #d43f3a;font-size: 16px;">*</span>
                     </div>
-
+--%>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" style="margin-top: 5px;">测试结果</label>
                         <div class="col-sm-4" >

@@ -1,6 +1,8 @@
 package com.redoop.modules.front.website;
 
 import com.redoop.common.exception.SystemException;
+import com.redoop.modules.admin.customer.entity.Customer;
+import com.redoop.modules.admin.customer.service.CustomerService;
 import com.redoop.modules.admin.download.entity.Download;
 import com.redoop.modules.admin.download.service.DownloadService;
 import com.redoop.modules.admin.mess.entity.Mess;
@@ -26,6 +28,9 @@ public class CRHWebController {
 
     @Autowired
     private DownloadService downloadService;
+
+    @Autowired
+    private CustomerService customerService;
 
     private void setStyle(Model model,String state){
 
@@ -81,16 +86,50 @@ public class CRHWebController {
      */
     @ResponseBody
     @RequestMapping(value = "/redoopCRH/addDocumenCount/{id}", method = RequestMethod.POST)
-    public boolean addDocumenCount(@PathVariable(value = "id") String id) throws SystemException {
-        int i=downloadService.addDocumenCount(id);
+    public int addDocumenCount(@PathVariable(value = "id") String id,Customer customer,HttpServletRequest request) throws SystemException {
+
+        //0:没有获取到用户IP,让用户填写信息,并获取IP   1:获取到IP,数据库并有这个IP     2.下载失败
+
+
+        int s= customerService.findByIP(customer,request);
+
+        System.out.println("s==========="+s);
+
+        if (s == 0){     // 0:没有获取到用户IP,让用户填写信息,并获取IP
+            return 0;
+        }else
+        if(s==1){       //1:获取到IP,数据库并有这个IP
+            downloadService.addDocumenCount(id);
+
+            return 1;
+        }
+        return 2;
+
+
+      /*  int i=downloadService.addDocumenCount(id);
         if (i>0){
             return true;
         }else {
             return false;
-        }
+        }*/
     }
 
 
+    /**
+     * 保存客户信息
+     * @param customer
+     * @param mode
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/redoopCRH/saveCustomer", method = RequestMethod.POST)
+    public Boolean saveUser(Customer customer, Model mode, HttpServletRequest request){
+        if(customer!=null){
+            customerService.saveCustomer(customer,request) ;
+        }
+        return true;
+    }
 
 
 

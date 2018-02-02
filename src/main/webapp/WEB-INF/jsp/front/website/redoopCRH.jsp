@@ -7,16 +7,18 @@
 <!doctype html>
 <html>
 <head>
-    <jsp:include page="tools/head.jsp"></jsp:include>
-
+    <jsp:include page="tools/productHead.jsp"></jsp:include>
     <link href="<%=basePath%>/front/website/css/CRHFotter.css" type="text/css" rel="stylesheet" />
     <link href="<%=basePath%>/front/website/css/crh.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="<%=basePath%>/front/website/css/productinformation.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="<%=basePath%>/front/website/js/jquery.validate.js"></script>
 
 </head>
 
 <body>
 
-<jsp:include page="tools/header.jsp"></jsp:include>
+<jsp:include page="tools/productHeader.jsp"></jsp:include>
 
 <div class="crhheader">
     <div class="headerBg">
@@ -64,16 +66,14 @@
               <%-- <span>${one.id}</span>--%>
                <li>
 
-                   <c:if test="${one.htmlcontent == ''}">
+                <%--2018年2月2日10:33:39注释--%>
+                  <%-- <c:if test="${one.htmlcontent == ''}">
                        <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
                                     border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
                            文档
                        </button>
                    </c:if>
                    <c:if test="${one.htmlcontent != ''}">
-                      <%-- <span class="fr">
-                            <a href="<%=basePath%>/front/byCRH/${one.id}" class="checkBtn" id="${one.id}" >ChangeLog</a>
-                        </span>--%>
                        <button value="<%=basePath%>/front/byCRH/${one.id}" class="aBtn fr" name="see" id="${one.id}"
                                style="font-size: 14px;padding: 5px 5px;
                                     color: #fff;background: #33a0ff;
@@ -81,7 +81,15 @@
                                     line-height: 20px;"><!--下载地址-->
                            文档
                        </button>
-                   </c:if>
+                   </c:if>--%>
+                    <button value="${one.documenturl}" class="aBtn fr" name="documenturl" id="${one.id}"
+                            style="font-size: 14px;padding: 5px 5px;
+                                    color: #fff;background: #33a0ff;
+                                    border-radius: 5px;width: 89px;height: 30px;
+                                    line-height: 20px;" target="_blank"><!--下载地址-->
+                        下载
+                    </button>
+                    <%--之前注释--%>
                  <%--  <button value="${one.see}" class="aBtn fr" name="see" id="${one.id}"
                            style=" display:inline-block; float:right; font-size:14px; padding:5px 5px;color:#fff; background:#33a0ff; border-radius:5px; font-family:'微软雅黑';width:60px; line-height:20px;"><!--下载地址-->
                        查看
@@ -97,9 +105,9 @@
                     <span class="img">
                         <img src="<%=basePath%>/${one.chippic}" />
                     </span>
-                    <span class="downLink">
+                    <%--<span class="downLink">
                         <a href="${one.documenturl}" id="${one.id}">${one.documenturl}</a>
-                    </span>
+                    </span>--%>
                     <span class="downNum">点击次数：${one.docudowncount}</span>
                     <span class="downNum1">${one.producttime}更新</span>
                 </li>
@@ -109,39 +117,155 @@
 
     </div>
 </section>
+
+
+
+<div class="mod-dialog-bg"></div>
+<div class="wrap">
+    <h4>申请下载文档<a href="#" class="closeX">X</a></h4>
+    <div class="con">
+        <form action="" id="f1" class="form-horizontal" method="post" enctype="multipart/form-data"  style="display: none; ">
+
+            <div class="clearfix">
+                <label>姓名</label><input type="text" class="text" name="username"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <label>手机号码</label><input type="text" class="text" name="phonenumber"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <label>电子邮箱</label><input type="text" class="text"  name="email"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <label>公司名称</label><input type="text" class="text" name="companyname"/>
+                <label style="display: inline-block;width: 70px;text-align: right;height: inherit;padding-right: 10px;"></label>
+            </div>
+            <div class="clearfix">
+                <input type="submit" value="提交信息" class="btn" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
 <jsp:include page="tools/footer.jsp"></jsp:include>
 </body>
-<script>
-    $(function () {
-        /*$(".fr").click(function () {
-            var id = $(this).children().attr("id");
-            $.post(
-                "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
-                "",
-                function (obj) {
-                    if (obj){return false;}else {}
-                },
-                "json"
-            )
-        });*/
-        $("[name='see']").click(function () {
-            var url=$(this).val();
-            var id = $(this).attr("id");
-            $.post(
-                "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
-                "",
+<%--validate验证--%>
+<script type="text/javascript">
+    $(function(){
 
+        //自定义验证手机号
+        jQuery.validator.addMethod("isMobile", function(value, element) {
+            var length = value.length;
+            var mobile = /^1[3456789]\d{9}$/;/*/^1(3|4|5|7|8)\d{9}$/*/
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "请正确填写您的手机号码");
+        //控件validate
+        $("#f1").validate({
+            rules:{
+                companyname:{
+                    required:true,
+                    rangelength:[2,10]
+                },
+                username:{
+                    required:true,
+                    rangelength:[2,8]
+                },
+                phonenumber:{
+                    required:true,
+                    rangelength:[11,11],
+                    digits:true,
+                    number:true,
+                    isMobile : true
+                },
+                email:{
+                    required: true,
+                    email:true
+                }
+            },
+            messages:{
+                companyname:{
+                    required:"请输入公司名称",
+                    rangelength:"公司名称长度不正确"
+                },
+                username:{
+                    required:"请输入您的名字",
+                    rangelength:"长度为2-10位"
+                },
+                phonenumber:{
+                    required:"请输入手机号",
+                    rangelength:"手机号为11位",
+                    digits:"必须是数字"    ,
+                    number:"请输入有效数字",
+                    isMobile: "手机号格式错误"
+                },
+                email:{
+                    required:"请输入邮箱",
+                    email:"请输入正确格式的电子邮件"
+                }
+            },
+            submitHandler:function(){
+                $.post(
+                    "<%=basePath%>/front/redoopCRH/saveCustomer",
+                    $("#f1").serialize(),
+                    function(obj){
+                        if (obj){
+                            alert("提交成功,请下载您所需的文件");
+                            $(".mod-dialog-bg").hide();
+                            $(".wrap").hide();
+                            $("#f1").hide();
+                        }
+                    }
+                );
+            }
+        });
+        $(".closeX").click(function () {
+            $(".mod-dialog-bg").hide();
+            $(".wrap").hide();
+            $("#f1").hide();
+        });
+        $(".mod-dialog-bg").click(function () {
+            $(".mod-dialog-bg").hide();
+            $(".wrap").hide();
+            $("#f1").hide();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("[name='documenturl']").click(function () {
+            var id = $(this).attr("id");
+            var url=$(this).val();
+            $.post(
+                "<%=basePath%>/front/redoopCRH/addDocumenCount/" + id,
+                "",
                 function (obj) {
-                    if (obj){
+
+                    if(obj==0){
+                        $(".mod-dialog-bg").show();
+                        $(".wrap").show();
+                        $("#f1").show();
+
+                    }else if (obj==1) {
+
                         location.href=url;
-                        return false;
+
+                    }else if(obj==2){
+
+                        alert("下载失败");
+
                     }
                 },
                 "json"
             )
         });
-
-    })
+        /* $(".a").click(function () {
+         $("[name='documenturl']").click();
+         })*/
+    });
 </script>
 
 </html>
