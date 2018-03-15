@@ -16,7 +16,7 @@
 <jsp:include page="tools/header.jsp"></jsp:include>
 
 <section class="grey-bg" id="breadMenu" style="margin-top: 75px;">
-    <div class="container"><a href="<%=basePath%>/">首页</a> &gt; 成功案例</div>
+    <div class="container"><a href="<%=basePath%>/">首页</a> &gt; 新闻</div>
 </section>
 <section class="block" id="newsPage">
     <div class="container clearfix">
