@@ -7,8 +7,8 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=2.0" />
 	<jsp:include page="tools/head.jsp"></jsp:include>
-
 	<link rel="stylesheet" href="<%=basePath%>/front/website/css/test01.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<%=basePath%>/front/website/css/test02.css" type="text/css" media="screen" />
 

@@ -24,7 +24,12 @@
         <div class="headSource">
             <span class="date-published">${onenew.date}</span>
             <span class="author">作者：${onenew.publisher}</span>
-            <span class="source">来源：${onenew.publisher}</span>
+            <c:if test="${onenew.source == ''}">
+                <span class="source">来源:红象云腾</span>
+            </c:if>
+            <c:if test="${onenew.source != ''}">
+                <span class="source">来源：${onenew.source}</span>
+            </c:if>
         </div>
         <div class="newsInfo"><!--内容-->
                 ${onenew.content}

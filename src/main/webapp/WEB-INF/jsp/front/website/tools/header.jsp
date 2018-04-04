@@ -171,8 +171,8 @@
            <%-- <p><a href="<%=basePath%>/customer/register" target="_blank">注册</a> | <a href="<%=basePath%>/customer/login" target="_blank">登录</a></p>--%>
                <p style="color:#dc0005; font-weight:bold;font-family:tahoma arial;font-size:14px">TEL：400-0389-155</p>
             <ul>
-                <li><a href="<%=basePath%>/front/products" class="${product}">产品</a></li>
-                <li><a href="<%=basePath%>/front/solution" class="${solution}">行业版本及案例</a></li>
+                <%--<li><a href="<%=basePath%>/front/products" class="${product}">产品</a></li>
+                <li><a href="<%=basePath%>/front/solution" class="${solution}">行业版本及案例</a></li>--%>
                 <li><a href="<%=basePath%>/front/news" class="${news}">新闻</a></li>
                 <li><a href="<%=basePath%>/front/productinformation" class="${productinformation}">产品资料</a></li>
                 <li><a href="<%=basePath%>/front/partners" class="${partners}">合作伙伴</a></li>
@@ -190,14 +190,14 @@
                             </div>
                         </div>
                 </li>
-
+                <li class="last"><a href="http://www.redoop.net/" target="_blank">技术社区</a></li>
                 <li class="last"><a href="<%=basePath%>/front/aboutus" class="${aboutus}" style="text-decoration: none;">关于我们</a></li>
 
             </ul>
         </div>
         <div class="header-l fl clearfix">
             <a href="http://www.redoop.com" class="logo fl" title="红象云腾"></a>
-            <i title="大数据基础软件旗舰厂商"></i>
+            <%--<i title="大数据基础软件旗舰厂商"></i>--%>
         </div>
     </div>
     <script type="text/javascript">

@@ -66,14 +66,25 @@ a.aBtn,.aBtn{ display:inline-block; width:100px; height:40px; line-height:40px;b
 a.aBtn:hover,.aBtn:hover{ background:#b31f23;}
 .container { margin: 0 auto; max-width: 1200px;}
 
+
+
+
 .header { background:#252527;padding: 10px 0 0;z-index: 1;}
-.logo,.header-l i,#news i,.support .hour{ background:url(img/img.png) no-repeat;}
+/*.header {    background: #622b45;    padding: 10px 0 0;    z-index: 1;    position: fixed;    width: 100%;    top: 0;}*/
+.bannerCon{ margin-top: 70px; height:700px;padding-top: 175px; background:url(img/bannerBg.jpg) no-repeat center;}
+.bannerCon .bannerImg{ height: 120px;background: url(img/think.png) no-repeat bottom;}
+.bannerCon p{ font-size:16px; color: #280125; line-height: 2.5em;text-align: center;}
+
+
+.logo,.header-l i,.support .hour{ background:url(img/logoS.png) no-repeat;}
+#news i{ background:url(img/img.png) no-repeat;}
+.header-l i{ display:inline-block; width:200px; height:51px; background:url(/img/logoS.png) no-repeat -140px 0;}
 a.leftArrow,a.rightArrow,.part .partTxt li,#character .col-2 .txt li{ background:url(img/arrow.png) no-repeat;}
 ul.logoList{ margin-left:15px; }
 ul.logoList li{ float:left; margin-right:17px;}
 ul.logoList li img{ width:180px; height:84px; border:1px solid #999;}
 
-.logo{ display:inline-block; width:145px; height:51px; background-position:0 0;}
+.logo{ display:inline-block; width:100%; height:51px; background-position:0 0;}
 .header-l{ margin-left:15px; width:400px;}
 .header-r{ margin-right:15px;}
 .header-l i{ display:inline-block; width:220px; height:51px; background:url(img/logo.png) no-repeat -151px 0;}
@@ -95,6 +106,27 @@ a.rightArrow{ background-position:0 -48px; right:3%;}
 #banner p,.appraise p{ position:absolute; width:200px; left:50%; margin-left:-100px;text-align:center; bottom:2%; z-index:999;}
 #banner p a,.appraise p a{ display:inline-block; margin-left:5px; margin-right:5px; width:10px; height:10px; border-radius:50%; border:1px solid #fff; background:none;}
 #banner p a.on,.appraise p a.on{ background:#fff;}
+
+
+
+
+
+.productCon{ margin-left:15px; margin-right: 15px; width: 370px; float: left;}
+.productCon img{ width:370px; height: 270px;}
+.productCon h2{ color:#373737;font-size: 20px; line-height: 50px; height: 50px; text-align: center;}
+.productCon p{ margin-bottom: 10px; color: #666; font-size: 16px; line-height: 25px;}
+.productCon a.btn{display: block; margin-left: auto; margin-right: auto;padding: 5px 10px; width: 120px; font-size: 14px; color: #cb0003; border: 1px solid #cb0003; text-align: center;}
+.productCon a.btn:hover{ background:#cb0003; color: #fff;}
+.caseIMG{ float:left;width: 570px;}
+.caseTXT{ float: left; margin-left:30px; padding-top:30px;width:540px;}
+.caseTXT h2{margin-bottom:15px;font-size:22px; color: #cc1828;}
+.caseTXT p{ margin-bottom: 15px; font-size:16px; line-height: 1.8em;color: #666;}
+.caseTXT a.btn{display: inline-block; margin-right: 10px; border: 1px solid #cc1828; font-size:14px; padding: 5px 10px; text-align: center; color: #cc1828;}
+.caseTXT a.btn:hover{ background:#cc1828;border: 1px solid #cc1828; color: #fff;}
+
+
+
+
 
 #news{ background:#ebebec; height:40px; line-height:45px; overflow:hidden;}
 #news i{display:inline-block; float:left; margin-right:10px; width:34px; height:40px; background-position:-338px -8px;}

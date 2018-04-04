@@ -33,6 +33,8 @@ public class News {
     private int state;
     private String outline;         //概要（和简报概要一样）
 
+    private  String source;         //来源
+
     @Override
     public String toString() {
         return "News{" +
@@ -45,8 +47,18 @@ public class News {
                 ", time='" + time + '\'' +
                 ", state=" + state +
                 ", outline='" + outline + '\'' +
+                ", source='" + source + '\'' +
                 '}';
     }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
 
     public String getTime() {
         return time;
