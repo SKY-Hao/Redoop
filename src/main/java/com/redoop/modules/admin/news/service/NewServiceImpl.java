@@ -60,7 +60,7 @@ public class NewServiceImpl  implements NewService{
 
         if(news.getId() != null){
             News date_news = newRepository.findOne(news.getId());
-            news.setPublisher(date_news.getPublisher());
+            //news.setPublisher(date_news.getPublisher());
             news.setState(0);
 
             if(attach.isEmpty()){
@@ -84,10 +84,19 @@ public class NewServiceImpl  implements NewService{
                     throw new SystemException("<script>toastr.error(\"新闻Logo上传失败\")</script>");
                 }
             }
+
+                //获取登录的用户
+                //TODO
+               // User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                //news.setPublisher(user.getUsername());
+            news.setState(0);
+        }
+
+        if(news.getPublisher().isEmpty()){
+            //获取登录的用户
+            //TODO
             User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             news.setPublisher(user.getUsername());
-
-            news.setState(0);
         }
 
         newRepository.save(news);

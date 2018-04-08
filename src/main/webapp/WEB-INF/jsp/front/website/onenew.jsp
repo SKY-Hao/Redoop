@@ -16,7 +16,7 @@
 <jsp:include page="tools/header.jsp"></jsp:include>
 
 <section class="grey-bg" id="breadMenu" style="margin-top: 75px;">
-    <div class="container"><a href="<%=basePath%>/">首页</a> &gt; 成功案例</div>
+    <div class="container"><a href="<%=basePath%>/">首页</a> &gt; 新闻</div>
 </section>
 <section class="block" id="newsPage">
     <div class="container clearfix">
@@ -24,7 +24,12 @@
         <div class="headSource">
             <span class="date-published">${onenew.date}</span>
             <span class="author">作者：${onenew.publisher}</span>
-            <span class="source">来源：${onenew.publisher}</span>
+            <c:if test="${onenew.source == ''}">
+                <span class="source">来源:红象云腾</span>
+            </c:if>
+            <c:if test="${onenew.source != ''}">
+                <span class="source">来源：${onenew.source}</span>
+            </c:if>
         </div>
         <div class="newsInfo"><!--内容-->
                 ${onenew.content}
