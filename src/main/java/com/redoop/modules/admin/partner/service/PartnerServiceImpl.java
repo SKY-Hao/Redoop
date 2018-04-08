@@ -106,7 +106,7 @@ public class PartnerServiceImpl  implements PartnerService {
      * @throws SystemException
      */
     @Override
-    public void save(Partner partner, MultipartFile attach, String logoPath) throws SystemException {
+        public void save(Partner partner, MultipartFile attach, String logoPath) throws SystemException {
 
         if (partner.getCompanyname() == null || "".equals(partner.getCompanyname())) {
             throw new SystemException("<script>toastr.error(\"公司名称不能为空\")</script>");

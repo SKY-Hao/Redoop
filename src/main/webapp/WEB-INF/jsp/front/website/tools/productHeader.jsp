@@ -192,6 +192,7 @@
                             </div>
                         </div>
                 </li>
+                <li class="last"><a href="http://www.redoop.net/"  target="_blank">技术社区</a></li>
 
                 <li class="last"><a href="<%=basePath%>/front/aboutus" class="${aboutus}" style="text-decoration: none;">关于我们</a></li>
 
