@@ -1,4 +1,4 @@
-﻿﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -25,7 +25,7 @@
 <div class="bannerCon">
 	<div class="container">
 		<div class="bannerImg"></div>
-		<p> 全球感知 精准服务</p>
+		<p> 红象云腾是航天大数据基础软件提供商,已经服务十颗卫星。</p>
 	</div>
 </div>
 
@@ -74,17 +74,33 @@
 </section>
 
 
-
 <section class="block grey-bg" id="function">
+	<div class="container clearfix">
+		<h2 class="title">企业历程</h2>
+		<div class="clearfix "  style="text-align:center;" align="middle">
+			<embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=t0610cphkcp&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+		</div>
+	</div>
+</section>
+
+
+<section class="block" id="function">
 	<div class="container clearfix">
 		<h2 class="title">成功案例</h2>
 		<div class="clearfix ">
 			<div class="caseIMG"><img src="<%=basePath%>/front/website/css/img/case-1.jpg" /></div>
 			<div class="caseTXT">
-				<h2><a href="http://www.redoop.net/group/detail/7"  target="_blank">红象数据高铁助力航天大数据</a></h2>
-				<p>卫星在发射、运行过程中会产生大量的数据，如何有效存储数据以及快速计算分析这些数据，实时检测卫星状况是中国航天集团亟需解决的问题。</p>
-				<a href="http://www.redoop.net/group/detail/7" class="btn"  target="_blank">阅读详情</a>
-			</div>
+            				<h2>全球承接卫星数量最多的集群</h2>
+            				<p>支持国家级关键项目、存储量PB级别大数据平台稳定高效运行</p>
+            				<p>处理高分、高景、资源、张衡等遥感星座“十颗星”,未来60颗陆地观测卫星</p>
+            				<p>在全球范围内航天领域大数据底层技术行业第一</p>
+            				<h2 style="margin-top:20px;">全球容量最大的卫星遥感集群</h2>
+            				<p>日新增数据大于1TB ,满足：接入、存储、处理、归档 等 </p>
+            				<p>产品生产集群系统需达到几千核心计算能力，上百PB的存储容量 </p>
+            				<p>平台具有高性能、高扩展性、高I/O读写、高性价比的特点 </p>
+            				<!-- <a href="#" class="btn"  target="_blank">阅读详情</a> -->
+            </div>
+
 		</div>
 	</div>
 </section>

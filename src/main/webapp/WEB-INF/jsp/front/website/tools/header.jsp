@@ -4,7 +4,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
-
+<%--
 
 <div class="qqTips">
     <div class="slide_min"></div>
@@ -112,10 +112,10 @@
 
     </div>
 </div>
-
+--%>
 
 <script type="text/javascript" src="<%=basePath%>/front/website/js/jquery-1.11.3.min.js"></script>
-<script>
+<%--<script>
     $(function(){
         var thisBox = $('.qqTips');
         var defaultTop = thisBox.offset().top;
@@ -163,7 +163,7 @@
                 });
         }
     });
-</script>
+</script>--%>
 
 <header class="header" style="position: fixed;top: 0px;width: 100%;z-index:1;">
     <div class="container clearfix" style="height:auto;">
@@ -191,10 +191,6 @@
                         </div>
                 </li>
                 <li class="last"><a href="http://www.redoop.net/" target="_blank">技术社区</a></li>
-<<<<<<< HEAD
-
-=======
->>>>>>> b44d7aca8bfb21cbcbc5289fd6e7d5e5285c6d00
                 <li class="last"><a href="<%=basePath%>/front/aboutus" class="${aboutus}" style="text-decoration: none;">关于我们</a></li>
 
             </ul>
