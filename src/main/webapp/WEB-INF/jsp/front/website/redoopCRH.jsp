@@ -82,9 +82,9 @@
                            文档
                        </button>
                    </c:if>--%>
+                        <a href="<%=basePath%>/front/byCRH/${one.id}">查看</a>
 
-
-                        <c:if test="${one.documenturl == ''}">
+                       <%-- <c:if test="${one.documenturl == ''}">
                            <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
                                         border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
                                下载
@@ -98,7 +98,7 @@
                                     line-height: 20px;" target="_blank"><!--下载地址-->
                                  下载
                              </button>
-                       </c:if>
+                       </c:if>--%>
 
 
 
@@ -119,7 +119,7 @@
                         <img src="<%=basePath%>/${one.chippic}" />
                     </span>
                     <%--<span class="downLink">
-                        <a href="${one.documenturl}"  id="${one.id}">${one.documenturl}</a>
+                        <a href="${one.documenturl}" id="${one.id}">${one.documenturl}</a>
                     </span>--%>
                     <span class="downNum">点击次数：${one.docudowncount}</span>
                     <span class="downNum1">${one.producttime}更新</span>
@@ -135,7 +135,7 @@
 
 <div class="mod-dialog-bg"></div>
 <div class="wrap">
-    <h4>申请下载<a href="#" class="closeX">X</a></h4>
+    <h4>申请下载文档<a href="#" class="closeX">X</a></h4>
     <div class="con">
         <form action="" id="f1" class="form-horizontal" method="post" enctype="multipart/form-data"  style="display: none; ">
 

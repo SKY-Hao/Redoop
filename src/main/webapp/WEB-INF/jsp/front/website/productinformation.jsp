@@ -192,7 +192,7 @@
 
 <div class="mod-dialog-bg"></div>
 <div class="wrap" style="">
-    <h4>申请下载<a href="#" class="closeX">X</a></h4>
+    <h4>申请下载文档<a href="#" class="closeX">X</a></h4>
     <div class="con">
         <form action="" id="f1" class="form-horizontal" method="post" enctype="multipart/form-data"  style="display: none; ">
 

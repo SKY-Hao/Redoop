@@ -38,9 +38,14 @@
 		<i></i>
 		<p>
 			<c:forEach items="${briefingList}" var="briefing">
-				<a href="<%=basePath%>/front/weekly"  target="_blank">${briefing.tabletitle}</a>
+
+
+				<%--<a href="<%=basePath%>/front/weekly"  target="_blank">${briefing.tabletitle}</a>--%>
+				<a href="${briefing.jumpurl}"  target="_blank">${briefing.tabletitle} </a>
+
 			</c:forEach>
 		</p>
+
 	</div>
 </section>
 
@@ -53,7 +58,7 @@
 			<img src="<%=basePath%>/front/website/css/img/product-2.jpg" />
 			<h2> 物联网大数据接入平台</h2>
 			<p>红象云腾面向物联网推出，企业级流式数据处理平台，提供一整套可视化的数据接入方案。让数据在流动中被处理和消费，更快，更准确;超低的门槛让提供灵活的数据探索，产生商业价值。</p>
-			<a href="http://www.redoop.net/group/detail/5" class="btn"  target="_blank">阅读更多主题</a>
+			<%--<a href="http://www.redoop.net/group/detail/5" class="btn"  target="_blank">阅读更多主题</a>--%>
 		</div>
 		<div class="productCon">
 			<img src="<%=basePath%>/front/website/css/img/product-1.jpg" />
@@ -62,13 +67,13 @@
 				红象大数据发行版CRH为企业大数据实施提供一套完整的一站式大数据解决方案，产品覆盖了企业数据仓库、
 				商业智能、机器学习、数据可视化等领域，助力企业在DT时代更敏捷、更智能、更具洞察力。
 			</p>
-			<a href="http://www.redoop.net/group/detail/2" class="btn"  target="_blank">阅读更多主题</a>
+			<%--<a href="http://www.redoop.net/group/detail/2" class="btn"  target="_blank">阅读更多主题</a>--%>
 		</div>
 		<div class="productCon">
 			<img src="<%=basePath%>/front/website/css/img/product-3.jpg" />
 			<h2>数据挖掘和AI智能分析平台</h2>
 			<p>CRS支持NVIDIA，基于Hadoop Yarn完成了对TensorFlow、Caffe等常用框架的集成，同时具备良好的扩展性和兼容性，并能提供数据可视化，数据挖掘工具。</p>
-			<a href="http://www.redoop.net/group/detail/4" class="btn"  target="_blank">阅读更多主题</a>
+			<%--<a href="http://www.redoop.net/group/detail/4" class="btn"  target="_blank">阅读更多主题</a>--%>
 		</div>
 	</div>
 </section>

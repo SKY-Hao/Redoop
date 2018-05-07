@@ -1,4 +1,4 @@
-/* CSS Document */
+﻿/* CSS Document */
 
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 body{margin:0}
@@ -119,8 +119,8 @@ a.rightArrow{ background-position:0 -48px; right:3%;}
 .productCon a.btn:hover{ background:#cb0003; color: #fff;}
 .caseIMG{ float:left;width: 570px;}
 .caseTXT{ float: left; margin-left:30px; padding-top:30px;width:540px;}
-.caseTXT h2{margin-bottom:15px;font-size:22px; color: #cc1828;}
-.caseTXT p{ margin-bottom: 15px; font-size:16px; line-height: 1.8em;color: #666;}
+.caseTXT h2{margin-bottom:12px;font-size:22px; color: #cc1828;}
+.caseTXT p{ margin-bottom: 2px; font-size:16px; line-height: 1.8em;color: #666;}
 .caseTXT a.btn{display: inline-block; margin-right: 10px; border: 1px solid #cc1828; font-size:14px; padding: 5px 10px; text-align: center; color: #cc1828;}
 .caseTXT a.btn:hover{ background:#cc1828;border: 1px solid #cc1828; color: #fff;}
 
@@ -154,7 +154,7 @@ a.rightArrow{ background-position:0 -48px; right:3%;}
 #case .row,#character .row{ margin-bottom:36px;}
 
 .appraise{ position:relative; height:340px; background:#cd2027 url(img/appraiseBg.png) no-repeat;}
-.clientLogo{ text-align:center;}
+.clientLogo{ text-align:center; margin-top: 50px;}
 .appraise h4{ clear:both; margin-left:auto; margin-right:auto; margin-top:60px; color:#fff; width:80%; text-align:center; font-size:20px;}
 
 .companyPraise{ margin-right:15px; width:50%; background:#e7e7e7; padding:15px;}
