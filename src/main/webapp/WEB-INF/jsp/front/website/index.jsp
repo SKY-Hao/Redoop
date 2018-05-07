@@ -1,4 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -74,6 +74,11 @@
 </section>
 
 
+
+
+
+
+
 <section class="block grey-bg" id="function">
 	<div class="container clearfix">
 		<h2 class="title">企业历程</h2>
@@ -83,25 +88,24 @@
 	</div>
 </section>
 
-
-<section class="block" id="function">
+<section class="block" id="function" style="margin-top: 20px;">
 	<div class="container clearfix">
 		<h2 class="title">成功案例</h2>
 		<div class="clearfix ">
 			<div class="caseIMG"><img src="<%=basePath%>/front/website/css/img/case-1.jpg" /></div>
 			<div class="caseTXT">
-            				<h2>全球承接卫星数量最多的集群</h2>
-            				<p>支持国家级关键项目、存储量PB级别大数据平台稳定高效运行</p>
-            				<p>处理高分、高景、资源、张衡等遥感星座“十颗星”,未来60颗陆地观测卫星</p>
-            				<p>在全球范围内航天领域大数据底层技术行业第一</p>
-            				<h2 style="margin-top:20px;">全球容量最大的卫星遥感集群</h2>
-            				<p>日新增数据大于1TB ,满足：接入、存储、处理、归档 等 </p>
-            				<p>产品生产集群系统需达到几千核心计算能力，上百PB的存储容量 </p>
-            				<p>平台具有高性能、高扩展性、高I/O读写、高性价比的特点 </p>
-            				<!-- <a href="#" class="btn"  target="_blank">阅读详情</a> -->
-            </div>
-
+				<h2>全球承接卫星数量最多的集群</h2>
+				<p>支持国家级关键项目、存储量PB级别大数据平台稳定高效运行</p>
+				<p>处理高分、高景、资源、张衡等遥感星座“十颗星”,未来60颗陆地观测卫星</p>
+				<p>在全球范围内航天领域大数据底层技术行业第一</p>
+				<h2 style="margin-top:20px;">全球容量最大的卫星遥感集群</h2>
+				<p>日新增数据大于1TB ,满足：接入、存储、处理、归档 等 </p>
+				<p>产品生产集群系统需达到几千核心计算能力，上百PB的存储容量 </p>
+				<p>平台具有高性能、高扩展性、高I/O读写、高性价比的特点 </p>
+				<!-- <a href="#" class="btn"  target="_blank">阅读详情</a> -->
+			</div>
 		</div>
+
 	</div>
 </section>
 

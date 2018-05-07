@@ -119,7 +119,7 @@
                         <img src="<%=basePath%>/${one.chippic}" />
                     </span>
                     <%--<span class="downLink">
-                        <a href="${one.documenturl}" id="${one.id}">${one.documenturl}</a>
+                        <a href="${one.documenturl}"  id="${one.id}">${one.documenturl}</a>
                     </span>--%>
                     <span class="downNum">点击次数：${one.docudowncount}</span>
                     <span class="downNum1">${one.producttime}更新</span>
