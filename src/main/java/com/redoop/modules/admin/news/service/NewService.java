@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 说明：新闻Service接口
- * 包名：cn.itweet.modules.admin.news
+ * 包名：cn.itweet.tea.admin.news
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/4/2.

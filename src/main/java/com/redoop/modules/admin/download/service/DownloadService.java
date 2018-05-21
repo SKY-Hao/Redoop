@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 说明：RdoopCRH||AI service
- * 包名：cn.itweet.modules.admin.download.service
+ * 包名：cn.itweet.tea.admin.download.service
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年10月25日10:28:37

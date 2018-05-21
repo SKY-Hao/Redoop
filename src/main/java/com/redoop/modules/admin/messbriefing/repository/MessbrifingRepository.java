@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 说明：Repository
- * 包名：cn.itweet.modules.admin.mess.Repository
+ * 包名：cn.itweet.tea.admin.mess.Repository
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间： 2017年10月23日

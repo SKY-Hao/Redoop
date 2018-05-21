@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * 说明：新闻Service实现类
- * 包名：cn.itweet.modules.admin.Solution
+ * 包名：cn.itweet.tea.admin.Solution
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间：2017年10月16日16:20:38

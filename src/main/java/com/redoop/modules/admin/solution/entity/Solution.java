@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * 说明：行业版本及案例实体类
- * 包名：cn.itweet.modules.admin.solution
+ * 包名：cn.itweet.tea.admin.solution
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间：2017年10月16日16:20:56

@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 /**
  * 说明：客户Controller层
- * 包名：cn.itweet.modules.front.appstore.web
+ * 包名：cn.itweet.tea.front.appstore.web
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/12.

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 说明：系统图片Service层接口
- * 包名：cn.itweet.modules.admin.system.picture.service
+ * 包名：cn.itweet.tea.admin.system.picture.service
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/16.

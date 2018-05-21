@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * 说明：生成UUID工具类
  * 项目名：License-Admin
- * 包名：cn.itweet.modules.admin.license.utils
+ * 包名：cn.itweet.tea.admin.license.utils
  * 创建人：SunDaFei
  * 创建时间：2017/6/22.
  */

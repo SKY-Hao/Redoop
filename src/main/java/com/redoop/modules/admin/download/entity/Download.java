@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * 说明：CRH||AI实体类
- * 包名：cn.itweet.modules.admin.download
+ * 包名：cn.itweet.tea.admin.download
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间： 2017/9/22.

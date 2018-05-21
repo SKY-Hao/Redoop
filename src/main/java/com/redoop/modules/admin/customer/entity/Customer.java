@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * 说明：客户信息实体类
- * 包名：cn.itweet.modules.admin.customer.entity
+ * 包名：cn.itweet.tea.admin.customer.entity
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/12.

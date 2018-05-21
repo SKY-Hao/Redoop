@@ -27,7 +27,7 @@ import java.util.List;
 
 /**
  * 说明：服务Service接口实现类
- * 包名：cn.itweet.modules.admin.component.service
+ * 包名：cn.itweet.tea.admin.component.service
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/13.

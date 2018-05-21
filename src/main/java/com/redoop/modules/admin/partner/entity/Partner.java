@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.util.Date;
 /**
  * 说明：合作伙伴实体类
- * 包名：cn.itweet.modules.admin.customer.entity
+ * 包名：cn.itweet.tea.admin.customer.entity
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年9月7日16:36:32

@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 说明：服务数据仓库
- * 包名：cn.itweet.modules.admin.component.repository
+ * 包名：cn.itweet.tea.admin.component.repository
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/13.

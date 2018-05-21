@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 说明：注册数据仓库
- * 包名：cn.itweet.modules.admin.license
+ * 包名：cn.itweet.tea.admin.license
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/3/14.

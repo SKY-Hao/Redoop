@@ -28,7 +28,7 @@ import java.util.*;
 
 /**
  * 说明：合作伙伴Service接口实现类
- * 包名：cn.itweet.modules.admin.partner.PartnerServiceImpl
+ * 包名：cn.itweet.tea.admin.partner.PartnerServiceImpl
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年9月7日17:04:25

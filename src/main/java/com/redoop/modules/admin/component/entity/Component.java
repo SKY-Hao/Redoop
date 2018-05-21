@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * 说明：服务组件实体类
- * 包名：cn.itweet.modules.admin.component.entity
+ * 包名：cn.itweet.tea.admin.component.entity
  * 项目名：License-Admin
  * 创建人：孙大飞
  * 创建时间：13/07/17.

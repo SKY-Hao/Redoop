@@ -3,7 +3,7 @@ package com.redoop.modules.admin.license.utils;
 /**
  * 说明：Mac和IP地址
  * 项目名：License-Admin
- * 包名：cn.itweet.modules.admin.license.entity
+ * 包名：cn.itweet.tea.admin.license.entity
  * 创建人：SunDaFei
  * 创建时间：2017/6/22.
  */

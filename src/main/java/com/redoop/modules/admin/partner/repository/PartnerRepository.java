@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 说明：合作伙伴数据仓库
- * 包名：cn.itweet.modules.admin.component.PartnerRepository
+ * 包名：cn.itweet.tea.admin.component.PartnerRepository
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年9月7日17:06:55

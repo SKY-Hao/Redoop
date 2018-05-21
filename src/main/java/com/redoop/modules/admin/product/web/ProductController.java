@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * 说明：产品资料Web层
- * 包名：cn.itweet.modules.admin.product.web
+ * 包名：cn.itweet.tea.admin.product.web
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年9月22日10:28:37

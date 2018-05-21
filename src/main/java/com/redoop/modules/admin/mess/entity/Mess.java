@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * 说明：简报实体类（后端用）(简报日志表和简报7天表)
- * 包名：cn.itweet.modules.admin.mess
+ * 包名：cn.itweet.tea.admin.mess
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间： 2017年10月23日10:04:23

@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 说明：
- * 包名：cn.itweet.modules.admin.news.repository
+ * 包名：cn.itweet.tea.admin.news.repository
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/4/2.

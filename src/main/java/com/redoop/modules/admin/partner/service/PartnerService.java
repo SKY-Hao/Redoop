@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 说明：合作伙伴service接口
- * 包名：cn.itweet.modules.admin.partner.service
+ * 包名：cn.itweet.tea.admin.partner.service
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年9月7日17:04:25

@@ -2,7 +2,7 @@ package com.redoop.modules.admin.news.entity;
 
 /**
  * 说明：前端新闻展示
- * 包名：cn.itweet.modules.admin.news.entity
+ * 包名：cn.itweet.tea.admin.news.entity
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/4/3.

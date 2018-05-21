@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * 说明：最终周报实体类(前端单独页面用)
- * 包名：cn.itweet.modules.admin.briefing
+ * 包名：cn.itweet.tea.admin.briefing
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间： 2017年10月31日15:58:08

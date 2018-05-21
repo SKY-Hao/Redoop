@@ -5,7 +5,7 @@ import org.apache.xerces.impl.dv.util.Base64;
 
 /**
  * 说明：对字符串加密
- * 包名：cn.itweet.modules.admin.license.utils
+ * 包名：cn.itweet.tea.admin.license.utils
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/3/16.

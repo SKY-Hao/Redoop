@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 说明：客户信息数据仓库接口
- * 包名：cn.itweet.modules.admin.customer.repository
+ * 包名：cn.itweet.tea.admin.customer.repository
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/12.

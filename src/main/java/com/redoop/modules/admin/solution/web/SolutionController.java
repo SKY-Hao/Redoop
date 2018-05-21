@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * 说明：方案及案例Controller层
- * 包名：cn.itweet.modules.admin.solution
+ * 包名：cn.itweet.tea.admin.solution
  * 项目名：itweet-boot
  * 创建人:黄天浩
  * 创建时间：2017年10月16日16:20:47

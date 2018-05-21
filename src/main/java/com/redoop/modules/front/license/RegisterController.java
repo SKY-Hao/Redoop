@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 
 /**
  * 说明：license注册Controller层
- * 包名：cn.itweet.modules.admin.license
+ * 包名：cn.itweet.tea.admin.license
  * 项目名：License-Admin
  * 创建人：孙大飞
  * 创建时间：2017/3/14.

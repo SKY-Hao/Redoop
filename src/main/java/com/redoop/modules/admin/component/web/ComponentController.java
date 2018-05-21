@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * 说明：服务Web层
- * 包名：cn.itweet.modules.admin.component.web
+ * 包名：cn.itweet.tea.admin.component.web
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/13.

@@ -31,7 +31,7 @@ import java.util.Map;
 
 /**
  * 说明：RdoopCRH||AI controller
- * 包名：cn.itweet.modules.admin.download.web
+ * 包名：cn.itweet.tea.admin.download.web
  * 项目名：License-Admin
  * 创建人：黄天浩
  * 创建时间：2017年10月25日10:28:37

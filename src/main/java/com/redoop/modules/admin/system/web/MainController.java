@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * 说明： 系统后台框架Controller
- * 包名：cn.itweet.modules.admin.system
+ * 包名：cn.itweet.tea.admin.system
  * 项目名：itweet-boot
  * 创建人：孙大飞
  * 创建时间：2017/3/13.

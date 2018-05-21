@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -54,6 +59,9 @@ public class AppstoreWebController {
         return "front/website/appstore";
 
     }
+
+
+
 
     /**
      * 应用商城 点击申请时进行判断登录状态  AppStore

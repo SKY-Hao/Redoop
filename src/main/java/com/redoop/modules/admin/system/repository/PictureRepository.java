@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * 说明：系统图片数据仓库
- * 包名：cn.itweet.modules.admin.system.picture.repository
+ * 包名：cn.itweet.tea.admin.system.picture.repository
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/16.

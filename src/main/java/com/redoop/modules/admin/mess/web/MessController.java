@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 说明：简报信息controller
- * 包名：cn.itweet.modules.admin.mess
+ * 包名：cn.itweet.tea.admin.mess
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间： 2017年10月23日

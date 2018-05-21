@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * 说明：产品资料实体类
- * 包名：cn.itweet.modules.admin.product
+ * 包名：cn.itweet.tea.admin.product
  * 项目名：itweet-boot
  * 创建人：黄天浩
  * 创建时间：2017/10/10.

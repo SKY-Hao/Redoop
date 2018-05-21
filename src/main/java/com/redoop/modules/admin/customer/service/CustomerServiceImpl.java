@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 说明：客户信息Service实现类层
- * 包名：cn.itweet.modules.admin.customer.service
+ * 包名：cn.itweet.tea.admin.customer.service
  * 项目名：License-Admin
  * 创建人：SunDaFei
  * 创建时间：2017/7/12.
