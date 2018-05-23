@@ -82,9 +82,9 @@
                            文档
                        </button>
                    </c:if>--%>
-                        <a href="<%=basePath%>/front/byCRH/${one.id}">查看</a>
+                        <%--<a href="<%=basePath%>/front/byCRH/${one.id}">查看</a>--%>
 
-                       <%-- <c:if test="${one.documenturl == ''}">
+                      <c:if test="${one.documenturl == ''}">
                            <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
                                         border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
                                下载
@@ -98,7 +98,7 @@
                                     line-height: 20px;" target="_blank"><!--下载地址-->
                                  下载
                              </button>
-                       </c:if>--%>
+                       </c:if>
 
 
 
