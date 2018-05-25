@@ -2,10 +2,7 @@ package com.redoop.modules.admin.tea.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,8 +14,7 @@ import java.util.Date;
 public class Tea implements Serializable{
 
         @Id
-        @GeneratedValue(generator = "system-uuid")
-        @GenericGenerator(name = "system-uuid", strategy = "uuid")
+        @GeneratedValue
         private String      id;
         private String      process;            //"选中→种植→采摘→加工→包装→物流→评价"
         private String      gradeshape;         //外形：芽头饱满,芽叶齐匀；
@@ -133,7 +129,7 @@ public class Tea implements Serializable{
         @Override
         public String toString() {
                 return "Tea{" +
-                        "id='" + id + '\'' +
+                        "id=" + id +
                         ", process='" + process + '\'' +
                         ", gradeshape='" + gradeshape + '\'' +
                         ", gradeodor='" + gradeodor + '\'' +
@@ -226,44 +222,164 @@ public class Tea implements Serializable{
                         '}';
         }
 
-        public String getAltitude() {
-                return altitude;
+        public String getId() {
+                return id;
         }
 
-        public void setAltitude(String altitude) {
-                this.altitude = altitude;
+        public void setId(String id) {
+                this.id = id;
         }
 
-        public String getRainfall() {
-                return rainfall;
+        public String getProcess() {
+                return process;
         }
 
-        public void setRainfall(String rainfall) {
-                this.rainfall = rainfall;
+        public void setProcess(String process) {
+                this.process = process;
         }
 
-        public String getPh() {
-                return ph;
+        public String getGradeshape() {
+                return gradeshape;
         }
 
-        public void setPh(String ph) {
-                this.ph = ph;
+        public void setGradeshape(String gradeshape) {
+                this.gradeshape = gradeshape;
         }
 
-        public String getLand() {
-                return land;
+        public String getGradeodor() {
+                return gradeodor;
         }
 
-        public void setLand(String land) {
-                this.land = land;
+        public void setGradeodor(String gradeodor) {
+                this.gradeodor = gradeodor;
         }
 
-        public String getSurroundings() {
-                return surroundings;
+        public String getGradeleaf() {
+                return gradeleaf;
         }
 
-        public void setSurroundings(String surroundings) {
-                this.surroundings = surroundings;
+        public void setGradeleaf(String gradeleaf) {
+                this.gradeleaf = gradeleaf;
+        }
+
+        public String getGradetime() {
+                return gradetime;
+        }
+
+        public void setGradetime(String gradetime) {
+                this.gradetime = gradetime;
+        }
+
+        public String getGradesoupcolor() {
+                return gradesoupcolor;
+        }
+
+        public void setGradesoupcolor(String gradesoupcolor) {
+                this.gradesoupcolor = gradesoupcolor;
+        }
+
+        public String getSugwarmcup() {
+                return sugwarmcup;
+        }
+
+        public void setSugwarmcup(String sugwarmcup) {
+                this.sugwarmcup = sugwarmcup;
+        }
+
+        public String getSugtea() {
+                return sugtea;
+        }
+
+        public void setSugtea(String sugtea) {
+                this.sugtea = sugtea;
+        }
+
+        public String getSugwater() {
+                return sugwater;
+        }
+
+        public void setSugwater(String sugwater) {
+                this.sugwater = sugwater;
+        }
+
+        public String getSugtaste() {
+                return sugtaste;
+        }
+
+        public void setSugtaste(String sugtaste) {
+                this.sugtaste = sugtaste;
+        }
+
+        public String getProduction() {
+                return production;
+        }
+
+        public void setProduction(String production) {
+                this.production = production;
+        }
+
+        public String getEnvironment() {
+                return environment;
+        }
+
+        public void setEnvironment(String environment) {
+                this.environment = environment;
+        }
+
+        public String getAir() {
+                return air;
+        }
+
+        public void setAir(String air) {
+                this.air = air;
+        }
+
+        public String getWater() {
+                return water;
+        }
+
+        public void setWater(String water) {
+                this.water = water;
+        }
+
+        public String getSoil() {
+                return soil;
+        }
+
+        public void setSoil(String soil) {
+                this.soil = soil;
+        }
+
+        public String getImg() {
+                return img;
+        }
+
+        public void setImg(String img) {
+                this.img = img;
+        }
+
+        public String getWeather() {
+                return weather;
+        }
+
+        public void setWeather(String weather) {
+                this.weather = weather;
+        }
+
+        public String getEthhash() {
+                return ethhash;
+        }
+
+        public void setEthhash(String ethhash) {
+                this.ethhash = ethhash;
+        }
+
+        public String getDate() {
+                return date;
+        }
+
+        public void setDate(String date) {
+                this.date = date;
         }
 
         public String getAddress() {
@@ -786,166 +902,43 @@ public class Tea implements Serializable{
                 this.statesfive = statesfive;
         }
 
-        public String getDate() {
-                return date;
+        public String getAltitude() {
+                return altitude;
         }
 
-        public void setDate(String date) {
-                this.date = date;
+        public void setAltitude(String altitude) {
+                this.altitude = altitude;
         }
 
-        public String getSugwarmcup() {
-                return sugwarmcup;
+        public String getRainfall() {
+                return rainfall;
         }
 
-        public void setSugwarmcup(String sugwarmcup) {
-                this.sugwarmcup = sugwarmcup;
+        public void setRainfall(String rainfall) {
+                this.rainfall = rainfall;
         }
 
-        public String getSugtea() {
-                return sugtea;
+        public String getPh() {
+                return ph;
         }
 
-        public void setSugtea(String sugtea) {
-                this.sugtea = sugtea;
+        public void setPh(String ph) {
+                this.ph = ph;
         }
 
-        public String getSugwater() {
-                return sugwater;
+        public String getLand() {
+                return land;
         }
 
-        public void setSugwater(String sugwater) {
-                this.sugwater = sugwater;
+        public void setLand(String land) {
+                this.land = land;
         }
 
-        public String getSugtaste() {
-                return sugtaste;
+        public String getSurroundings() {
+                return surroundings;
         }
 
-        public void setSugtaste(String sugtaste) {
-                this.sugtaste = sugtaste;
+        public void setSurroundings(String surroundings) {
+                this.surroundings = surroundings;
         }
-
-        public String getGradeodor() {
-                return gradeodor;
-        }
-
-        public void setGradeodor(String gradeodor) {
-                this.gradeodor = gradeodor;
-        }
-
-        public String getGradeleaf() {
-                return gradeleaf;
-        }
-
-        public void setGradeleaf(String gradeleaf) {
-                this.gradeleaf = gradeleaf;
-        }
-
-        public String getGradetime() {
-                return gradetime;
-        }
-
-        public void setGradetime(String gradetime) {
-                this.gradetime = gradetime;
-        }
-
-        public String getGradesoupcolor() {
-                return gradesoupcolor;
-        }
-
-        public void setGradesoupcolor(String gradesoupcolor) {
-                this.gradesoupcolor = gradesoupcolor;
-        }
-
-        public String getGradeshape() {
-
-                return gradeshape;
-        }
-
-        public void setGradeshape(String gradeshape) {
-                this.gradeshape = gradeshape;
-        }
-
-        public String getEthhash() {
-        return ethhash;
-        }
-
-        public void setEthhash(String ethhash) {
-        this.ethhash = ethhash;
-        }
-
-        public String getId() {
-        return id;
-        }
-
-        public void setId(String id) {
-        this.id = id;
-        }
-
-        public String getProcess() {
-        return process;
-        }
-
-        public void setProcess(String process) {
-        this.process = process;
-        }
-
-        public String getProduction() {
-        return production;
-        }
-
-        public void setProduction(String production) {
-        this.production = production;
-        }
-
-        public String getEnvironment() {
-        return environment;
-        }
-
-        public void setEnvironment(String environment) {
-        this.environment = environment;
-        }
-
-        public String getAir() {
-        return air;
-        }
-
-        public void setAir(String air) {
-        this.air = air;
-        }
-
-        public String getWater() {
-        return water;
-        }
-
-        public void setWater(String water) {
-        this.water = water;
-        }
-
-        public String getSoil() {
-        return soil;
-        }
-
-        public void setSoil(String soil) {
-        this.soil = soil;
-        }
-
-
-        public String getImg() {
-        return img;
-        }
-
-        public void setImg(String img) {
-        this.img = img;
-        }
-
-        public String getWeather() {
-        return weather;
-        }
-
-        public void setWeather(String weather) {
-        this.weather = weather;
-        }
-
 }
