@@ -19,7 +19,7 @@ public class TeaServiceImpl implements  TeaServce{
 
     @Override
     public List<Tea> list() {
-        return teaRepostory.findAll();
+        return teaRepostory.selectAll();
     }
 
 

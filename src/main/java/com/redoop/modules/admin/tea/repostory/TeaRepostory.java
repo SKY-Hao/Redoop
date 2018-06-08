@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/5/18.
  */
@@ -14,4 +16,7 @@ public interface TeaRepostory extends JpaRepository<Tea,String> {
 
     @Query(value = "select  * from tea where id= :id",nativeQuery = true)
     Tea selectId(@Param("id") String id);
+
+    @Query(value = "select  * from tea",nativeQuery = true)
+    List<Tea> selectAll();
 }

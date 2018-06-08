@@ -34,7 +34,7 @@ public class TeaController {
      * 茶叶
      * @return
      */
-    @RequestMapping("/teaIndex")
+    @RequestMapping(value = "/teaIndex")
     @ResponseBody
     public List<Tea> index() {
         List<Tea> list =  teaServce.list();
@@ -79,7 +79,7 @@ public class TeaController {
         tea.setDate(time);
 
 
-        String image =tempContextUrl + tea.getImg();
+    /*    String image =tempContextUrl + tea.getImg();
         tea.setImg(image);
 
 
@@ -110,15 +110,29 @@ public class TeaController {
 
         //图片路径
         String thenbest = tempContextUrl + tea.getThenbest();
-        tea.setThenbest(thenbest);
+        tea.setThenbest(thenbest);*/
 
-        String oneId= "45";
-        String  ontTwo="42";
-        String  ontThree="43";
-        String  ontFour="47";
-        String  ontFive="49";
+
+        // 读文件  ids.txt
+        // 将文件内容保存为一个dict
+
+
+        // 根据tea.getId()查询 dict，得到对应的 区块链id
+        // 使用区块链api和区块链id查询区块链数据
+        // 区块链api: http://api.xingliannong.com/api/v1/transactions?asset_id={id}
+
+        String  ontThrees="59";
+        String  ontFours="55";
+        String  ontSixs="52";
+        String  ontFives="51";
         String  ontSix="50";
-
+        String  ontFive="49";
+        String  ontTwos="48";
+        String  ontFour="47";
+        String oneId= "45";
+        String oneIds= "44";
+        String  ontThree="43";
+        String  ontTwo="42";
 
         if(tea.getId().equals(oneId)){
             tea.setId("40285c815fa35a0b015fa37132fd0001");
@@ -137,8 +151,25 @@ public class TeaController {
         }else
         if(tea.getId().equals(ontSix)){
             tea.setId("40285c815f57c38e015f57c4c8a10000");
+        } else
+        if(tea.getId().equals(oneIds)){
+            tea.setId("40285c815fa35a0b015fa37132fd0f01");
+        }else
+        if(tea.getId().equals(ontTwos)){
+            tea.setId("40288142632a6a6d01632a8c34810g00");
+        }else
+        if(tea.getId().equals(ontThrees)){
+            tea.setId("297ef02f615477c00161547c9bb30hg4");
+        }else
+        if(tea.getId().equals(ontFours)){
+            tea.setId("40285c815f5bb8c0015f5bbe3d6d0r02");
+        }else
+        if(tea.getId().equals(ontFives)){
+            tea.setId("40285c815f37c662015f384172110w08");
+        }else
+        if(tea.getId().equals(ontSixs)){
+            tea.setId("40285c815f57c38e015f57c4c8aer000");
         }
-
 
         model.addAttribute("tea",tea);
         System.out.println("tea======"+tea);
