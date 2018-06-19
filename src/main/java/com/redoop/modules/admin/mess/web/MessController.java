@@ -41,7 +41,7 @@ public class MessController {
         //List<Mess> pageList= messService.list();
         model.addAttribute("pageList",pageList);
 
-        model.addAttribute("url","/admin/mess/findAll?");
+        //model.addAttribute("url","/admin/mess/findAll?");
         return "admin/mess/list";
     }
 
