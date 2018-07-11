@@ -63,7 +63,9 @@ public class RegisterController {
      * @return
      */
     @RequestMapping(value="/register", method= RequestMethod.POST)
-    public String register(License license, HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "file", required = false) MultipartFile attach, Model model) throws Exception {
+    public String register(License license, HttpServletRequest request, HttpServletResponse response,
+                           @RequestParam(value = "file", required = false) MultipartFile attach,
+                           Model model) throws Exception {
         request.setCharacterEncoding( "utf-8" );
         response.setHeader( "Content-Type" , "text/html" );
         String upFilePath = request.getSession().getServletContext().getRealPath("/upload/license/");

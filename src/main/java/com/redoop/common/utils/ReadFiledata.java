@@ -42,7 +42,7 @@ public class ReadFiledata  {
 
     public static void main(String[] args){
         //我的txt文本存放目录，根据自己的路径修改即可
-       /* File  file = new File ("E:/ids.txt");
+       /* File  file = new File ("E:/ids1.txt");
         System.out.println(txt2String(file));*/
 
        /* String s = null;
@@ -52,7 +52,7 @@ public class ReadFiledata  {
         File f2 = new File("E:/test.txt");
 
         try {
-            // 读取“ids.txt”文件
+            // 读取“ids1.txt”文件
             fileReader = new FileReader(f2);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((s = bufferedReader.readLine()) != null) {
@@ -77,7 +77,7 @@ public class ReadFiledata  {
         File f2 = new File("E:/test.txt");
 
         try {
-            // 读取“ids.txt”文件
+            // 读取“ids1.txt”文件
             fileReader = new FileReader(f2);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((str = bufferedReader.readLine()) != null) {

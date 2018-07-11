@@ -47,10 +47,10 @@ public class TeasController {
     public JSONObject findById(@PathVariable String id, Model model, HttpServletRequest request) throws Exception {
 
         // 读取保存区块链id的文件ids.txt，得到一个ArraryList
-        File file = new File("/home/wordpress/redoop/xingliannong/dataId/ids.txt");
-        // File file = new File("ids.txt");
+       // File file = new File("/home/wordpress/redoop/xingliannong/dataId/ids1.txt");
+         File file = new File("ids11.txt");
         // 读取保存区块链id的文件ids.txt，得到一个ArraryList
-        //File file = new File("ids.txt");
+        //File file = new File("ids1.txt");
         String fileName = file.getAbsolutePath();
         ArrayList ids = readFileByLines(fileName);
         //for(int i=0;i<ids.size();i++) {

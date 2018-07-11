@@ -15,11 +15,11 @@ public class FilesUtil {
         List<String> list = new ArrayList<>();
         String s = null;
         //ids信息中要有数据
-        File f1 = new File("E:/ids.txt");
+        File f1 = new File("E:/ids1.txt");
         File f2 = new File("E:/test.txt");
 
         try {
-            // 读取“ids.txt”文件
+            // 读取“ids1.txt”文件
             FileReader fileReader = new FileReader(f1);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((s = bufferedReader.readLine()) != null) {
@@ -59,7 +59,7 @@ public class FilesUtil {
 
     public static void main(String[] args) {
         FilesUtil fileTest = new FilesUtil();
-        fileTest.readFile("E:/ids.txt");
+        fileTest.readFile("E:/ids1.txt");
         fileTest.printFile("E:/test.txt");
         System.out.println(fileTest.list);
     }
