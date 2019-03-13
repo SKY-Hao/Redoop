@@ -47,8 +47,8 @@ public class TeasController {
     public JSONObject findById(@PathVariable String id, Model model, HttpServletRequest request) throws Exception {
 
         // 读取保存区块链id的文件ids.txt，得到一个ArraryList
-       // File file = new File("/home/wordpress/redoop/xingliannong/dataId/ids1.txt");
-         File file = new File("ids11.txt");
+        // File file = new File("/home/wordpress/redoop/xingliannong/dataId/ids1.txt");
+        File file = new File("ids11.txt");
         // 读取保存区块链id的文件ids.txt，得到一个ArraryList
         //File file = new File("ids1.txt");
         String fileName = file.getAbsolutePath();
@@ -58,9 +58,9 @@ public class TeasController {
         //}
 
         // http://api.xingliannong.com/api/v1/transactions?asset_id=64c6f2c1a68fb8810d5598ae67eb1345fadd226f6ccc1fb17cf98bf032413e7d
-        String bcurl = "http://api.xingliannong.com/api/v1/transactions?asset_id=" + ids.get(Integer.parseInt(id)-1);
+
+        String bcurl = "http://archive.redoop.com:9984/api/v1/transactions?asset_id=" + ids.get(Integer.parseInt(id)-1);
         String json = loadJSON(bcurl);
-        //System.out.println(json);
 
         // 字符串转json
         JSONObject jsonObj = JSONObject.fromObject(json);
@@ -71,7 +71,7 @@ public class TeasController {
         jsonObj3.put("id", ids.get(Integer.parseInt(id)-1));
         jsonObj2.put("tea", jsonObj3);
         jsonObj2.remove("data");
-     return jsonObj2;
+        return jsonObj2;
 
     }
 
@@ -128,4 +128,3 @@ public class TeasController {
         return json.toString();
     }
 }
-

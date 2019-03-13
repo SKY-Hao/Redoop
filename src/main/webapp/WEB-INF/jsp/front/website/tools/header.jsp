@@ -174,7 +174,7 @@
                 <%--<li><a href="<%=basePath%>/front/products" class="${product}">产品</a></li>
                 <li><a href="<%=basePath%>/front/solution" class="${solution}">行业版本及案例</a></li>--%>
                 <li><a href="<%=basePath%>/front/news" class="${news}">新闻</a></li>
-                <li><a href="<%=basePath%>/front/productinformation" class="${productinformation}">产品资料</a></li>
+                <%--<li><a href="<%=basePath%>/front/productinformation" class="${productinformation}">产品资料</a></li>--%>
                 <li><a href="<%=basePath%>/front/partners" class="${partners}">合作伙伴</a></li>
                 <%--<li><a href="<%=basePath%>/front/appstore" class="${appstore}">应用组件</a></li>--%>
                 <li>
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                 </li>
-                <li class="last"><a href="http://www.redoop.net/" target="_blank">技术社区</a></li>
+                <%--<li class="last"><a href="http://www.redoop.net/" target="_blank">技术社区</a></li>--%>
                 <li class="last"><a href="<%=basePath%>/front/aboutus" class="${aboutus}" style="text-decoration: none;">关于我们</a></li>
 
             </ul>

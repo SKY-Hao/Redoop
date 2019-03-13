@@ -66,25 +66,11 @@
               <%-- <span>${one.id}</span>--%>
                <li>
 
-                <%--2018年2月2日10:33:39注释--%>
-                  <%-- <c:if test="${one.htmlcontent == ''}">
-                       <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
-                                    border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
-                           文档
-                       </button>
-                   </c:if>
-                   <c:if test="${one.htmlcontent != ''}">
-                       <button value="<%=basePath%>/front/byCRH/${one.id}" class="aBtn fr" name="see" id="${one.id}"
-                               style="font-size: 14px;padding: 5px 5px;
-                                    color: #fff;background: #33a0ff;
-                                    border-radius: 5px;width: 89px;height: 30px;
-                                    line-height: 20px;"><!--下载地址-->
-                           文档
-                       </button>
-                   </c:if>--%>
-                        <%--<a href="<%=basePath%>/front/byCRH/${one.id}">查看</a>--%>
-
-                      <c:if test="${one.documenturl == ''}">
+                    <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
+                                        border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
+                        下载
+                    </button>
+                    <%--  <c:if test="${one.documenturl == ''}">
                            <button  class="aBtn fr" style="font-size: 14px;padding: 5px 5px;color: #fff;background: #2f3437;
                                         border-radius: 5px;width: 89px;height: 30px;line-height: 20px;" disabled="disabled"><!--下载地址-->
                                下载
@@ -98,7 +84,7 @@
                                     line-height: 20px;" target="_blank"><!--下载地址-->
                                  下载
                              </button>
-                       </c:if>
+                       </c:if>--%>
 
 
 

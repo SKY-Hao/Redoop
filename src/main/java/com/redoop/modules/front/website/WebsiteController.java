@@ -69,6 +69,16 @@ public class WebsiteController {
 
 
 
+    /**
+     * 关于我们
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/aboutus")
+    public String aboutus(Model model) {
+        setStyle(model,"aboutus");
+        return "front/website/aboutus";
+    }
 
 
 
@@ -473,16 +483,6 @@ public class WebsiteController {
 //    }
 
 
-    /**
-     * 关于我们
-     * @param model
-     * @return
-     */
-    @GetMapping(value = "/aboutus")
-    public String aboutus(Model model) {
-        setStyle(model,"aboutus");
-        return "front/website/aboutus";
-    }
 
 
 
