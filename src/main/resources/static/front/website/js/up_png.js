@@ -1,21 +1,20 @@
 $(function(){ //页面加载完毕才执行
 
     var images_height2 = '520px';
-
     var images_url2 = [
-        'front/website/img/banner3.jpg',
-        'front/website/img/banner1.jpg',
-        'front/website/img/banner2.jpg',
+        'front/website/css/img/seasBase.jpg',
+        'front/website/img/banner3.jpg'
     ];
     var images_count = images_url2.length;
-    var url2 = [
+    /* var url2 = [
         'http://www.redoop.com/front/onenew/40288a815f2974e1015f297f20e80000',
         'front/aboutus',
         'front/caseSpace',
         'http://www.redoop.com/front/onenew/40288a815f2974e1015f297f20e80000'
-    ]
+    ]*/
     for(var j=0;j<images_count+1;j++){
-        $('.banner2 ul').append('<a href='+url2[j]+'><li></li></a>')
+      /*  $('.banner2 ul').append('<a href='+url2[j]+'><li></li></a>')*/
+        $('.banner2 ul').append('<li></li>')
     }
 
     for(var j=0;j<images_count;j++){

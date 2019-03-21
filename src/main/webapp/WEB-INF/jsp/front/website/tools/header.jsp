@@ -177,21 +177,28 @@
                 <%--<li><a href="<%=basePath%>/front/productinformation" class="${productinformation}">产品资料</a></li>--%>
                 <li><a href="<%=basePath%>/front/partners" class="${partners}">合作伙伴</a></li>
                 <%--<li><a href="<%=basePath%>/front/appstore" class="${appstore}">应用组件</a></li>--%>
-                <li>
+                <%--<li>
                         <div id="down">
                             <a style="text-decoration: none;">下载</a>
-                            <%--<div id="aa" class="nav-nav" style="display: none;">
+                            &lt;%&ndash;<div id="aa" class="nav-nav" style="display: none;">
                                 <a class="CRH" href="http://archive.redoop.com" style="border-bottom:1px dashed #4D4D4D" target="_blank">Redoop CRH</a>
                                 <a class="AI"  href="http://archive.redoop.com/redoopAI" style="border-bottom:0px dashed #4D4D4D" target="_blank">Redoop AI</a>
-                            </div>--%>
+                            </div>&ndash;%&gt;
                             <div id="aa" class="nav-nav" style="display: none;">
                                 <a class="CRH" href="<%=basePath%>/front/redoopCRH" style="border-bottom:1px dashed #4D4D4D">Redoop CRH</a>
-                                <%--<a class="AI"  href="<%=basePath%>/front/redoopAI" style="border-bottom:0px dashed #4D4D4D">Redoop AI</a>--%>
+                                &lt;%&ndash;<a class="AI"  href="<%=basePath%>/front/redoopAI" style="border-bottom:0px dashed #4D4D4D">Redoop AI</a>&ndash;%&gt;
                             </div>
                         </div>
-                </li>
+                </li>--%>
                 <%--<li class="last"><a href="http://www.redoop.net/" target="_blank">技术社区</a></li>--%>
                 <li class="last"><a href="<%=basePath%>/front/aboutus" class="${aboutus}" style="text-decoration: none;">关于我们</a></li>
+                <%--<li class="last">
+                    <a href="<%=basePath%>/front/website/__UNI__15A2831_0316174208.apk.1.1" style="text-decoration: none;">云销售</a>
+                </li>--%>
+                <li class="last">
+                    <a href="<%=basePath%>/front/sales" target="_blank" style="text-decoration: none;">云销售</a>
+                </li>
+
 
             </ul>
         </div>
@@ -214,12 +221,6 @@
                 $(".CRH").mouseout(function(){
                     $(".CRH").css("color","#E9E9E4");
                 });
-                /*$(".AI").mouseover(function(){
-                    $(".AI").css("color","red");
-                });
-                $(".AI").mouseout(function(){
-                    $(".AI").css("color","#E9E9E4");
-                });*/
             });
         })
 

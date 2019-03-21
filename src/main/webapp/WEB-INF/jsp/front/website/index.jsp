@@ -9,10 +9,10 @@
 <head>
     <jsp:include page="tools/head.jsp"></jsp:include>
 
-    <link rel="stylesheet" href="<%=basePath%>/front/website/css/test01.css" type="text/css" media="screen" />
+    <%--<link rel="stylesheet" href="<%=basePath%>/front/website/css/test01.css" type="text/css" media="screen" />--%>
     <link rel="stylesheet" href="<%=basePath%>/front/website/css/test02.css" type="text/css" media="screen" />
 
-    <script type="text/javascript" src="<%=basePath%>/front/website/js/down_png.js"></script>
+    <%--<script type="text/javascript" src="<%=basePath%>/front/website/js/down_png.js"></script>--%>
     <script type="text/javascript" src="<%=basePath%>/front/website/js/up_png.js"></script>
 
 
@@ -22,12 +22,18 @@
 
 <jsp:include page="tools/header.jsp"></jsp:include>
 
-<div class="bannerCon">
+<div class="banner2"  style="margin-top: 74px;">
+    <ul></ul>
+    <ol style="display: none"></ol>
+    <i class="left"></i> <i class="right"></i>
+</div>
+
+<%--<div class="bannerCon">
     <div class="container">
         <div class="bannerImg"></div>
         <p> 红象云腾是航天大数据基础软件提供商,已经服务十颗卫星。</p>
     </div>
-</div>
+</div>--%>
 
 
 <section id="news">
@@ -124,14 +130,6 @@
 
     </div>
 </section>
-
-
-
-
-
-
-
-
 
 
 <jsp:include page="tools/footer.jsp"></jsp:include>

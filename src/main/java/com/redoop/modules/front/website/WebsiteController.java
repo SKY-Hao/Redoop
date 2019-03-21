@@ -80,6 +80,18 @@ public class WebsiteController {
         return "front/website/aboutus";
     }
 
+    /**
+     * 云销售跳转
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/sales")
+    public String sales(Model model) {
+        setStyle(model,"sales");
+        return "front/website/sales";
+    }
+
+
 
 
 
